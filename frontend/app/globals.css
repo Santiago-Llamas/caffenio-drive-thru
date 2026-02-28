@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Quicksand', Arial, Helvetica, sans-serif;
+}
+
+/* Animación para el escaneo QR */
+@keyframes scan {
+  0%, 100% { top: 0%; }
+  50% { top: 100%; }
+}
+
+.animate-scan {
+  animation: scan 3s ease-in-out infinite;
+}
+
+.scan-line {
+  height: 6px;
+  background: linear-gradient(to right, transparent, #ea2a33, transparent);
+  box-shadow: 0 0 25px 4px rgba(234, 42, 51, 0.9);
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.qr-frame {
+  position: relative;
+  overflow: hidden;
+}

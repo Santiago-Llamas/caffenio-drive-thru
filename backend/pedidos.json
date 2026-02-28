@@ -1,0 +1,3116 @@
+[
+  {
+    "id": 1,
+    "fecha": "2026-02-23T00:17:56.030Z",
+    "items": [
+      {
+        "id": 58,
+        "nombre": "Galleta con chispas de chocolate",
+        "precio": 25.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 25.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 2,
+    "fecha": "2026-02-23T00:22:10.459Z",
+    "items": [
+      {
+        "id": 58,
+        "nombre": "Galleta con chispas de chocolate",
+        "precio": 25.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 25.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 3,
+    "fecha": "2026-02-23T00:22:16.235Z",
+    "items": [],
+    "total": 0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 4,
+    "fecha": "2026-02-23T00:55:00.064Z",
+    "items": [
+      {
+        "id": 60,
+        "nombre": "Brownie",
+        "precio": 30.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 30.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 5,
+    "fecha": "2026-02-23T00:55:27.428Z",
+    "items": [
+      {
+        "id": 58,
+        "nombre": "Galleta con chispas de chocolate",
+        "precio": 25.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 25.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 6,
+    "fecha": "2026-02-23T00:55:48.811Z",
+    "items": [
+      {
+        "id": 2,
+        "nombre": "Latte",
+        "precio": 25.0,
+        "cantidad": 2,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 50.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 7,
+    "fecha": "2026-02-23T01:06:57.658Z",
+    "items": [
+      {
+        "id": 43,
+        "nombre": "Kfreeze® Cajeta",
+        "precio": 70.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 70.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 8,
+    "fecha": "2026-02-23T01:19:19.702Z",
+    "items": [
+      {
+        "id": 58,
+        "nombre": "Galleta con chispas de chocolate",
+        "precio": 25.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 25.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 9,
+    "fecha": "2026-02-23T01:22:32.643Z",
+    "items": [
+      {
+        "id": 58,
+        "nombre": "Galleta con chispas de chocolate",
+        "precio": 25.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 25.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 10,
+    "fecha": "2026-02-23T01:32:52.097Z",
+    "items": [
+      {
+        "id": 63,
+        "nombre": "Repostería con nieve",
+        "precio": 45.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 45.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 11,
+    "fecha": "2026-02-23T01:39:16.328Z",
+    "items": [
+      {
+        "id": 22,
+        "nombre": "Lateada®",
+        "precio": 52.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 23,
+        "nombre": "Mexicano Frío",
+        "precio": 44.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 24,
+        "nombre": "Mexicano Espresso Frío",
+        "precio": 46.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 25,
+        "nombre": "Mexicano con Leche Frío",
+        "precio": 48.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 26,
+        "nombre": "Americano Frío",
+        "precio": 40.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 27,
+        "nombre": "Latte Frío",
+        "precio": 50.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 28,
+        "nombre": "Cappuccino Frío",
+        "precio": 52.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 29,
+        "nombre": "Lateada® Vainilla",
+        "precio": 55.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 30,
+        "nombre": "Lateada® Caramelo",
+        "precio": 55.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 31,
+        "nombre": "Lateada® Moka",
+        "precio": 57.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 32,
+        "nombre": "Lateada® Cajeta",
+        "precio": 58.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 33,
+        "nombre": "Chai Latte Frío",
+        "precio": 56.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 34,
+        "nombre": "Matcha Frío",
+        "precio": 60.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 35,
+        "nombre": "Chocolate Oaxaqueño Frío",
+        "precio": 60.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 36,
+        "nombre": "Chocolate Blanco Frío",
+        "precio": 58.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 37,
+        "nombre": "Horchata Fría",
+        "precio": 48.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 38,
+        "nombre": "Tisana Fría",
+        "precio": 44.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 39,
+        "nombre": "Kfreeze®",
+        "precio": 65.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 40,
+        "nombre": "Kfreeze® Vainilla",
+        "precio": 68.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 41,
+        "nombre": "Kfreeze® Caramelo",
+        "precio": 68.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 42,
+        "nombre": "Kfreeze® Moka",
+        "precio": 70.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 43,
+        "nombre": "Kfreeze® Cajeta",
+        "precio": 70.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 44,
+        "nombre": "Kombucha",
+        "precio": 55.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 45,
+        "nombre": "Panini Italiano",
+        "precio": 89.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 46,
+        "nombre": "Croissant",
+        "precio": 45.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 47,
+        "nombre": "Chapata",
+        "precio": 79.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 48,
+        "nombre": "Waffle",
+        "precio": 55.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 49,
+        "nombre": "Bagel de Huevito",
+        "precio": 65.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 50,
+        "nombre": "Club Sándwich",
+        "precio": 95.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 51,
+        "nombre": "Sándwich Doble",
+        "precio": 85.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 52,
+        "nombre": "Baguette Carnes Frías",
+        "precio": 99.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 53,
+        "nombre": "Rollo Italiano",
+        "precio": 79.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 54,
+        "nombre": "Sándwich Cremoso",
+        "precio": 69.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 55,
+        "nombre": "Rollo Ranchero",
+        "precio": 89.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 56,
+        "nombre": "Panini Ligero",
+        "precio": 75.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 58,
+        "nombre": "Galleta con chispas de chocolate",
+        "precio": 25.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 59,
+        "nombre": "Espiral de canela",
+        "precio": 35.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 60,
+        "nombre": "Brownie",
+        "precio": 30.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 61,
+        "nombre": "Dona",
+        "precio": 28.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 62,
+        "nombre": "Polvorón",
+        "precio": 20.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 63,
+        "nombre": "Repostería con nieve",
+        "precio": 45.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 64,
+        "nombre": "Chocolatín",
+        "precio": 22.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 65,
+        "nombre": "Coyota",
+        "precio": 30.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 66,
+        "nombre": "Panecillo de Plátano",
+        "precio": 28.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 67,
+        "nombre": "Recién Horneado",
+        "precio": 25.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 68,
+        "nombre": "Pastel Red Velvet",
+        "precio": 55.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 2546.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 12,
+    "fecha": "2026-02-23T02:07:17.160Z",
+    "items": [
+      {
+        "id": 1,
+        "nombre": "Espresso",
+        "precio": 67.7,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 5,
+        "nombre": "Cappuccino",
+        "precio": 50.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 8,
+        "nombre": "Latte Caliente",
+        "precio": 48.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 9,
+        "nombre": "Mexicano (tipo Americano)",
+        "precio": 40.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 22,
+        "nombre": "Lateada®",
+        "precio": 52.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 23,
+        "nombre": "Mexicano Frío",
+        "precio": 44.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 26,
+        "nombre": "Americano Frío",
+        "precio": 40.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 27,
+        "nombre": "Latte Frío",
+        "precio": 50.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 45,
+        "nombre": "Panini Italiano",
+        "precio": 89.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 46,
+        "nombre": "Croissant",
+        "precio": 45.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 47,
+        "nombre": "Chapata",
+        "precio": 79.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 48,
+        "nombre": "Waffle",
+        "precio": 55.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 49,
+        "nombre": "Bagel de Huevito",
+        "precio": 65.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 50,
+        "nombre": "Club Sándwich",
+        "precio": 95.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 51,
+        "nombre": "Sándwich Doble",
+        "precio": 85.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 52,
+        "nombre": "Baguette Carnes Frías",
+        "precio": 99.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 53,
+        "nombre": "Rollo Italiano",
+        "precio": 79.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 54,
+        "nombre": "Sándwich Cremoso",
+        "precio": 69.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 55,
+        "nombre": "Rollo Ranchero",
+        "precio": 89.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 56,
+        "nombre": "Panini Ligero",
+        "precio": 75.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 57,
+        "nombre": "Avena",
+        "precio": 45.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 1360.7,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 13,
+    "fecha": "2026-02-23T02:10:53.315Z",
+    "items": [
+      {
+        "id": 58,
+        "nombre": "Galleta con chispas de chocolate",
+        "precio": 25.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 25.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 14,
+    "fecha": "2026-02-23T02:45:38.827Z",
+    "items": [
+      {
+        "id": 57,
+        "nombre": "Avena",
+        "precio": 45.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 45.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 15,
+    "fecha": "2026-02-23T02:46:12.652Z",
+    "items": [
+      {
+        "id": 3,
+        "nombre": "Frappé",
+        "precio": 35.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 35.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 16,
+    "fecha": "2026-02-23T02:46:59.926Z",
+    "items": [
+      {
+        "id": 28,
+        "nombre": "Cappuccino Frío",
+        "precio": 52.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 52.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 17,
+    "fecha": "2026-02-23T02:54:47.243Z",
+    "items": [
+      {
+        "id": 27,
+        "nombre": "Latte Frío",
+        "precio": 50.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 50.0,
+    "estado": "listo",
+    "tiempo_limite": 180000
+  },
+  {
+    "id": 18,
+    "fecha": "2026-02-23T03:03:33.115Z",
+    "items": [
+      {
+        "id": 27,
+        "nombre": "Latte Frío",
+        "precio": 50.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 29,
+        "nombre": "Lateada® Vainilla",
+        "precio": 55.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 105.0,
+    "estado": "listo",
+    "tiempo_limite": 64800
+  },
+  {
+    "id": 19,
+    "fecha": "2026-02-23T03:03:47.681Z",
+    "items": [
+      {
+        "id": 28,
+        "nombre": "Cappuccino Frío",
+        "precio": 52.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 52.0,
+    "estado": "listo",
+    "tiempo_limite": 38880
+  },
+  {
+    "id": 20,
+    "fecha": "2026-02-23T13:48:31.948Z",
+    "items": [
+      {
+        "id": 50,
+        "nombre": "Club Sándwich",
+        "precio": 95.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 95.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 21,
+    "fecha": "2026-02-23T13:52:32.786Z",
+    "items": [
+      {
+        "id": 45,
+        "nombre": "Panini Italiano",
+        "precio": 89.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 89.0,
+    "estado": "listo",
+    "tiempo_limite": 180000
+  },
+  {
+    "id": 22,
+    "fecha": "2026-02-23T13:53:49.481Z",
+    "items": [
+      {
+        "id": 45,
+        "nombre": "Panini Italiano",
+        "precio": 89.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 89.0,
+    "estado": "listo",
+    "tiempo_limite": 180000
+  },
+  {
+    "id": 23,
+    "fecha": "2026-02-23T13:59:38.216Z",
+    "items": [
+      {
+        "id": 45,
+        "nombre": "Panini Italiano",
+        "precio": 89.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 89.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 24,
+    "fecha": "2026-02-23T14:00:05.254Z",
+    "items": [
+      {
+        "id": 3,
+        "nombre": "Frappé",
+        "precio": 35.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 35.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 25,
+    "fecha": "2026-02-23T14:00:52.886Z",
+    "items": [
+      {
+        "id": 22,
+        "nombre": "Lateada®",
+        "precio": 52.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 52.0,
+    "estado": "listo",
+    "tiempo_limite": 180000
+  },
+  {
+    "id": 26,
+    "fecha": "2026-02-23T14:06:47.932Z",
+    "items": [
+      {
+        "id": 24,
+        "nombre": "Mexicano Espresso Frío",
+        "precio": 46.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 46.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 27,
+    "fecha": "2026-02-23T14:27:10.409Z",
+    "items": [
+      {
+        "id": 3,
+        "nombre": "Frappé",
+        "precio": 35.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 35.0,
+    "estado": "listo",
+    "tiempo_limite": 108000
+  },
+  {
+    "id": 28,
+    "fecha": "2026-02-23T14:27:56.764Z",
+    "items": [
+      {
+        "id": 23,
+        "nombre": "Mexicano Frío",
+        "precio": 44.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 44.0,
+    "estado": "listo",
+    "tiempo_limite": 64800
+  },
+  {
+    "id": 29,
+    "fecha": "2026-02-23T14:28:31.191Z",
+    "items": [
+      {
+        "id": 3,
+        "nombre": "Frappé",
+        "precio": 35.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 35.0,
+    "estado": "listo",
+    "tiempo_limite": 64800
+  },
+  {
+    "id": 30,
+    "fecha": "2026-02-23T14:40:30.534Z",
+    "items": [
+      {
+        "id": 3,
+        "nombre": "Frappé",
+        "precio": 35.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 35.0,
+    "estado": "listo",
+    "tiempo_limite": 108000
+  },
+  {
+    "id": 31,
+    "fecha": "2026-02-23T14:40:43.595Z",
+    "items": [
+      {
+        "id": 22,
+        "nombre": "Lateada®",
+        "precio": 52.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 52.0,
+    "estado": "listo",
+    "tiempo_limite": 180000
+  },
+  {
+    "id": 32,
+    "fecha": "2026-02-23T14:47:41.438Z",
+    "items": [
+      {
+        "id": 3,
+        "nombre": "Frappé",
+        "precio": 35.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 35.0,
+    "estado": "listo",
+    "tiempo_limite": 180000
+  },
+  {
+    "id": 33,
+    "fecha": "2026-02-23T14:47:51.688Z",
+    "items": [
+      {
+        "id": 35,
+        "nombre": "Chocolate Oaxaqueño Frío",
+        "precio": 60.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 60.0,
+    "estado": "listo",
+    "tiempo_limite": 180000
+  },
+  {
+    "id": 34,
+    "fecha": "2026-02-23T15:15:08.863Z",
+    "items": [
+      {
+        "id": 2,
+        "nombre": "Latte",
+        "precio": 25.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 25.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 35,
+    "fecha": "2026-02-23T15:27:19.031Z",
+    "items": [
+      {
+        "id": 58,
+        "nombre": "Galleta con chispas de chocolate",
+        "precio": 25.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 25.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 36,
+    "fecha": "2026-02-23T15:40:59.908Z",
+    "items": [
+      {
+        "id": 28,
+        "nombre": "Cappuccino Frío",
+        "precio": 52.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 48,
+        "nombre": "Waffle",
+        "precio": 55.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 107.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 37,
+    "fecha": "2026-02-23T15:41:28.711Z",
+    "items": [
+      {
+        "id": 60,
+        "nombre": "Brownie",
+        "precio": 30.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 30.0,
+    "estado": "listo",
+    "tiempo_limite": 180000
+  },
+  {
+    "id": 38,
+    "fecha": "2026-02-23T15:42:01.065Z",
+    "items": [],
+    "total": 0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 39,
+    "fecha": "2026-02-23T15:44:33.565Z",
+    "items": [
+      {
+        "id": 60,
+        "nombre": "Brownie",
+        "precio": 30.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 30.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 40,
+    "fecha": "2026-02-23T19:49:47.688Z",
+    "items": [
+      {
+        "id": 59,
+        "nombre": "Espiral de canela",
+        "precio": 35.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 59,
+        "nombre": "Espiral de canela",
+        "precio": 35.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 70.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 41,
+    "fecha": "2026-02-23T19:51:01.174Z",
+    "items": [
+      {
+        "id": 1,
+        "nombre": "Espresso",
+        "precio": 67.7,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 67.7,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 42,
+    "fecha": "2026-02-23T22:29:06.433Z",
+    "items": [
+      {
+        "id": 3,
+        "nombre": "Frappé",
+        "precio": 35.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 35.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 43,
+    "fecha": "2026-02-24T01:52:57.712Z",
+    "items": [
+      {
+        "id": 2,
+        "nombre": "Latte",
+        "precio": 25.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 25.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 44,
+    "fecha": "2026-02-24T01:53:32.817Z",
+    "items": [
+      {
+        "id": 1,
+        "nombre": "Espresso",
+        "precio": 67.7,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 67.7,
+    "estado": "listo",
+    "tiempo_limite": 180000
+  },
+  {
+    "id": 45,
+    "fecha": "2026-02-24T03:13:12.208Z",
+    "items": [
+      {
+        "id": 40,
+        "nombre": "Kfreeze® Vainilla",
+        "precio": 68.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 50,
+        "nombre": "Club Sándwich",
+        "precio": 95.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 163.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 46,
+    "fecha": "2026-02-24T13:50:12.185Z",
+    "items": [
+      {
+        "id": 58,
+        "nombre": "Galleta con chispas de chocolate",
+        "precio": 25.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 25.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 47,
+    "fecha": "2026-02-24T16:49:29.903Z",
+    "items": [
+      {
+        "id": 2,
+        "nombre": "Latte",
+        "precio": 25.0,
+        "cantidad": 2,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 50.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 48,
+    "fecha": "2026-02-24T16:53:56.144Z",
+    "items": [
+      {
+        "id": 22,
+        "nombre": "Lateada®",
+        "precio": 52.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 27,
+        "nombre": "Latte Frío",
+        "precio": 50.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 34,
+        "nombre": "Matcha Frío",
+        "precio": 60.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 45,
+        "nombre": "Panini Italiano",
+        "precio": 89.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 251.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 49,
+    "fecha": "2026-02-25T13:55:16.594Z",
+    "items": [
+      {
+        "id": 2,
+        "nombre": "Latte",
+        "precio": 25.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 18,
+        "nombre": "Tisana caliente",
+        "precio": 42.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 18,
+        "nombre": "Tisana caliente",
+        "precio": 42.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 38,
+        "nombre": "Tisana Fría",
+        "precio": 44.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 56,
+        "nombre": "Panini Ligero",
+        "precio": 75.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 38,
+        "nombre": "Tisana Fría",
+        "precio": 44.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 56,
+        "nombre": "Panini Ligero",
+        "precio": 75.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 347.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 50,
+    "fecha": "2026-02-25T14:40:43.799Z",
+    "items": [
+      {
+        "id": 59,
+        "nombre": "Espiral de canela",
+        "precio": 35.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 58,
+        "nombre": "Galleta con chispas de chocolate",
+        "precio": 25.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 60.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 51,
+    "fecha": "2026-02-25T14:58:37.800Z",
+    "items": [
+      {
+        "id": 23,
+        "nombre": "Mexicano Frío",
+        "precio": 44.0,
+        "cantidad": 4,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 176.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 52,
+    "fecha": "2026-02-25T15:41:56.335Z",
+    "items": [],
+    "total": 0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 53,
+    "fecha": "2026-02-25T15:52:10.413Z",
+    "items": [
+      {
+        "id": 4,
+        "nombre": "Chai Latte",
+        "precio": 44.0,
+        "cantidad": 5,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 220.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 54,
+    "fecha": "2026-02-25T15:59:54.993Z",
+    "items": [
+      {
+        "id": 5,
+        "nombre": "Cappuccino",
+        "precio": 50.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 2,
+        "nombre": "Latte",
+        "precio": 25.0,
+        "cantidad": 3,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 27,
+        "nombre": "Latte Frío",
+        "precio": 50.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 175.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 55,
+    "fecha": "2026-02-25T16:06:22.984Z",
+    "items": [
+      {
+        "id": 2,
+        "nombre": "Latte",
+        "precio": 25.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 27,
+        "nombre": "Latte Frío",
+        "precio": 50.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 75.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 56,
+    "fecha": "2026-02-25T16:17:00.034Z",
+    "items": [
+      {
+        "id": 2,
+        "nombre": "Latte",
+        "precio": 25.0,
+        "cantidad": 20,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 500.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 57,
+    "fecha": "2026-02-25T16:18:27.578Z",
+    "items": [
+      {
+        "id": 27,
+        "nombre": "Latte Frío",
+        "precio": 50.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 50.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 58,
+    "fecha": "2026-02-25T16:41:39.640Z",
+    "items": [
+      {
+        "id": 5,
+        "nombre": "Cappuccino",
+        "precio": 50.0,
+        "cantidad": 3,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 150.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 59,
+    "fecha": "2026-02-25T16:44:45.561Z",
+    "items": [
+      {
+        "id": 59,
+        "nombre": "Espiral de canela",
+        "precio": 35.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 39,
+        "nombre": "Kfreeze®",
+        "precio": 65.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 100.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 60,
+    "fecha": "2026-02-25T16:46:12.070Z",
+    "items": [
+      {
+        "id": 5,
+        "nombre": "Cappuccino",
+        "precio": 50.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 50.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 61,
+    "fecha": "2026-02-25T19:55:24.532Z",
+    "items": [
+      {
+        "id": 1,
+        "nombre": "Espresso",
+        "precio": 67.7,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 67.7,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 62,
+    "fecha": "2026-02-25T20:14:50.536Z",
+    "items": [
+      {
+        "id": 60,
+        "nombre": "Brownie",
+        "precio": 30.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 30.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 63,
+    "fecha": "2026-02-25T20:14:55.557Z",
+    "items": [],
+    "total": 0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 64,
+    "fecha": "2026-02-25T20:18:51.926Z",
+    "items": [],
+    "total": 0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 65,
+    "fecha": "2026-02-25T22:27:41.044Z",
+    "items": [
+      {
+        "id": 60,
+        "nombre": "Brownie",
+        "precio": 30.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 30.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 66,
+    "fecha": "2026-02-25T22:39:09.543Z",
+    "items": [
+      {
+        "id": 27,
+        "nombre": "Latte Frío",
+        "precio": 50.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 50.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 67,
+    "fecha": "2026-02-25T22:39:23.290Z",
+    "items": [
+      {
+        "id": 59,
+        "nombre": "Espiral de canela",
+        "precio": 35.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 59,
+        "nombre": "Espiral de canela",
+        "precio": 35.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 70.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 68,
+    "fecha": "2026-02-25T22:47:59.448Z",
+    "items": [
+      {
+        "id": 60,
+        "nombre": "Brownie",
+        "precio": 30.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 60,
+        "nombre": "Brownie",
+        "precio": 30.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 60.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 69,
+    "fecha": "2026-02-25T22:57:30.034Z",
+    "items": [
+      {
+        "id": 60,
+        "nombre": "Brownie",
+        "precio": 30.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 30.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 70,
+    "fecha": "2026-02-25T23:10:24.746Z",
+    "items": [
+      {
+        "id": 27,
+        "nombre": "Latte Frío",
+        "precio": 50.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 50.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 71,
+    "fecha": "2026-02-25T23:15:17.565Z",
+    "items": [
+      {
+        "id": 27,
+        "nombre": "Latte Frío",
+        "precio": 50.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 50.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 72,
+    "fecha": "2026-02-25T23:23:17.739Z",
+    "items": [
+      {
+        "id": 27,
+        "nombre": "Latte Frío",
+        "precio": 50.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 50.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 73,
+    "fecha": "2026-02-25T23:23:41.820Z",
+    "items": [],
+    "total": 0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 74,
+    "fecha": "2026-02-25T23:27:03.106Z",
+    "items": [
+      {
+        "id": 59,
+        "nombre": "Espiral de canela",
+        "precio": 35.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 59,
+        "nombre": "Espiral de canela",
+        "precio": 35.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 70.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 75,
+    "fecha": "2026-02-25T23:28:42.795Z",
+    "items": [],
+    "total": 0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 76,
+    "fecha": "2026-02-25T23:28:46.791Z",
+    "items": [],
+    "total": 0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 77,
+    "fecha": "2026-02-25T23:28:50.279Z",
+    "items": [],
+    "total": 0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 78,
+    "fecha": "2026-02-25T23:29:17.837Z",
+    "items": [
+      {
+        "id": 1,
+        "nombre": "Espresso",
+        "precio": 67.7,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 1,
+        "nombre": "Espresso",
+        "precio": 67.7,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 135.4,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 79,
+    "fecha": "2026-02-25T23:31:44.849Z",
+    "items": [
+      {
+        "id": 30,
+        "nombre": "Lateada® Caramelo",
+        "precio": 55.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 30,
+        "nombre": "Lateada® Caramelo",
+        "precio": 55.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 110.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 80,
+    "fecha": "2026-02-25T23:41:20.347Z",
+    "items": [
+      {
+        "id": 30,
+        "nombre": "Lateada® Caramelo",
+        "precio": 55.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 30,
+        "nombre": "Lateada® Caramelo",
+        "precio": 55.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 110.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 81,
+    "fecha": "2026-02-25T23:41:53.981Z",
+    "items": [
+      {
+        "id": 27,
+        "nombre": "Latte Frío",
+        "precio": 50.0,
+        "cantidad": 3,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 150.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 82,
+    "fecha": "2026-02-25T23:42:02.677Z",
+    "items": [
+      {
+        "id": 27,
+        "nombre": "Latte Frío",
+        "precio": 50.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 50.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 83,
+    "fecha": "2026-02-26T01:47:09.910Z",
+    "items": [
+      {
+        "id": 27,
+        "nombre": "Latte Frío",
+        "precio": 50.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 50.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 84,
+    "fecha": "2026-02-26T02:20:05.727Z",
+    "items": [
+      {
+        "id": 2,
+        "nombre": "Latte",
+        "precio": 25.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 25.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 85,
+    "fecha": "2026-02-26T02:23:32.080Z",
+    "items": [
+      {
+        "id": 58,
+        "nombre": "Galleta con chispas de chocolate",
+        "precio": 38.0,
+        "cantidad": 4,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 16,
+        "nombre": "Chocolate Blanco Caliente",
+        "precio": 73.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 66,
+        "nombre": "Panecillo de Plátano",
+        "precio": 45.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 18,
+        "nombre": "Tisana caliente",
+        "precio": 71.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 341.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 86,
+    "fecha": "2026-02-26T03:48:17.861Z",
+    "items": [
+      {
+        "id": 5,
+        "nombre": "Cappuccino",
+        "precio": 63.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 63.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 87,
+    "fecha": "2026-02-26T03:50:11.164Z",
+    "items": [
+      {
+        "id": 22,
+        "nombre": "Lateada®",
+        "precio": 70.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 22,
+        "nombre": "Lateada®",
+        "precio": 70.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 140.0,
+    "estado": "listo",
+    "tiempo_limite": 180000
+  },
+  {
+    "id": 88,
+    "fecha": "2026-02-26T13:40:04.815Z",
+    "items": [
+      {
+        "id": 5,
+        "nombre": "Cappuccino",
+        "precio": 63.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 63.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 89,
+    "fecha": "2026-02-26T13:58:12.397Z",
+    "items": [
+      {
+        "id": 5,
+        "nombre": "Cappuccino",
+        "precio": 63.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 63.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 90,
+    "fecha": "2026-02-26T14:48:04.370Z",
+    "items": [
+      {
+        "id": 58,
+        "nombre": "Galleta con chispas de chocolate",
+        "precio": 38.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 38.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 91,
+    "fecha": "2026-02-26T16:46:39.523Z",
+    "items": [
+      {
+        "id": 41,
+        "nombre": "Kfreeze® Caramelo",
+        "precio": 76.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 58,
+        "nombre": "Galleta con chispas de chocolate",
+        "precio": 38.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 114.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 92,
+    "fecha": "2026-02-26T16:48:24.937Z",
+    "items": [
+      {
+        "id": 60,
+        "nombre": "Brownie",
+        "precio": 40.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 60,
+        "nombre": "Brownie",
+        "precio": 40.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 80.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 93,
+    "fecha": "2026-02-26T17:12:35.802Z",
+    "items": [
+      {
+        "id": 63,
+        "nombre": "Repostería con nieve",
+        "precio": 65.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 52,
+        "nombre": "Baguette Carnes Frías",
+        "precio": 99.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 41,
+        "nombre": "Kfreeze® Caramelo",
+        "precio": 76.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 24,
+        "nombre": "Mexicano Espresso Frío",
+        "precio": 40.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 60,
+        "nombre": "Brownie",
+        "precio": 40.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 320.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 94,
+    "fecha": "2026-02-26T17:34:30.621Z",
+    "items": [
+      {
+        "id": 60,
+        "nombre": "Brownie",
+        "precio": 40.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 36,
+        "nombre": "Chocolate Blanco Frío",
+        "precio": 73.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 113.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 95,
+    "fecha": "2026-02-26T17:36:25.653Z",
+    "items": [
+      {
+        "id": 9,
+        "nombre": "Mexicano (tipo Americano)",
+        "precio": 38.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 60,
+        "nombre": "Brownie",
+        "precio": 40.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 60,
+        "nombre": "Brownie",
+        "precio": 40.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 118.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 96,
+    "fecha": "2026-02-26T17:56:05.229Z",
+    "items": [
+      {
+        "id": 58,
+        "nombre": "Galleta con chispas de chocolate",
+        "precio": 38.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 38.0,
+    "estado": "listo",
+    "tiempo_limite": 180000
+  },
+  {
+    "id": 97,
+    "fecha": "2026-02-27T22:06:58.251Z",
+    "items": [
+      {
+        "id": 45,
+        "nombre": "Panini Italiano",
+        "precio": 90.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 41,
+        "nombre": "Kfreeze® Caramelo",
+        "precio": 76.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 17,
+        "nombre": "Horchata Caliente",
+        "precio": 61.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 227.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 98,
+    "fecha": "2026-02-27T22:07:45.529Z",
+    "items": [
+      {
+        "id": 41,
+        "nombre": "Kfreeze® Caramelo",
+        "precio": 76.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 76.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 99,
+    "fecha": "2026-02-27T22:08:22.420Z",
+    "items": [
+      {
+        "id": 27,
+        "nombre": "Latte Frío",
+        "precio": 62.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 62.0,
+    "estado": "listo",
+    "tiempo_limite": 64800
+  },
+  {
+    "id": 100,
+    "fecha": "2026-02-27T23:15:25.781Z",
+    "items": [
+      {
+        "id": 22,
+        "nombre": "Lateada®",
+        "precio": 70.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 70.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 101,
+    "fecha": "2026-02-28T02:32:00.704Z",
+    "items": [
+      {
+        "id": 42,
+        "nombre": "Kfreeze® Moka",
+        "precio": 77.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 31,
+        "nombre": "Lateada® Moka",
+        "precio": 70.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 36,
+        "nombre": "Chocolate Blanco Frío",
+        "precio": 73.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 42,
+        "nombre": "Kfreeze® Moka",
+        "precio": 77.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 297.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 102,
+    "fecha": "2026-02-28T02:45:56.631Z",
+    "items": [
+      {
+        "id": 58,
+        "nombre": "Galleta con chispas de chocolate",
+        "precio": 38.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 1,
+        "nombre": "Espresso",
+        "precio": 67.7,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 105.7,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 103,
+    "fecha": "2026-02-28T06:15:53.439Z",
+    "items": [
+      {
+        "id": 58,
+        "nombre": "Galleta con chispas de chocolate",
+        "precio": 38.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 41,
+        "nombre": "Kfreeze® Caramelo",
+        "precio": 76.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 114.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 104,
+    "fecha": "2026-02-28T06:16:45.159Z",
+    "items": [
+      {
+        "id": 22,
+        "nombre": "Lateada®",
+        "precio": 70.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 70.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 105,
+    "fecha": "2026-02-28T06:18:48.413Z",
+    "items": [
+      {
+        "id": 24,
+        "nombre": "Mexicano Espresso Frío",
+        "precio": 40.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 18,
+        "nombre": "Tisana caliente",
+        "precio": 71.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 111.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 106,
+    "fecha": "2026-02-28T06:22:24.968Z",
+    "items": [
+      {
+        "id": 4,
+        "nombre": "Chai Latte",
+        "precio": 44.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 33,
+        "nombre": "Chai Latte Frío",
+        "precio": 66.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 110.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 107,
+    "fecha": "2026-02-28T06:37:21.538Z",
+    "items": [
+      {
+        "id": 60,
+        "nombre": "Brownie",
+        "precio": 40.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 40.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 108,
+    "fecha": "2026-02-28T08:08:32.899Z",
+    "items": [
+      {
+        "id": 41,
+        "nombre": "Kfreeze® Caramelo",
+        "precio": 76.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 76.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 109,
+    "fecha": "2026-02-28T08:12:05.439Z",
+    "items": [
+      {
+        "id": 60,
+        "nombre": "Brownie",
+        "precio": 40.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 60,
+        "nombre": "Brownie",
+        "precio": 40.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 80.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 110,
+    "fecha": "2026-02-28T08:12:28.054Z",
+    "items": [
+      {
+        "id": 41,
+        "nombre": "Kfreeze® Caramelo",
+        "precio": 76.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 76.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 111,
+    "fecha": "2026-02-28T08:21:50.475Z",
+    "items": [
+      {
+        "id": 58,
+        "nombre": "Galleta con chispas de chocolate",
+        "precio": 38.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 38.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 112,
+    "fecha": "2026-02-28T08:40:14.334Z",
+    "items": [
+      {
+        "id": 66,
+        "nombre": "Panecillo de Plátano",
+        "precio": 45.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 1,
+        "nombre": "Espresso",
+        "precio": 67.7,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 1,
+        "nombre": "Espresso",
+        "precio": 67.7,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 180.4,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 113,
+    "fecha": "2026-02-28T08:41:14.889Z",
+    "items": [
+      {
+        "id": 27,
+        "nombre": "Latte Frío",
+        "precio": 62.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 41,
+        "nombre": "Kfreeze® Caramelo",
+        "precio": 76.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 58,
+        "nombre": "Galleta con chispas de chocolate",
+        "precio": 38.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 176.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 114,
+    "fecha": "2026-02-28T08:54:43.891Z",
+    "items": [
+      {
+        "id": 58,
+        "nombre": "Galleta con chispas de chocolate",
+        "precio": 38.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 41,
+        "nombre": "Kfreeze® Caramelo",
+        "precio": 76.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 114.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 115,
+    "fecha": "2026-02-28T09:10:12.082Z",
+    "items": [
+      {
+        "id": 60,
+        "nombre": "Brownie",
+        "precio": 40.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 2,
+        "nombre": "Latte",
+        "precio": 60.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 2,
+        "nombre": "Latte",
+        "precio": 60.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 160.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 116,
+    "fecha": "2026-02-28T09:24:05.481Z",
+    "items": [
+      {
+        "id": 41,
+        "nombre": "Kfreeze® Caramelo",
+        "precio": 76.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 76.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 117,
+    "fecha": "2026-02-28T09:40:54.381Z",
+    "items": [
+      {
+        "id": 27,
+        "nombre": "Latte Frío",
+        "precio": 62.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 62.0,
+    "estado": "listo",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 118,
+    "fecha": "2026-02-28T10:01:31.365Z",
+    "items": [
+      {
+        "id": 41,
+        "nombre": "Kfreeze® Caramelo",
+        "precio": 76.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 29,
+        "nombre": "Lateada® Vainilla",
+        "precio": 70.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 146.0,
+    "estado": "recibido",
+    "tiempo_limite": 300000
+  }
+]
