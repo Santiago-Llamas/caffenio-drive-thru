@@ -4,6 +4,7 @@ from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 from typing import List, Optional
 from datetime import datetime
+import time
 import os
 import json
 import requests
@@ -30,13 +31,13 @@ app.add_middleware(
 
 # ==================== Configuración de Gemini ====================
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-MODELO = "gemini-2.5-flash-lite"  # Modelo que soporta caching
+MODELO = "gemini-2.5-flash-lite"
 CACHE_TTL_SECONDS = 3600  # 1 hora
 
-# Variables globales para el caché
+# Variables globales
 cached_content_name = None
 ultima_actualizacion_cache = None
-prompt_hash_actual = None  # Almacena el hash del prompt actual
+prompt_hash_actual = None
 
 # ==================== Modelos Pydantic ====================
 class Consulta(BaseModel):
@@ -61,7 +62,7 @@ class PedidoOut(BaseModel):
     items: List[dict]
     total: float
     estado: str
-    tiempo_limite: int  # en milisegundos
+    tiempo_limite: int
 
 class EstadoUpdate(BaseModel):
     nuevo_estado: str
@@ -102,7 +103,6 @@ async def crear_pedido(pedido: PedidoRecibido):
     guardar_pedidos(pedidos)
     print(f"\n🆕 Nuevo pedido #{nuevo_id} recibido a las {datetime.now().strftime('%H:%M:%S')}")
     print(f"   Total: ${total:.2f}")
-    print("   Productos:")
     for item in pedido.items:
         detalles = []
         if item.tamanoSeleccionado: detalles.append(item.tamanoSeleccionado)
@@ -260,88 +260,86 @@ A continuación se presenta el menú completo de Caffenio con descripciones exha
 """
 
 def calcular_hash_prompt():
-    """Calcula un hash MD5 del contenido del prompt para detectar cambios."""
     return hashlib.md5(construir_prompt_base().encode()).hexdigest()
 
-# Inicializar el hash del prompt
-prompt_hash_actual = calcular_hash_prompt()
-
-def crear_cache():
-    """Crea o actualiza el cached content en Gemini. Retorna True si éxito, False si error."""
+def crear_cache(reintentos=3):
+    """Crea o actualiza el cached content con reintentos."""
     global cached_content_name, ultima_actualizacion_cache, prompt_hash_actual
     prompt_base = construir_prompt_base()
     url = f"https://generativelanguage.googleapis.com/v1beta/cachedContents?key={GEMINI_API_KEY}"
     payload = {
         "model": f"models/{MODELO}",
-        "contents": [
-            {
-                "role": "user",
-                "parts": [{"text": prompt_base}]
-            }
-        ],
+        "contents": [{"role": "user", "parts": [{"text": prompt_base}]}],
         "ttl": {"seconds": CACHE_TTL_SECONDS}
     }
     headers = {"Content-Type": "application/json"}
-    print(f"📤 Intentando crear caché en {url}...")
-    response = requests.post(url, json=payload, headers=headers)
-    print(f"📥 Código de respuesta: {response.status_code}")
-    if response.status_code == 200:
-        data = response.json()
-        cached_content_name = data["name"]
-        ultima_actualizacion_cache = datetime.now()
-        prompt_hash_actual = calcular_hash_prompt()
-        print(f"✅ Caché creado exitosamente: {cached_content_name}")
-        print(f"   Hash del prompt: {prompt_hash_actual}")
-        return True
-    else:
-        print(f"❌ Error creando caché: {response.status_code}")
-        print(f"   Respuesta: {response.text}")
-        return False
+
+    for intento in range(reintentos):
+        try:
+            print(f"📤 Intento {intento+1} de crear caché...")
+            response = requests.post(url, json=payload, headers=headers, timeout=30)
+            if response.status_code == 200:
+                data = response.json()
+                cached_content_name = data["name"]
+                ultima_actualizacion_cache = datetime.now()
+                prompt_hash_actual = calcular_hash_prompt()
+                print(f"✅ Caché creado: {cached_content_name}")
+                return True
+            else:
+                print(f"❌ Error creando caché: {response.status_code} - {response.text}")
+                if intento < reintentos - 1:
+                    espera = 2 ** intento
+                    print(f"⏳ Reintentando en {espera}s...")
+                    time.sleep(espera)
+        except Exception as e:
+            print(f"❌ Excepción al crear caché: {e}")
+            if intento < reintentos - 1:
+                espera = 2 ** intento
+                time.sleep(espera)
+    return False
 
 def llamar_gemini_con_cache(consulta_usuario: str):
-    """Llama a Gemini usando el caché, recreándolo si es necesario."""
-    global cached_content_name, prompt_hash_actual
+    """Llama a Gemini usando el caché, con reintentos si falla."""
+    global cached_content_name
 
-    # Verificar si el prompt ha cambiado o no hay caché
-    hash_actual = calcular_hash_prompt()
-    if not cached_content_name or hash_actual != prompt_hash_actual:
-        print("🔄 El prompt ha cambiado o no hay caché. Intentando recrear...")
-        if not crear_cache():
-            raise HTTPException(status_code=500, detail="No se pudo crear el caché necesario para Gemini")
+    # Si no hay caché o el prompt cambió, intentar crearlo (hasta 3 veces)
+    if not cached_content_name or calcular_hash_prompt() != prompt_hash_actual:
+        print("🔄 No hay caché o cambió el prompt. Intentando crear...")
+        if not crear_cache(reintentos=3):
+            raise HTTPException(status_code=503, detail="No se pudo crear el caché para Gemini después de reintentos")
 
     url = f"https://generativelanguage.googleapis.com/v1beta/models/{MODELO}:generateContent?key={GEMINI_API_KEY}"
     payload = {
-        "contents": [
-            {
-                "role": "user",
-                "parts": [{"text": consulta_usuario}]
-            }
-        ],
+        "contents": [{"role": "user", "parts": [{"text": consulta_usuario}]}],
         "cachedContent": cached_content_name
     }
-    try:
-        response = requests.post(url, json=payload)
-        response.raise_for_status()
-        return response.json()
-    except requests.exceptions.RequestException as e:
-        print(f"❌ Error en la petición a Gemini: {e}")
-        if response.status_code == 404 and "cached content not found" in response.text:
-            print("🔄 Caché expirado o no encontrado. Recreando...")
-            if crear_cache():
-                payload["cachedContent"] = cached_content_name
-                response = requests.post(url, json=payload)
-                response.raise_for_status()
-                return response.json()
-            else:
-                raise HTTPException(status_code=500, detail="No se pudo recrear el caché")
-        else:
-            try:
-                error_detail = response.json()
-            except:
-                error_detail = response.text
-            raise HTTPException(status_code=502, detail=f"Error de Gemini: {error_detail}")
 
-# ==================== Endpoints de recomendaciones y caché ====================
+    for intento in range(3):  # reintentos en la consulta
+        try:
+            response = requests.post(url, json=payload, timeout=30)
+            response.raise_for_status()
+            return response.json()
+        except requests.exceptions.RequestException as e:
+            print(f"❌ Error en consulta (intento {intento+1}): {e}")
+            if intento == 2:
+                try:
+                    error_detail = response.json()
+                except:
+                    error_detail = response.text
+                raise HTTPException(status_code=502, detail=f"Error de Gemini: {error_detail}")
+            time.sleep(2 ** intento)  # backoff
+
+ # ==================== Evento startup ====================
+@app.on_event("startup")
+async def startup_event():
+    """Se ejecuta automáticamente al iniciar el servidor."""
+    print("🚀 Servidor iniciando. Creando caché de Gemini...")
+    if crear_cache(reintentos=5):  # más reintentos al inicio
+        print("✅ Caché creado exitosamente en startup.")
+    else:
+        print("⚠️ No se pudo crear el caché en startup. Se intentará en la primera consulta.")
+
+# ==================== Endpoints de recomendaciones ====================
 @app.get("/")
 def read_root():
     return {"message": "Bienvenido al servidor backend de la Cafetería Caffenio"}
@@ -350,7 +348,6 @@ def read_root():
 async def recomendar(consulta: Consulta):
     if not GEMINI_API_KEY:
         raise HTTPException(status_code=500, detail="API key no configurada")
-
     try:
         print(f"🔍 Consultando Gemini con caché...")
         data = llamar_gemini_con_cache(consulta.mensaje)
@@ -363,24 +360,13 @@ async def recomendar(consulta: Consulta):
 
 @app.post("/actualizar_cache")
 async def actualizar_cache():
-    """Endpoint para actualizar manualmente el caché (cuando cambie el menú)."""
     if crear_cache():
         return {"mensaje": "Caché actualizado", "nombre": cached_content_name}
-    else:
-        raise HTTPException(status_code=500, detail="No se pudo actualizar el caché")
-
-@app.get("/test_cache")
-async def test_cache():
-    """Endpoint de diagnóstico para probar la creación del caché."""
-    exito = crear_cache()
-    if exito:
-        return {"mensaje": "Caché creado correctamente", "nombre": cached_content_name}
     else:
         raise HTTPException(status_code=500, detail="No se pudo crear el caché")
 
 @app.get("/caches")
 async def listar_caches():
-    """Lista todos los cached contents activos (para depuración)."""
     url = f"https://generativelanguage.googleapis.com/v1beta/cachedContents?key={GEMINI_API_KEY}"
     response = requests.get(url)
     if response.status_code == 200:
