@@ -31,7 +31,7 @@ app.add_middleware(
 # ==================== Configuración de Gemini ====================
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 MODELO = "gemini-2.5-flash-lite"  # Modelo que soporta caching
-CACHE_TTL_SECONDS = 3600  # 1 horas
+CACHE_TTL_SECONDS = 3600  # 1 hora
 
 # Variables globales para el caché
 cached_content_name = None
@@ -84,7 +84,7 @@ def guardar_pedidos(pedidos):
     with open(PEDIDOS_FILE, "w", encoding="utf-8") as f:
         json.dump(pedidos, f, indent=2, ensure_ascii=False)
 
-# ==================== Endpoints de pedidos (sin cambios) ====================
+# ==================== Endpoints de pedidos ====================
 @app.post("/pedidos", response_model=dict)
 async def crear_pedido(pedido: PedidoRecibido):
     pedidos = cargar_pedidos()
@@ -157,7 +157,8 @@ async def eliminar_pedido(pedido_id: int):
 
 # ==================== Funciones de Gemini con Context Caching (MEJORADAS) ====================
 def construir_prompt_base():
-    """Devuelve el prompt base (todo el menú) como string extendido con todos los productos."""
+    """Devuelve el prompt base (todo el menú) como string extendido."""
+    # (Tu prompt actual, igual que antes)
     return """
 Eres un barista experto y apasionado en una cafetería de especialidad llamada "Caffenio". 
 Tu misión es ayudar a los clientes a encontrar la bebida, alimento o postre perfecto según sus gustos, estado de ánimo o necesidades. 
@@ -266,7 +267,7 @@ def calcular_hash_prompt():
 prompt_hash_actual = calcular_hash_prompt()
 
 def crear_cache():
-    """Crea o actualiza el cached content en Gemini."""
+    """Crea o actualiza el cached content en Gemini. Retorna True si éxito, False si error."""
     global cached_content_name, ultima_actualizacion_cache, prompt_hash_actual
     prompt_base = construir_prompt_base()
     url = f"https://generativelanguage.googleapis.com/v1beta/cachedContents?key={GEMINI_API_KEY}"
@@ -281,30 +282,32 @@ def crear_cache():
         "ttl": {"seconds": CACHE_TTL_SECONDS}
     }
     headers = {"Content-Type": "application/json"}
+    print(f"📤 Intentando crear caché en {url}...")
     response = requests.post(url, json=payload, headers=headers)
+    print(f"📥 Código de respuesta: {response.status_code}")
     if response.status_code == 200:
         data = response.json()
         cached_content_name = data["name"]
         ultima_actualizacion_cache = datetime.now()
-        # Actualizar el hash almacenado
         prompt_hash_actual = calcular_hash_prompt()
-        print(f"✅ Caché creado: {cached_content_name} (hash: {prompt_hash_actual})")
+        print(f"✅ Caché creado exitosamente: {cached_content_name}")
+        print(f"   Hash del prompt: {prompt_hash_actual}")
+        return True
     else:
-        print(f"❌ Error creando caché: {response.status_code} - {response.text}")
-        try:
-            error_detail = response.json()
-        except:
-            error_detail = response.text
-        raise HTTPException(status_code=500, detail=f"No se pudo crear el caché: {error_detail}")
+        print(f"❌ Error creando caché: {response.status_code}")
+        print(f"   Respuesta: {response.text}")
+        return False
 
 def llamar_gemini_con_cache(consulta_usuario: str):
-    """Llama a Gemini usando el caché, recreándolo si el prompt ha cambiado o expiró."""
+    """Llama a Gemini usando el caché, recreándolo si es necesario."""
     global cached_content_name, prompt_hash_actual
 
-    # Verificar si el prompt ha cambiado (por edición del código)
-    if not cached_content_name or calcular_hash_prompt() != prompt_hash_actual:
-        print("🔄 El prompt ha cambiado o no hay caché. Recreando caché...")
-        crear_cache()
+    # Verificar si el prompt ha cambiado o no hay caché
+    hash_actual = calcular_hash_prompt()
+    if not cached_content_name or hash_actual != prompt_hash_actual:
+        print("🔄 El prompt ha cambiado o no hay caché. Intentando recrear...")
+        if not crear_cache():
+            raise HTTPException(status_code=500, detail="No se pudo crear el caché necesario para Gemini")
 
     url = f"https://generativelanguage.googleapis.com/v1beta/models/{MODELO}:generateContent?key={GEMINI_API_KEY}"
     payload = {
@@ -323,12 +326,14 @@ def llamar_gemini_con_cache(consulta_usuario: str):
     except requests.exceptions.RequestException as e:
         print(f"❌ Error en la petición a Gemini: {e}")
         if response.status_code == 404 and "cached content not found" in response.text:
-            print("🔄 Caché expirado, recreando...")
-            crear_cache()
-            payload["cachedContent"] = cached_content_name
-            response = requests.post(url, json=payload)
-            response.raise_for_status()
-            return response.json()
+            print("🔄 Caché expirado o no encontrado. Recreando...")
+            if crear_cache():
+                payload["cachedContent"] = cached_content_name
+                response = requests.post(url, json=payload)
+                response.raise_for_status()
+                return response.json()
+            else:
+                raise HTTPException(status_code=500, detail="No se pudo recrear el caché")
         else:
             try:
                 error_detail = response.json()
@@ -336,7 +341,7 @@ def llamar_gemini_con_cache(consulta_usuario: str):
                 error_detail = response.text
             raise HTTPException(status_code=502, detail=f"Error de Gemini: {error_detail}")
 
-# ==================== Endpoints de recomendaciones ====================
+# ==================== Endpoints de recomendaciones y caché ====================
 @app.get("/")
 def read_root():
     return {"message": "Bienvenido al servidor backend de la Cafetería Caffenio"}
@@ -359,8 +364,19 @@ async def recomendar(consulta: Consulta):
 @app.post("/actualizar_cache")
 async def actualizar_cache():
     """Endpoint para actualizar manualmente el caché (cuando cambie el menú)."""
-    crear_cache()
-    return {"mensaje": "Caché actualizado", "nombre": cached_content_name}
+    if crear_cache():
+        return {"mensaje": "Caché actualizado", "nombre": cached_content_name}
+    else:
+        raise HTTPException(status_code=500, detail="No se pudo actualizar el caché")
+
+@app.get("/test_cache")
+async def test_cache():
+    """Endpoint de diagnóstico para probar la creación del caché."""
+    exito = crear_cache()
+    if exito:
+        return {"mensaje": "Caché creado correctamente", "nombre": cached_content_name}
+    else:
+        raise HTTPException(status_code=500, detail="No se pudo crear el caché")
 
 @app.get("/caches")
 async def listar_caches():
@@ -370,6 +386,7 @@ async def listar_caches():
     if response.status_code == 200:
         return response.json()
     return {"error": response.text}
+
 # ==================== Panel de cocina ====================
 @app.get("/cocina", response_class=HTMLResponse)
 async def vista_cocina():
