@@ -8,7 +8,6 @@ import time
 import os
 import json
 import requests
-import hashlib
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -21,8 +20,8 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:3000",
         "http://127.0.0.1:3000",
-        "https://caffenio-drive-thru.vercel.app",  # ← la URL del front end
-        "https://caffenio.koyeb.app"               # ← la url del back
+        "https://caffenio-drive-thru.vercel.app",
+        "https://caffenio.koyeb.app"
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -32,12 +31,6 @@ app.add_middleware(
 # ==================== Configuración de Gemini ====================
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 MODELO = "gemini-2.5-flash-lite"
-CACHE_TTL_SECONDS = 3600  # 1 hora
-
-# Variables globales
-cached_content_name = None
-ultima_actualizacion_cache = None
-prompt_hash_actual = None
 
 # ==================== Modelos Pydantic ====================
 class Consulta(BaseModel):
@@ -155,11 +148,10 @@ async def eliminar_pedido(pedido_id: int):
     guardar_pedidos(nuevos_pedidos)
     return {"mensaje": "Pedido eliminado", "pedido_id": pedido_id}
 
-# ==================== Funciones de Gemini con Context Caching (MEJORADAS) ====================
-def construir_prompt_base():
-    """Devuelve el prompt base (todo el menú) como string extendido."""
-    # (Tu prompt actual, igual que antes)
-    return """
+# ==================== Función para construir el prompt completo ====================
+def construir_prompt_completo(consulta: str) -> str:
+    """Devuelve el prompt base más la consulta del usuario."""
+    prompt_base = """
 Eres un barista experto y apasionado en una cafetería de especialidad llamada "Caffenio". 
 Tu misión es ayudar a los clientes a encontrar la bebida, alimento o postre perfecto según sus gustos, estado de ánimo o necesidades. 
 Debes ser amable, conocedor y ofrecer recomendaciones precisas basadas en las descripciones detalladas de los productos. 
@@ -211,9 +203,8 @@ A continuación se presenta el menú completo de Caffenio con descripciones exha
 - Horchata Fría: Bebida sabor horchata con hielo; puede pedirse con espresso.
 - Tisana Fría: Infusión frutal y herbal servida fría, sin café.
 
--- BEBIDAS REFRESCANRTES, FRESCAS
- -Kombucha: Bebida fermentada, ligeramente gasificada y refrescante.
--
+-- BEBIDAS REFRESCANTES, FRESCAS ---
+- Kombucha: Bebida fermentada, ligeramente gasificada y refrescante.
 
 --- BEBIDAS TIPO FRAPPÉ ---
 - Kfreeze®: Bebida frappé a base de café, leche y hielo triturado.
@@ -221,7 +212,6 @@ A continuación se presenta el menú completo de Caffenio con descripciones exha
 - Kfreeze® Caramelo: Versión frappé con caramelo.
 - Kfreeze® Moka: Versión frappé con chocolate.
 - Kfreeze® Cajeta: Versión frappé con cajeta.
-
 
 --- ALIMENTOS ---
 - Panini Italiano: Pan a las finas hierbas acompañado de jamón de pierna, salami italiano, queso gouda y aderezo de tomate.
@@ -258,86 +248,7 @@ A continuación se presenta el menú completo de Caffenio con descripciones exha
 - Devuelve ÚNICAMENTE los nombres de los productos recomendados, separados por comas. No añadas explicaciones, puntos finales, comillas, ni texto adicional. La respuesta debe ser una lista simple de nombres de productos, tal como aparecen en el menú (por ejemplo: "Cappuccino, Latte, Chai Latte").
 - Tómate el tiempo de pensar y analizar el menú completo antes de responder. Queremos las mejores recomendaciones posibles. Gracias.
 """
-
-def calcular_hash_prompt():
-    return hashlib.md5(construir_prompt_base().encode()).hexdigest()
-
-def crear_cache(reintentos=3):
-    """Crea o actualiza el cached content con reintentos."""
-    global cached_content_name, ultima_actualizacion_cache, prompt_hash_actual
-    prompt_base = construir_prompt_base()
-    url = f"https://generativelanguage.googleapis.com/v1beta/cachedContents?key={GEMINI_API_KEY}"
-    payload = {
-        "model": f"models/{MODELO}",
-        "contents": [{"role": "user", "parts": [{"text": prompt_base}]}],
-        "ttl": {"seconds": CACHE_TTL_SECONDS}
-    }
-    headers = {"Content-Type": "application/json"}
-
-    for intento in range(reintentos):
-        try:
-            print(f"📤 Intento {intento+1} de crear caché...")
-            response = requests.post(url, json=payload, headers=headers, timeout=30)
-            if response.status_code == 200:
-                data = response.json()
-                cached_content_name = data["name"]
-                ultima_actualizacion_cache = datetime.now()
-                prompt_hash_actual = calcular_hash_prompt()
-                print(f"✅ Caché creado: {cached_content_name}")
-                return True
-            else:
-                print(f"❌ Error creando caché: {response.status_code} - {response.text}")
-                if intento < reintentos - 1:
-                    espera = 2 ** intento
-                    print(f"⏳ Reintentando en {espera}s...")
-                    time.sleep(espera)
-        except Exception as e:
-            print(f"❌ Excepción al crear caché: {e}")
-            if intento < reintentos - 1:
-                espera = 2 ** intento
-                time.sleep(espera)
-    return False
-
-def llamar_gemini_con_cache(consulta_usuario: str):
-    """Llama a Gemini usando el caché, con reintentos si falla."""
-    global cached_content_name
-
-    # Si no hay caché o el prompt cambió, intentar crearlo (hasta 3 veces)
-    if not cached_content_name or calcular_hash_prompt() != prompt_hash_actual:
-        print("🔄 No hay caché o cambió el prompt. Intentando crear...")
-        if not crear_cache(reintentos=3):
-            raise HTTPException(status_code=503, detail="No se pudo crear el caché para Gemini después de reintentos")
-
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/{MODELO}:generateContent?key={GEMINI_API_KEY}"
-    payload = {
-        "contents": [{"role": "user", "parts": [{"text": consulta_usuario}]}],
-        "cachedContent": cached_content_name
-    }
-
-    for intento in range(3):  # reintentos en la consulta
-        try:
-            response = requests.post(url, json=payload, timeout=30)
-            response.raise_for_status()
-            return response.json()
-        except requests.exceptions.RequestException as e:
-            print(f"❌ Error en consulta (intento {intento+1}): {e}")
-            if intento == 2:
-                try:
-                    error_detail = response.json()
-                except:
-                    error_detail = response.text
-                raise HTTPException(status_code=502, detail=f"Error de Gemini: {error_detail}")
-            time.sleep(2 ** intento)  # backoff
-
- # ==================== Evento startup ====================
-@app.on_event("startup")
-async def startup_event():
-    """Se ejecuta automáticamente al iniciar el servidor."""
-    print("🚀 Servidor iniciando. Creando caché de Gemini...")
-    if crear_cache(reintentos=5):  # más reintentos al inicio
-        print("✅ Caché creado exitosamente en startup.")
-    else:
-        print("⚠️ No se pudo crear el caché en startup. Se intentará en la primera consulta.")
+    return prompt_base + f"\n\nEl cliente dice: '{consulta}'. Recomiéndale productos de la lista."
 
 # ==================== Endpoints de recomendaciones ====================
 @app.get("/")
@@ -349,8 +260,15 @@ async def recomendar(consulta: Consulta):
     if not GEMINI_API_KEY:
         raise HTTPException(status_code=500, detail="API key no configurada")
     try:
-        print(f"🔍 Consultando Gemini con caché...")
-        data = llamar_gemini_con_cache(consulta.mensaje)
+        prompt_completo = construir_prompt_completo(consulta.mensaje)
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{MODELO}:generateContent?key={GEMINI_API_KEY}"
+        payload = {
+            "contents": [{"role": "user", "parts": [{"text": prompt_completo}]}]
+        }
+        print(f"🔍 Consultando Gemini sin caché...")
+        response = requests.post(url, json=payload, timeout=30)
+        response.raise_for_status()
+        data = response.json()
         texto = data["candidates"][0]["content"]["parts"][0]["text"]
         nombres = [nombre.strip() for nombre in texto.split(",") if nombre.strip()]
         return {"recomendaciones": nombres}
@@ -358,21 +276,9 @@ async def recomendar(consulta: Consulta):
         print("❌ Error:", e)
         raise HTTPException(status_code=502, detail=str(e))
 
-@app.post("/actualizar_cache")
-async def actualizar_cache():
-    if crear_cache():
-        return {"mensaje": "Caché actualizado", "nombre": cached_content_name}
-    else:
-        raise HTTPException(status_code=500, detail="No se pudo crear el caché")
-
-@app.get("/caches")
-async def listar_caches():
-    url = f"https://generativelanguage.googleapis.com/v1beta/cachedContents?key={GEMINI_API_KEY}"
-    response = requests.get(url)
-    if response.status_code == 200:
-        return response.json()
-    return {"error": response.text}
-
+@app.options("/recomendar")
+async def recomendar_options():
+    return {"message": "OK"}
 # ==================== Panel de cocina ====================
 @app.get("/cocina", response_class=HTMLResponse)
 async def vista_cocina():
