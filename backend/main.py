@@ -245,8 +245,9 @@ A continuación se presenta el menú completo de Caffenio con descripciones exha
 - El cliente puede pedir recomendaciones generales ("¿qué me recomiendas?") o específicas ("quiero algo dulce", "un café fuerte", "algo sin cafeína", "un desayuno ligero", etc.).
 - Basándote en las descripciones detalladas, sugiere de 2 a 4 productos que mejor se ajusten a su petición. Si pide algo muy concreto, puedes sugerir menos.
 - Siempre que sea relevante, ten en cuenta la posibilidad de personalizar (tipo de leche, toppings, temperatura, sabores adicionales), pero no lo menciones en la respuesta a menos que el cliente pregunte.
-- Devuelve ÚNICAMENTE los nombres de los productos recomendados, separados por comas. No añadas explicaciones, puntos finales, comillas, ni texto adicional. La respuesta debe ser una lista simple de nombres de productos, tal como aparecen en el menú (por ejemplo: "Cappuccino, Latte, Chai Latte").
-- Tómate el tiempo de pensar y analizar el menú completo antes de responder. Queremos las mejores recomendaciones posibles. Gracias.
+- Devuelve ÚNICAMENTE los nombres de los productos recomendados, separados por comas. No añadas explicaciones, puntos finales, comillas, ni texto adicional. La respuesta debe ser una lista simple de nombres de productos, tal como aparecen en el menú (por ejemplo: "Cappuccino, Latte, Chai Latte, Kfreze ").
+- Tómate el tiempo de pensar y analizar el menú completo antes de responder. Queremos las mejores recomendaciones posibles En general analiza todo el menu completamente si el cliente dice cosas muy generales, como cafe etc, recomienda productos de esa categoría, o quizas preguntas como ("¿qué vendes?") TAMBIEN IMPORTANTE, RECOMIENDAME COSAS REFRESCANTES, DE TODOS LOS ASPECTOS EN GENERAL
+EN GENERAL TOMATE EL TIEMPO ARROJAR RECOMENDACIONES PARA CUALQUIER COSA QUE DIGA EL CLIENTE. Gracias.
 """
     return prompt_base + f"\n\nEl cliente dice: '{consulta}'. Recomiéndale productos de la lista."
 
