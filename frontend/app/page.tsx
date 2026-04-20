@@ -534,7 +534,7 @@ if (mostrarEscaneoNFC) {
     <div className="flex flex-col">
       <div className="text-lg font-bold text-slate-400">Punto de Venta: DRIVE-THRU TSM-1</div>
       <div>
-        <h6 className="text-lg font-bold text-slate-900">Developed by CODEX-tecmilenio</h6>
+        <h6 className="text-lg font-bold text-slate-900">Developed by CODEX</h6>
       </div>
     </div>
     <div className="flex gap-2">
