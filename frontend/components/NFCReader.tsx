@@ -174,8 +174,7 @@ export default function NFCReader({ onSuccess, onError, onUnregistered, apiUrl }
       {status === 'idle' && (
         <button
           onClick={startScanning}
-          disabled={status === 'unsupported'}
-          className="w-full bg-red-600 text-white py-4 rounded-2xl font-black text-xl hover:bg-red-700 transition-all active:scale-95 shadow-lg shadow-red-500/30 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full bg-red-600 text-white py-4 rounded-2xl font-black text-xl hover:bg-red-700 transition-all active:scale-95 shadow-lg shadow-red-500/30 flex items-center justify-center gap-3"
         >
           <span className="material-symbols-outlined text-2xl">tap_and_play</span>
           Identificar con One-Tap
