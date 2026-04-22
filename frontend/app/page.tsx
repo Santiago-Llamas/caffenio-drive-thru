@@ -4,6 +4,7 @@ import { useState, useRef } from 'react';
 import { productos, Producto, ItemCarrito } from '../data/productos';
 import TarjetaProducto from '../components/TarjetaProducto';
 import ModalPersonalizar from '../components/ModalPersonalizar';
+import NFCReader from '../components/NFCReader'; 
 import Carrito from '../components/Carrito';
 import { GiCoffeeCup } from 'react-icons/gi';
 import ModalIA from '../components/ModalIA';
@@ -74,7 +75,7 @@ function SidebarIzquierdo({ onOpenIA, onPersonalizar }: { onOpenIA: () => void; 
           className="w-full flex items-center justify-center gap-3 bg-[#ea2a33] text-white px-6 py-4 rounded-2xl font-black text-lg hover:bg-[#ea2a33]/90 transition-all active:scale-95 shadow-lg shadow-[#ea2a33]/20"
         >
           <span className="material-symbols-outlined text-2xl">auto_awesome</span>
-          <span className="tracking-tight">Asistente IA</span>
+          <span className="tracking-tight">Asistente IA </span>
         </button>
       </div>
     </aside>

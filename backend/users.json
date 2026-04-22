@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "uid": "04:5F:87:30:D2:2A:81",
+      "nombre": "Emmanuel Lara",
+      "email": "emmanuel@caffenio.com",
+      "favoritos": [1, 5, 8]
+    },
+    {
+      "uid": "AA:BB:CC:DD:EE:FF",
+      "nombre": "Cliente VIP",
+      "email": "vip@caffenio.com",
+      "favoritos": [2, 3, 10]
+    }
+  ]
+}

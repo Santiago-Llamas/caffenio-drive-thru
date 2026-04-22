@@ -60,6 +60,9 @@ class PedidoOut(BaseModel):
 class EstadoUpdate(BaseModel):
     nuevo_estado: str
 
+class NFCIdentificacion(BaseModel):
+    uid: str
+
 # ==================== Persistencia ====================
 PEDIDOS_FILE = "pedidos.json"
 
@@ -77,6 +80,18 @@ def cargar_pedidos():
 def guardar_pedidos(pedidos):
     with open(PEDIDOS_FILE, "w", encoding="utf-8") as f:
         json.dump(pedidos, f, indent=2, ensure_ascii=False)
+
+
+# ==================== Cargar usuarios desde JSON ====================
+USERS_FILE = "users.json"
+
+def cargar_usuarios():
+    try:
+        with open(USERS_FILE, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            return data.get("users", [])
+    except FileNotFoundError:
+        return []
 
 # ==================== Endpoints de pedidos ====================
 @app.post("/pedidos", response_model=dict)
@@ -251,7 +266,24 @@ EN GENERAL TOMATE EL TIEMPO ARROJAR RECOMENDACIONES PARA CUALQUIER COSA QUE DIGA
 """
     return prompt_base + f"\n\nEl cliente dice: '{consulta}'. Recomiéndale productos de la lista."
 
+# ==================== Endpoints de identificación NFC ====================
+@app.post("/identificar")
+async def identificar_nfc(identificacion: NFCIdentificacion):
+    """Recibe un UID de NFC y devuelve los datos del usuario si existe."""
+    users = cargar_usuarios()
+    for user in users:
+        if user["uid"].lower() == identificacion.uid.lower():
+            return {
+                "success": True,
+                "user": user
+            }
+    return {
+        "success": False,
+        "message": "Tag no vinculado. ¿Deseas vincularlo a tu cuenta Mi CAFFENIO?"
+    }
+
 # ==================== Endpoints de recomendaciones ====================
+
 @app.get("/")
 def read_root():
     return {"message": "Bienvenido al servidor backend de la Cafetería Caffenio"}
