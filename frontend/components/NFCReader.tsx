@@ -22,12 +22,15 @@ export default function NFCReader({ onSuccess, onError, onUnregistered, apiUrl }
   const [status, setStatus] = useState<NFCStatus>('idle');
   const [errorMessage, setErrorMessage] = useState<string>('');
   const abortControllerRef = useRef<AbortController | null>(null);
+  const readerRef = useRef<any>(null); // Guardar referencia al reader para poder limpiar
 
   // Verificar soporte NFC al montar el componente
   useEffect(() => {
-    if (!('NDEFReader' in window)) {
+    const isSupported = 'NDEFReader' in window;
+    console.log('[NFC] API soportada:', isSupported);
+    if (!isSupported) {
       setStatus('unsupported');
-      setErrorMessage('Tu navegador no soporta NFC. Por favor, usa QR o el botón Invitado.');
+      setErrorMessage('Tu navegador no soporta NFC. Usa QR o el botón Invitado.');
     }
   }, []);
 
@@ -39,60 +42,88 @@ export default function NFCReader({ onSuccess, onError, onUnregistered, apiUrl }
 
     setStatus('scanning');
     setErrorMessage('');
-    
+    console.log('[NFC] Iniciando escaneo...');
+
+    // Cancelar escaneo anterior si existe
     if (abortControllerRef.current) {
       abortControllerRef.current.abort();
+      console.log('[NFC] Escaneo anterior cancelado');
     }
     abortControllerRef.current = new AbortController();
 
     try {
       const reader = new window.NDEFReader();
-      
+      readerRef.current = reader;
+
+      // Evento cuando se lee un tag correctamente
       reader.addEventListener('reading', async (event: any) => {
         const serialNumber = event.serialNumber;
+        console.log('[NFC] Tag detectado, UID:', serialNumber);
+
         if (!serialNumber) {
           setStatus('error');
           setErrorMessage('No se pudo leer el UID del tag. Intenta de nuevo.');
           return;
         }
 
+        // Detener escaneo inmediatamente después de leer
         if (abortControllerRef.current) {
           abortControllerRef.current.abort();
+          console.log('[NFC] Escaneo detenido tras lectura');
         }
-        
+
+        // Pequeño retraso para permitir que la UI se actualice
         setStatus('idle');
 
+        // Llamar al backend para identificar el UID
         try {
+          console.log(`[NFC] Enviando UID a ${apiUrl}/identificar`);
           const res = await fetch(`${apiUrl}/identificar`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ uid: serialNumber })
           });
           const data = await res.json();
-          
+
           if (data.success) {
+            console.log('[NFC] Usuario identificado:', data.user.nombre);
             setStatus('success');
             onSuccess(data.user);
           } else {
+            console.warn('[NFC] Tag no registrado:', serialNumber);
             setStatus('error');
             setErrorMessage(data.message || 'Tag no reconocido.');
             onUnregistered(serialNumber);
           }
         } catch (err) {
-          console.error('Error al comunicarse con el backend:', err);
+          console.error('[NFC] Error en la petición al backend:', err);
           setStatus('error');
           setErrorMessage('Error de conexión. Intenta de nuevo.');
           onError('Error de conexión');
         }
       });
 
+      // Evento cuando ocurre un error durante la lectura
+      reader.addEventListener('readingerror', (err: any) => {
+        console.error('[NFC] Error de lectura:', err);
+        setStatus('error');
+        setErrorMessage('Error al leer el tag. Asegúrate de acercarlo bien.');
+        onError('Error de lectura');
+        // Cancelar escaneo para que el usuario pueda reintentar
+        if (abortControllerRef.current) {
+          abortControllerRef.current.abort();
+        }
+      });
+
+      // Iniciar el escaneo
       await reader.scan({ signal: abortControllerRef.current.signal });
-      
+      console.log('[NFC] Escaneo activo, acerca un tag...');
+
     } catch (err: any) {
-      console.error('Error al iniciar el escaneo NFC:', err);
+      console.error('[NFC] Error al iniciar el escaneo:', err);
       setStatus('error');
       if (err.name === 'NotAllowedError') {
-        setErrorMessage('Permiso denegado. Debes hacer clic en un botón para iniciar el escaneo.');
+        setErrorMessage('Permiso denegado. Acepta el permiso para usar NFC.');
       } else if (err.name === 'NotSupportedError') {
         setErrorMessage('NFC no soportado en este dispositivo/navegador.');
         setStatus('unsupported');
@@ -104,18 +135,23 @@ export default function NFCReader({ onSuccess, onError, onUnregistered, apiUrl }
   };
 
   const cancelScanning = () => {
+    console.log('[NFC] Cancelando escaneo por usuario');
     if (abortControllerRef.current) {
       abortControllerRef.current.abort();
       abortControllerRef.current = null;
     }
+    readerRef.current = null;
     setStatus('idle');
     setErrorMessage('');
   };
 
+  // Limpiar al desmontar el componente
   useEffect(() => {
     return () => {
       if (abortControllerRef.current) {
+        console.log('[NFC] Limpiando escaneo al desmontar componente');
         abortControllerRef.current.abort();
+        abortControllerRef.current = null;
       }
     };
   }, []);
