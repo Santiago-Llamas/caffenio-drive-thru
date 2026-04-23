@@ -133,9 +133,9 @@ export default function NFCReader({ onSuccess, onError, onUnregistered, onTimeou
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full h-full">
       {status === 'scanning' && (
-        <div className="relative flex flex-col items-center justify-center gap-6 py-8">
+        <div className="relative flex flex-col items-center justify-center gap-6 py-8 h-full">
           <div className="relative w-32 h-32">
             <div className="absolute inset-0 rounded-full border-4 border-red-500 opacity-75 animate-ping"></div>
             <div className="absolute inset-0 rounded-full border-4 border-red-500 opacity-50 animate-pulse delay-150"></div>
@@ -156,7 +156,7 @@ export default function NFCReader({ onSuccess, onError, onUnregistered, onTimeou
       )}
 
       {status === 'error' && (
-        <div className="text-center text-red-600 bg-red-50 p-4 rounded-xl">
+        <div className="text-center text-red-600 bg-red-50 p-4 rounded-xl h-full flex items-center justify-center flex-col">
           <span className="material-symbols-outlined text-3xl">error</span>
           <p className="font-semibold">{errorMessage}</p>
           <button
@@ -169,7 +169,7 @@ export default function NFCReader({ onSuccess, onError, onUnregistered, onTimeou
       )}
 
       {status === 'success' && (
-        <div className="text-center text-green-600 bg-green-50 p-4 rounded-xl animate-pulse">
+        <div className="text-center text-green-600 bg-green-50 p-4 rounded-xl animate-pulse h-full flex items-center justify-center flex-col">
           <span className="material-symbols-outlined text-3xl">check_circle</span>
           <p className="font-semibold">¡Identificación exitosa!</p>
         </div>
@@ -178,17 +178,17 @@ export default function NFCReader({ onSuccess, onError, onUnregistered, onTimeou
       {status === 'idle' && (
         <button
           onClick={startScanning}
-          className="group relative flex flex-col items-center justify-center gap-8 bg-white rounded-2xl shadow-lg border-2 border-transparent hover:border-red-500 transition-all p-8 overflow-hidden hover:shadow-xl hover:shadow-red-500/20 w-full"
+          className="group relative flex flex-col items-center justify-center gap-8 bg-white rounded-2xl shadow-lg border-2 border-transparent hover:border-red-500 transition-all p-8 hover:shadow-xl hover:shadow-red-500/20 w-full h-full"
         >
-          <div className="absolute inset-0 bg-red-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          <div className="relative w-32 h-32 rounded-full bg-gradient-to-br from-red-100 to-red-50 flex items-center justify-center text-red-600 group-hover:scale-110 group-hover:text-red-700 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-red-300">
+          <div className="absolute inset-0 bg-red-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl pointer-events-none"></div>
+          <div className="w-32 h-32 rounded-full bg-gradient-to-br from-red-100 to-red-50 flex items-center justify-center text-red-600 group-hover:scale-110 group-hover:text-red-700 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-red-300 flex-shrink-0 relative z-10">
             <span className="material-symbols-outlined text-[80px]">nfc</span>
           </div>
-          <div className="relative text-center">
+          <div className="text-center relative z-10">
             <span className="block text-3xl font-extrabold text-slate-800 group-hover:text-red-700 transition-colors">Identifícate</span>
             <span className="block text-3xl font-extrabold text-slate-800 group-hover:text-red-700 transition-colors">con NFC</span>
           </div>
-          <p className="relative text-lg text-slate-400 group-hover:text-slate-500 transition-colors">Acerca tu dispositivo NFC</p>
+          <p className="text-lg text-slate-400 group-hover:text-slate-500 transition-colors relative z-10">Acerca tu dispositivo NFC</p>
           <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ boxShadow: '0 0 0 2px #ea2a33, 0 0 20px #ea2a33' }}></div>
         </button>
       )}
