@@ -133,7 +133,6 @@ export default function Home() {
   const agregarAlCarrito = (producto: Producto, opciones: any) => {
     const item: ItemCarrito = { ...producto, ...opciones, cantidad: 1 };
     setCarrito([...carrito, item]);
-    alert(`${producto.nombre} agregado al carrito con opciones`);
   };
 
   const cambiarCantidad = (index: number, nuevaCantidad: number) => {
