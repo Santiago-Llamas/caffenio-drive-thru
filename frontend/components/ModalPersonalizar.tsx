@@ -146,42 +146,42 @@ export default function ModalPersonalizar({
 
   // Sidebar izquierdo (resumen)
   const SidebarIzquierdo = () => (
-    <aside className="w-[320px] border-r border-slate-200 flex flex-col h-full bg-white">
-      <div className="p-6 border-b border-slate-100">
-        <div className="flex items-center gap-3 mb-4">
-          <div className="w-10 h-10 items-center justify-center">
+    <aside className="w-[clamp(15rem,25vw,20rem)] border-r border-slate-200 flex flex-col h-full bg-white">
+      <div className="p-[clamp(0.75rem,2vw,1.5rem)] border-b border-slate-100">
+        <div className="flex items-center gap-[clamp(0.75rem,1vw,0.75rem)] mb-[clamp(0.75rem,2vw,1rem)]">
+          <div className="w-[clamp(2rem,3vw,2.5rem)] h-[clamp(2rem,3vw,2.5rem)] items-center justify-center">
             <img src="/logo.png" alt="Logo" className="w-full h-full object-cover" />
           </div>
-          <h2 className="text-xl font-extrabold tracking-tight uppercase italic text-[#ea2a33]">Configuración</h2>
+          <h2 className="text-[clamp(1rem,2vw,1.25rem)] font-extrabold tracking-tight uppercase italic text-[#ea2a33]">Configuración</h2>
         </div>
-        <div className="bg-slate-50 rounded-xl p-4 border border-slate-100">
+        <div className="bg-slate-50 rounded-xl p-[clamp(0.5rem,1.5vw,1rem)] border border-slate-100">
           <div
-            className="w-full aspect-square rounded-lg bg-cover bg-center mb-4"
+            className="w-full aspect-square rounded-lg bg-cover bg-center mb-[clamp(0.5rem,1vw,1rem)]"
             style={{ backgroundImage: `url(${producto.imagen})` }}
           />
-          <h3 className="font-bold text-black">{producto.nombre}</h3>
+          <h3 className="font-bold text-[clamp(0.875rem,1.5vw,1rem)] text-black">{producto.nombre}</h3>
         </div>
       </div>
-      <div className="flex-1 p-6">
-        <h4 className="text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-4">Seleccionado hasta ahora</h4>
-        <div className="space-y-4">
-          <div className={`flex items-center gap-3 ${tamano ? 'text-[#ea2a33]' : 'text-slate-400'}`}>
-            <span className="material-symbols-outlined text-sm">
+      <div className="flex-1 p-[clamp(0.75rem,2vw,1.5rem)]">
+        <h4 className="text-[clamp(0.65rem,1vw,0.75rem)] font-black text-slate-400 uppercase tracking-[0.2em] mb-[clamp(0.75rem,1.5vw,1rem)]">Seleccionado hasta ahora</h4>
+        <div className="space-y-[clamp(0.75rem,1.5vw,1rem)]">
+          <div className={`flex items-center gap-[clamp(0.5rem,1vw,0.75rem)] ${tamano ? 'text-[#ea2a33]' : 'text-slate-400'}`}>
+            <span className="material-symbols-outlined text-[clamp(0.75rem,1.5vw,1rem)]">
               {tamano ? 'check_circle' : 'radio_button_checked'}
             </span>
-            <span className="font-medium">Tamaño: {tamano ? (tamano === 'chico' ? 'Chico' : tamano === 'mediano' ? 'Mediano' : 'Grande') : 'Pendiente'}</span>
+            <span className="font-medium text-[clamp(0.75rem,1.5vw,0.875rem)]">Tamaño: {tamano ? (tamano === 'chico' ? 'Chico' : tamano === 'mediano' ? 'Mediano' : 'Grande') : 'Pendiente'}</span>
           </div>
-          <div className={`flex items-center gap-3 ${sabor ? 'text-[#ea2a33]' : 'text-slate-400'}`}>
-            <span className="material-symbols-outlined text-sm">
+          <div className={`flex items-center gap-[clamp(0.5rem,1vw,0.75rem)] ${sabor ? 'text-[#ea2a33]' : 'text-slate-400'}`}>
+            <span className="material-symbols-outlined text-[clamp(0.75rem,1.5vw,1rem)]">
               {sabor ? 'check_circle' : 'radio_button_checked'}
             </span>
-            <span className="font-medium">Sabor: {sabor || 'Pendiente'}</span>
+            <span className="font-medium text-[clamp(0.75rem,1.5vw,0.875rem)]">Sabor: {sabor || 'Pendiente'}</span>
           </div>
-          <div className={`flex items-center gap-3 ${Object.keys(toppings).length > 0 ? 'text-[#ea2a33]' : 'text-slate-400'}`}>
-            <span className="material-symbols-outlined text-sm">
+          <div className={`flex items-center gap-[clamp(0.5rem,1vw,0.75rem)] ${Object.keys(toppings).length > 0 ? 'text-[#ea2a33]' : 'text-slate-400'}`}>
+            <span className="material-symbols-outlined text-[clamp(0.75rem,1.5vw,1rem)]">
               {Object.keys(toppings).length > 0 ? 'check_circle' : 'radio_button_checked'}
             </span>
-            <span className="font-medium">Toppings: {Object.keys(toppings).length || 'Pendiente'}</span>
+            <span className="font-medium text-[clamp(0.75rem,1.5vw,0.875rem)]">Toppings: {Object.keys(toppings).length || 'Pendiente'}</span>
           </div>
         </div>
       </div>
@@ -190,21 +190,21 @@ export default function ModalPersonalizar({
 
   // Sidebar derecho (recomendaciones interactivas)
   const SidebarDerecho = () => (
-    <aside className="w-[280px] bg-slate-50 border-l border-slate-200 flex flex-col p-6 pt-16">
-      <h4 className="text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
-        <span className="material-symbols-outlined text-sm text-[#ea2a33]">auto_awesome</span>
+    <aside className="w-[clamp(15rem,25vw,20rem)] bg-slate-50 border-l border-slate-200 flex flex-col p-[clamp(0.75rem,2vw,1.5rem)] pt-[clamp(2rem,5vw,4rem)]">
+      <h4 className="text-[clamp(0.65rem,1vw,0.75rem)] font-black text-slate-400 uppercase tracking-[0.2em] mb-[clamp(0.75rem,2vw,1.5rem)] flex items-center gap-[clamp(0.25rem,0.5vw,0.5rem)]">
+        <span className="material-symbols-outlined text-[clamp(0.75rem,1.5vw,1rem)] text-[#ea2a33]">auto_awesome</span>
         Acompáñalo con
       </h4>
-      <div className="space-y-6">
+      <div className="space-y-[clamp(0.75rem,2vw,1.5rem)]">
         {acompanantesEjemplo.map((item) => (
-          <div key={item.id} className="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 cursor-pointer hover:shadow-lg hover:border-[#ea2a33]/30 transition-all active:scale-95" onClick={() => onAgregarAcompanante?.(item)}>
+          <div key={item.id} className="bg-white rounded-2xl p-[clamp(0.5rem,1.5vw,1rem)] shadow-sm border border-slate-100 cursor-pointer hover:shadow-lg hover:border-[#ea2a33]/30 transition-all active:scale-95" onClick={() => onAgregarAcompanante?.(item)}>
             <div
-              className="w-full aspect-video rounded-lg bg-cover bg-center mb-3"
+              className="w-full aspect-video rounded-lg bg-cover bg-center mb-[clamp(0.5rem,1.5vw,0.75rem)]"
               style={{ backgroundImage: `url(${item.imagen})` }}
             />
-            <p className="font-bold text-black leading-tight mb-2">{item.nombre}</p>
+            <p className="font-bold text-[clamp(0.875rem,1.5vw,1rem)] text-black leading-tight mb-[clamp(0.25rem,1vw,0.5rem)]">{item.nombre}</p>
             <div className="flex justify-between items-center">
-              <span className="text-[#ea2a33] font-black">${item.precio.toFixed(2)}</span>
+              <span className="text-[#ea2a33] font-black text-[clamp(0.875rem,1.5vw,1rem)]">${item.precio.toFixed(2)}</span>
             </div>
           </div>
         ))}
@@ -217,50 +217,49 @@ export default function ModalPersonalizar({
     switch (paso) {
       case 'tamano':
         return (
-          <div className="flex-1 flex flex-col p-12 pt-16 bg-white">
-            <div className="mb-10">
-              <h1 className="text-4xl font-black tracking-tight text-slate-900 mb-2">¿De qué tamaño lo prefieres?</h1>
-              <p className="text-xl text-slate-500">Elige la medida ideal para tu café</p>
+          <div className="flex-1 flex flex-col p-[clamp(1.5rem,6vw,3rem)] pt-[clamp(2rem,8vw,4rem)] bg-white">
+            <div className="mb-[clamp(1.5rem,4vw,2.5rem)]">
+              <h1 className="text-[clamp(2rem,10vw,3.5rem)] font-black tracking-tight text-slate-900 mb-[clamp(0.5rem,1.5vw,0.75rem)]">¿De qué tamaño lo prefieres?</h1>
+              <p className="text-[clamp(1rem,3vw,1.25rem)] text-slate-500">Elige la medida ideal para tu café</p>
             </div>
-            <div className="grid grid-cols-3 gap-6 flex-1 max-h-[450px]">
+            <div className="grid grid-cols-3 gap-[clamp(0.75rem,2vw,1.5rem)] flex-1 max-h-[450px]">
               {producto.opciones.tamanos?.map((t) => {
                 const selected = tamano === t;
-                const iconSize = t === 'chico' ? 80 : t === 'mediano' ? 100 : 120;
                 const precioConTamano = producto.precio + (preciosTamano[t] || 0);
                 return (
                   <button
                     key={t}
                     onClick={() => setTamano(t)}
-                    className={`bg-white rounded-3xl p-8 flex flex-col items-center justify-between shadow-lg transition-all group relative overflow-hidden ${
+                    className={`bg-white rounded-3xl p-[clamp(1rem,3vw,2rem)] flex flex-col items-center justify-between shadow-lg transition-all group relative overflow-hidden ${
                       selected
                         ? 'border-4 border-[#ea2a33] shadow-xl'
                         : 'border-2 border-transparent hover:border-[#ea2a33]'
                     }`}
                   >
                     {selected && (
-                      <div className="absolute top-0 right-0 p-4">
-                        <span className="material-symbols-outlined text-[#ea2a33]">check_circle</span>
+                      <div className="absolute top-0 right-0 p-[clamp(0.75rem,1.5vw,1rem)]">
+                        <span className="material-symbols-outlined text-[clamp(1.25rem,2.5vw,1.5rem)] text-[#ea2a33]">check_circle</span>
                       </div>
                     )}
                     {t === 'mediano' && (
-                      <div className="absolute -top-1 left-1/2 -translate-x-1/2 bg-[#ea2a33] text-white text-[10px] font-black uppercase tracking-[0.2em] px-4 py-1 rounded-b-lg">
+                      <div className="absolute -top-1 left-1/2 -translate-x-1/2 bg-[#ea2a33] text-white text-[clamp(0.65rem,1vw,0.75rem)] font-black uppercase tracking-[0.2em] px-[clamp(0.75rem,1.5vw,1rem)] py-[clamp(0.25rem,0.5vw,0.35rem)] rounded-b-lg">
                         Recomendado
                       </div>
                     )}
-                    <div className="flex-1 flex items-end mb-8">
+                    <div className="flex-1 flex items-end mb-[clamp(1rem,3vw,2rem)]">
                       <span
                         className="material-symbols-outlined text-slate-300 group-hover:text-[#ea2a33] transition-colors"
-                        style={{ fontSize: iconSize }}
+                        style={{ fontSize: `clamp(4rem, ${t === 'chico' ? '10vw' : t === 'mediano' ? '12vw' : '14vw'}, 8rem)` }}
                       >
                         coffee
                       </span>
                     </div>
                     <div className="text-center">
-                      <h3 className="text-2xl font-black mb-1 capitalize text-slate-900">{t}</h3>
-                      <p className="text-slate-500 font-bold uppercase tracking-widest text-sm">
+                      <h3 className="text-[clamp(1.5rem,4vw,2.25rem)] font-black mb-[clamp(0.25rem,0.75vw,0.5rem)] capitalize text-slate-900">{t}</h3>
+                      <p className="text-[clamp(0.75rem,1.5vw,0.875rem)] text-slate-500 font-bold uppercase tracking-widest">
                         {t === 'chico' ? '12 oz / 355 ml' : t === 'mediano' ? '16 oz / 473 ml' : '20 oz / 591 ml'}
                       </p>
-                      <p className="text-[#ea2a33] font-black text-xl mt-4">
+                      <p className="text-[#ea2a33] font-black text-[clamp(1.25rem,3vw,1.75rem)] mt-[clamp(0.75rem,1.5vw,1rem)]">
                         ${precioConTamano.toFixed(2)}
                       </p>
                     </div>
@@ -272,42 +271,42 @@ export default function ModalPersonalizar({
         );
       case 'sabor':
         return (
-          <div className="flex-1 flex flex-col p-12 pt-16 bg-white overflow-y-auto">
-            <header className="mb-10">
-              <h1 className="text-4xl font-black tracking-tight text-slate-900 mb-2">Elige tu Sabor Favorito</h1>
-              <p className="text-xl text-slate-500">Selecciona el sabor que más te guste</p>
+          <div className="flex-1 flex flex-col p-[clamp(1.5rem,6vw,3rem)] pt-[clamp(2rem,8vw,4rem)] bg-white overflow-y-auto">
+            <header className="mb-[clamp(1.5rem,4vw,2.5rem)]">
+              <h1 className="text-[clamp(2rem,10vw,3.5rem)] font-black tracking-tight text-slate-900 mb-[clamp(0.5rem,1.5vw,0.75rem)]">Elige tu Sabor Favorito</h1>
+              <p className="text-[clamp(1rem,3vw,1.25rem)] text-slate-500">Selecciona el sabor que más te guste</p>
             </header>
-            <div className="grid grid-cols-3 gap-6">
+            <div className="grid grid-cols-3 gap-[clamp(0.75rem,2vw,1.5rem)]">
               {sabores.map(s => (
                 <button
                   key={s.id}
                   onClick={() => setSabor(s.nombre)}
-                  className={`bg-white p-6 rounded-2xl border-2 flex flex-col items-center text-center transition-all group relative ${
+                  className={`bg-white p-[clamp(0.75rem,1.5vw,1.5rem)] rounded-2xl border-2 flex flex-col items-center text-center transition-all group relative ${
                     sabor === s.nombre
                       ? 'border-[#ea2a33] shadow-md'
                       : 'border-transparent hover:border-[#ea2a33]'
                   }`}
                 >
                   {sabor === s.nombre && (
-                    <div className="absolute top-3 right-3 text-[#ea2a33]">
-                      <span className="material-symbols-outlined">check_circle</span>
+                    <div className="absolute top-[clamp(0.5rem,1vw,0.75rem)] right-[clamp(0.5rem,1vw,0.75rem)] text-[#ea2a33]">
+                      <span className="material-symbols-outlined text-[clamp(1.25rem,2.5vw,1.5rem)]">check_circle</span>
                     </div>
                   )}
                   <div
-                    className={`w-16 h-16 rounded-full flex items-center justify-center mb-4 ${
+                    className={`w-[clamp(2.5rem,5vw,4rem)] h-[clamp(2.5rem,5vw,4rem)] rounded-full flex items-center justify-center mb-[clamp(0.75rem,1.5vw,1rem)] ${
                       sabor === s.nombre ? 'bg-[#ea2a33]' : 'bg-[#ea2a33]/5 group-hover:scale-110 transition-transform'
                     }`}
                   >
                     <span
-                      className={`material-symbols-outlined text-4xl ${
+                      className={`material-symbols-outlined text-[clamp(1.75rem,3.5vw,2.25rem)] ${
                         sabor === s.nombre ? 'text-white' : 'text-[#ea2a33]'
                       }`}
                     >
                       {s.icono}
                     </span>
                   </div>
-                  <span className="text-xl font-bold text-slate-900">{s.nombre}</span>
-                  <span className="text-sm text-slate-500 font-medium mt-1">{s.descripcion}</span>
+                  <span className="text-[clamp(0.875rem,1.75vw,1.125rem)] font-bold text-slate-900">{s.nombre}</span>
+                  <span className="text-[clamp(0.65rem,1.25vw,0.85rem)] text-slate-500 font-medium mt-[clamp(0.25rem,0.5vw,0.5rem)]">{s.descripcion}</span>
                 </button>
               ))}
             </div>
@@ -315,44 +314,44 @@ export default function ModalPersonalizar({
         );
       case 'toppings':
         return (
-          <div className="flex-1 flex flex-col p-12 pt-16 bg-white overflow-y-auto">
-            <header className="mb-10">
-              <h1 className="text-4xl font-black tracking-tight text-slate-900 mb-2">Personaliza tu bebida</h1>
-              <p className="text-xl text-slate-500">Selecciona tus toppings favoritos</p>
+          <div className="flex-1 flex flex-col p-[clamp(1.5rem,6vw,3rem)] pt-[clamp(2rem,8vw,4rem)] bg-white overflow-y-auto">
+            <header className="mb-[clamp(1.5rem,4vw,2.5rem)]">
+              <h1 className="text-[clamp(2rem,10vw,3.5rem)] font-black tracking-tight text-slate-900 mb-[clamp(0.5rem,1.5vw,0.75rem)]">Personaliza tu bebida</h1>
+              <p className="text-[clamp(1rem,3vw,1.25rem)] text-slate-500">Selecciona tus toppings favoritos</p>
             </header>
             {toppingsDisponibles.length === 0 ? (
-              <p className="text-center text-slate-500">No hay toppings disponibles para este producto.</p>
+              <p className="text-center text-slate-500 text-[clamp(0.875rem,1.5vw,1rem)]">No hay toppings disponibles para este producto.</p>
             ) : (
-              <div className="space-y-4">
+              <div className="space-y-[clamp(0.75rem,1.5vw,1rem)]">
                 {toppingsDisponibles.map(t => {
                   const cantidad = toppings[t.id] || 0;
                   return (
                     <div
                       key={t.id}
-                      className="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex items-center justify-between"
+                      className="bg-white p-[clamp(0.75rem,1.5vw,1.25rem)] rounded-2xl shadow-sm border border-slate-100 flex items-center justify-between"
                     >
-                      <div className="flex items-center gap-4">
-                        <div className="w-16 h-16 rounded-xl bg-slate-100 flex items-center justify-center text-[#ea2a33]">
-                          <span className="material-symbols-outlined text-3xl">{t.icono}</span>
+                      <div className="flex items-center gap-[clamp(0.75rem,1.5vw,1rem)]">
+                        <div className="w-[clamp(2rem,4vw,4rem)] h-[clamp(2rem,4vw,4rem)] rounded-xl bg-slate-100 flex items-center justify-center text-[#ea2a33]">
+                          <span className="material-symbols-outlined text-[clamp(1.25rem,2.5vw,1.875rem)]">{t.icono}</span>
                         </div>
                         <div>
-                          <h4 className="font-bold text-xl text-slate-900">{t.nombre}</h4>
-                          <p className="text-slate-500 font-bold">+${t.precio.toFixed(2)}</p>
+                          <h4 className="font-bold text-[clamp(0.875rem,1.75vw,1.125rem)] text-slate-900">{t.nombre}</h4>
+                          <p className="text-slate-500 font-bold text-[clamp(0.75rem,1.25vw,0.875rem)]">+${t.precio.toFixed(2)}</p>
                         </div>
                       </div>
-                      <div className="flex items-center gap-6 bg-slate-50 p-2 rounded-xl border border-slate-200">
+                      <div className="flex items-center gap-[clamp(0.75rem,1.5vw,1.5rem)] bg-slate-50 p-[clamp(0.25rem,0.5vw,0.5rem)] rounded-xl border border-slate-200">
                         <button
                           onClick={() => handleDecrementTopping(t.id)}
-                          className="w-12 h-12 flex items-center justify-center rounded-lg bg-white shadow-sm text-slate-400 hover:text-[#ea2a33] transition-colors"
+                          className="w-[clamp(2rem,4vw,3rem)] h-[clamp(2rem,4vw,3rem)] flex items-center justify-center rounded-lg bg-white shadow-sm text-slate-400 hover:text-[#ea2a33] transition-colors"
                         >
-                          <span className="material-symbols-outlined text-3xl">remove</span>
+                          <span className="material-symbols-outlined text-[clamp(1.25rem,2.5vw,1.875rem)]">remove</span>
                         </button>
-                        <span className="text-2xl font-black w-8 text-center text-slate-900">{cantidad}</span>
+                        <span className="text-[clamp(1.125rem,2vw,1.5rem)] font-black w-[clamp(1.5rem,3vw,2rem)] text-center text-slate-900">{cantidad}</span>
                         <button
                           onClick={() => handleIncrementTopping(t.id)}
-                          className="w-12 h-12 flex items-center justify-center rounded-lg bg-[#ea2a33] shadow-lg shadow-[#ea2a33]/20 text-white"
+                          className="w-[clamp(2rem,4vw,3rem)] h-[clamp(2rem,4vw,3rem)] flex items-center justify-center rounded-lg bg-[#ea2a33] shadow-lg shadow-[#ea2a33]/20 text-white"
                         >
-                          <span className="material-symbols-outlined text-3xl">add</span>
+                          <span className="material-symbols-outlined text-[clamp(1.25rem,2.5vw,1.875rem)]">add</span>
                         </button>
                       </div>
                     </div>
@@ -403,7 +402,7 @@ export default function ModalPersonalizar({
     const progreso = (pasoActual / pasosTotales) * 100;
 
     return (
-      <div className="absolute bottom-0 right-0 left-[0px] h-24 border-t border-slate-200 bg-white/80 backdrop-blur-md px-6 flex items-center">
+      <div className="absolute bottom-0 right-0 left-[0px] h-[clamp(4rem,10vw,6rem)] border-t border-slate-200 bg-white/80 backdrop-blur-md px-[clamp(0.75rem,2vw,1.5rem)] flex items-center">
         {/* Bloque izquierdo: Anterior */}
         <div className="flex-1 flex justify-start">
           <button
@@ -412,20 +411,20 @@ export default function ModalPersonalizar({
               else if (paso === 'sabor') setPaso('tamano');
               else if (paso === 'toppings') setPaso('sabor');
             }}
-            className="flex items-center gap-2 font-bold text-slate-500 hover:text-[#ea2a33] transition-colors"
+            className="flex items-center gap-[clamp(0.25rem,0.75vw,0.5rem)] font-bold text-slate-500 hover:text-[#ea2a33] transition-colors text-[clamp(0.75rem,1.5vw,0.875rem)]"
           >
-            <span className="material-symbols-outlined">arrow_back</span>
+            <span className="material-symbols-outlined text-[clamp(1rem,2vw,1.25rem)]">arrow_back</span>
             <span className="hidden md:inline">Anterior</span>
           </button>
         </div>
 
         {/* Bloque central: Paso actual */}
         <div className="flex-1 flex justify-left">
-          <div className="w-48 text-center">
-            <div className="text-xs font-bold text-[#ea2a33] uppercase tracking-widest">
+          <div className="w-[clamp(8rem,15vw,12rem)] text-center">
+            <div className="text-[clamp(0.65rem,1vw,0.75rem)] font-bold text-[#ea2a33] uppercase tracking-widest">
               Paso {pasoActual} de {pasosTotales}
             </div>
-            <div className="w-full bg-slate-200 h-2 rounded-full overflow-hidden mt-1">
+            <div className="w-full bg-slate-200 h-[clamp(0.25rem,0.5vw,0.35rem)] rounded-full overflow-hidden mt-[clamp(0.25rem,0.5vw,0.5rem)]">
               <div className="h-full bg-[#ea2a33] transition-all duration-300" style={{ width: `${progreso}%` }} />
             </div>
           </div>
@@ -443,10 +442,10 @@ export default function ModalPersonalizar({
               (paso === 'tamano' && !tamano) ||
               (paso === 'sabor' && !sabor)
             }
-            className="flex items-center gap-2 px-6 py-2 rounded-full font-extrabold text-white bg-[#ea2a33] shadow-lg shadow-[#ea2a33]/20 hover:scale-105 active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex items-center gap-[clamp(0.25rem,0.75vw,0.5rem)] px-[clamp(0.75rem,1.5vw,1.5rem)] py-[clamp(0.5rem,1vw,0.75rem)] rounded-full font-extrabold text-white bg-[#ea2a33] shadow-lg shadow-[#ea2a33]/20 hover:scale-105 active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed text-[clamp(0.75rem,1.5vw,0.875rem)]"
           >
             <span className="hidden md:inline">{paso === 'toppings' ? 'Confirmar' : 'Continuar'}</span>
-            <span className="material-symbols-outlined">arrow_forward</span>
+            <span className="material-symbols-outlined text-[clamp(1rem,2vw,1.25rem)]">arrow_forward</span>
           </button>
         </div>
       </div>
@@ -454,8 +453,8 @@ export default function ModalPersonalizar({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
-      <div className="flex h-[800px] w-[1280px] bg-white shadow-2xl overflow-hidden relative">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-[clamp(0.5rem,2vw,1rem)]">
+      <div className="flex h-[clamp(30rem,90vh,50rem)] w-[clamp(20rem,95vw,80rem)] bg-white shadow-2xl overflow-hidden relative">
         <SidebarIzquierdo />
         <div className="flex-1 flex flex-col relative">
           <ContenidoCentral />

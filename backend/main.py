@@ -165,12 +165,27 @@ async def eliminar_pedido(pedido_id: int):
 
 # ==================== Función para construir el prompt completo ====================
 def construir_prompt_completo(consulta: str) -> str:
-    """Devuelve el prompt base más la consulta del usuario."""
+    """Devuelve el prompt base más la consulta del usuario.
+    
+    Optimizado para:
+    - Mayor tolerancia a variaciones en el lenguaje del usuario
+    - Mejor comprensión de intenciones implícitas
+    - Manejo robusto de consultas vagas o ambiguas
+    - Respuestas consistentes en formato CSV
+    """
     prompt_base = """
 Eres un barista experto y apasionado en una cafetería de especialidad llamada "Caffenio". 
 Tu misión es ayudar a los clientes a encontrar la bebida, alimento o postre perfecto según sus gustos, estado de ánimo o necesidades. 
-Debes ser amable, conocedor y ofrecer recomendaciones precisas basadas en las descripciones detalladas de los productos. 
-Siempre que sea relevante, menciona la posibilidad de personalizar: tipo de leche, toppings, temperatura, sabores adicionales, etc.
+Debes ser amable, conocedor y ofrecer recomendaciones PRECISAS basadas en las descripciones detalladas de los productos.
+
+⚠️ INSTRUCCIONES CRÍTICAS DE TOLERANCIA:
+- Interpreta GENEROSAMENTE lo que el cliente pide (piensa en múltiples significados)
+- Si la consulta es vaga (ej: "algo bueno"), recomienda de TODAS las categorías
+- Si el cliente dice "café", incluye cafés calientes, fríos Y frappés
+- Si dice "dulce", recomenda postres, bebidas azucaradas Y alimentos dulces
+- Si dice "refrescante", ofrece bebidas frías, frappés Y sin cafeína
+- NUNCA rechaces una consulta - siempre hay algo que recomendar
+- Tolera typos, palabras mal escritas, jerga local, regionalismos
 
 A continuación se presenta el menú completo de Caffenio con descripciones exhaustivas. Utiliza esta información para sugerir productos, pero si el cliente pide algo específico, respeta su elección y ofrece variaciones cuando corresponda.
 
@@ -256,15 +271,33 @@ A continuación se presenta el menú completo de Caffenio con descripciones exha
 - Recién Horneado: Pan dulce recién salido del horno, con aroma irresistible y textura suave.
 - Pastel Red Velvet: Esponjoso pastel Red Velvet con suave betún cremoso.
 
---- INSTRUCCIONES IMPORTANTES ---
-- El cliente puede pedir recomendaciones generales ("¿qué me recomiendas?") o específicas ("quiero algo dulce", "un café fuerte", "algo sin cafeína", "un desayuno ligero", etc.).
-- Basándote en las descripciones detalladas, sugiere de 2 a 4 productos que mejor se ajusten a su petición. Si pide algo muy concreto, puedes sugerir menos.
-- Siempre que sea relevante, ten en cuenta la posibilidad de personalizar (tipo de leche, toppings, temperatura, sabores adicionales), pero no lo menciones en la respuesta a menos que el cliente pregunte.
-- Devuelve ÚNICAMENTE los nombres de los productos recomendados, separados por comas. No añadas explicaciones, puntos finales, comillas, ni texto adicional. La respuesta debe ser una lista simple de nombres de productos, tal como aparecen en el menú (por ejemplo: "Cappuccino, Latte, Chai Latte, Kfreze ").
-- Tómate el tiempo de pensar y analizar el menú completo antes de responder. Queremos las mejores recomendaciones posibles En general analiza todo el menu completamente si el cliente dice cosas muy generales, como cafe etc, recomienda productos de esa categoría, o quizas preguntas como ("¿qué vendes?") TAMBIEN IMPORTANTE, RECOMIENDAME COSAS REFRESCANTES, DE TODOS LOS ASPECTOS EN GENERAL
-EN GENERAL TOMATE EL TIEMPO ARROJAR RECOMENDACIONES PARA CUALQUIER COSA QUE DIGA EL CLIENTE. Gracias.
+--- INSTRUCCIONES DE FORMATO Y RESPUESTA ---
+RESPONSABILIDADES:
+1. SIEMPRE responde - no hay consultas sin respuesta
+2. Analiza TODO el menú antes de responder
+3. Sugiere 2-4 productos (o más si es apropiado)
+4. Tolera lenguaje informal, typos, abreviaturas
+5. Si es ambiguo, recomienda de múltiples categorías
+
+FORMATO DE RESPUESTA:
+- Devuelve ÚNICAMENTE nombres de productos separados por comas
+- SIN explicaciones, puntos finales, comillas, ni texto adicional
+- Ejemplo CORRECTO: Cappuccino, Latte, Chai Latte, Kfreeze
+- Ejemplo INCORRECTO: Te recomiendo: Cappuccino, Latte...
+
+CASOS ESPECIALES:
+- Si dice "todo", "qué hay", "menú" -> Recomienda 5-6 de diferentes categorías
+- Si es vago/corto -> Recomienda bebidas (la categoría más popular)
+- Si pregunta por algo no en el menú -> Sugiere lo más similar
+- Si pide algo gourmet -> Sugiere opciones premium/especiales
+- Si pide rápido/fácil -> Sugiere bebidas, no comidas
+
+TOLERANCIA DE TIEMPO:
+- Tómate TODO el tiempo que necesites para analizar
+- Piensa en múltiples interpretaciones de la consulta
+- No tengas prisa - mejor respuesta correcta que rápida
 """
-    return prompt_base + f"\n\nEl cliente dice: '{consulta}'. Recomiéndale productos de la lista."
+    return prompt_base + f"\n\nCONSULTA DEL CLIENTE: '{consulta}'\n\nResponde ÚNICAMENTE con nombres de productos separados por comas."
 
 # ==================== Endpoints de identificación NFC ====================
 @app.post("/identificar")
@@ -290,24 +323,91 @@ def read_root():
 
 @app.post("/recomendar")
 async def recomendar(consulta: Consulta):
+    """Endpoint de recomendaciones optimizado con:
+    - Timeouts extendidos (45+ segundos)
+    - Reintentos automáticos (hasta 3 intentos)
+    - Mayor tolerancia y validación robusta
+    - Mejor logging para debugging
+    """
     if not GEMINI_API_KEY:
         raise HTTPException(status_code=500, detail="API key no configurada")
-    try:
-        prompt_completo = construir_prompt_completo(consulta.mensaje)
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/{MODELO}:generateContent?key={GEMINI_API_KEY}"
-        payload = {
-            "contents": [{"role": "user", "parts": [{"text": prompt_completo}]}]
-        }
-        print(f"🔍 Consultando Gemini sin caché...")
-        response = requests.post(url, json=payload, timeout=30)
-        response.raise_for_status()
-        data = response.json()
-        texto = data["candidates"][0]["content"]["parts"][0]["text"]
-        nombres = [nombre.strip() for nombre in texto.split(",") if nombre.strip()]
-        return {"recomendaciones": nombres}
-    except Exception as e:
-        print("❌ Error:", e)
-        raise HTTPException(status_code=502, detail=str(e))
+    
+    if not consulta.mensaje or consulta.mensaje.strip() == "":
+        raise HTTPException(status_code=400, detail="Consulta vacía")
+    
+    consulta_normalizada = consulta.mensaje.strip().lower()
+    print(f"\n🎯 Nueva consulta: '{consulta_normalizada}'")
+    
+    MAX_REINTENTOS = 3
+    TIMEOUT_BASE = 45
+    
+    for intento in range(1, MAX_REINTENTOS + 1):
+        try:
+            prompt_completo = construir_prompt_completo(consulta.mensaje)
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/{MODELO}:generateContent?key={GEMINI_API_KEY}"
+            
+            payload = {
+                "contents": [{"role": "user", "parts": [{"text": prompt_completo}]}]
+            }
+            
+            timeout_actual = TIMEOUT_BASE + (intento * 5)
+            print(f"   📡 Intento {intento}/{MAX_REINTENTOS} (timeout: {timeout_actual}s)...")
+            
+            response = requests.post(url, json=payload, timeout=timeout_actual)
+            response.raise_for_status()
+            
+            data = response.json()
+            
+            if "candidates" not in data or not data["candidates"]:
+                print(f"   ⚠️ Respuesta vacía en intento {intento}")
+                if intento < MAX_REINTENTOS:
+                    time.sleep(1)
+                    continue
+                raise ValueError("Gemini devolvió respuesta vacía")
+            
+            texto = data["candidates"][0]["content"]["parts"][0]["text"].strip()
+            print(f"   ✅ Respuesta recibida: {len(texto)} caracteres")
+            
+            texto = texto.split('\n')[0]
+            texto = texto.replace('"', '').replace("'", '')
+            texto = texto.rstrip('.')
+            
+            nombres = [nombre.strip() for nombre in texto.split(",") if nombre.strip()]
+            
+            if not nombres:
+                print(f"   ⚠️ No se extrajeron productos en intento {intento}")
+                if intento < MAX_REINTENTOS:
+                    time.sleep(1)
+                    continue
+                raise ValueError("No se pudieron extraer recomendaciones")
+            
+            print(f"   🎁 {len(nombres)} producto(s): {', '.join(nombres[:2])}...")
+            return {"recomendaciones": nombres}
+            
+        except requests.exceptions.Timeout:
+            print(f"   ⏱️ Timeout en intento {intento}/{MAX_REINTENTOS}")
+            if intento < MAX_REINTENTOS:
+                wait_time = intento * 2
+                print(f"   ⏳ Reintentando en {wait_time}s...")
+                time.sleep(wait_time)
+                continue
+            raise HTTPException(status_code=504, detail="Tiempo de espera agotado (Gemini tardó mucho)")
+        
+        except requests.exceptions.ConnectionError as e:
+            print(f"   🔌 Error de conexión intento {intento}: {str(e)[:80]}")
+            if intento < MAX_REINTENTOS:
+                time.sleep(2)
+                continue
+            raise HTTPException(status_code=502, detail="Error de conexión con Gemini API")
+        
+        except Exception as e:
+            print(f"   ❌ Error intento {intento}: {str(e)[:100]}")
+            if intento < MAX_REINTENTOS:
+                time.sleep(1)
+                continue
+            error_msg = str(e)[:150]
+            print(f"   💥 Fallo después de {MAX_REINTENTOS} intentos")
+            raise HTTPException(status_code=502, detail=f"Error: {error_msg}")
 
 @app.options("/recomendar")
 async def recomendar_options():

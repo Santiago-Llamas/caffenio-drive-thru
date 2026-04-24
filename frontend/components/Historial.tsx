@@ -9,17 +9,17 @@ export default function Historial({ onRepetir }: { onRepetir: (items: any[]) => 
   }, []);
 
   return (
-    <div className="mb-4">
-      <h3 className="font-semibold mb-2">Repetir pedido</h3>
+    <div className="mb-[clamp(1rem,2vw,1rem)]">
+      <h3 className="font-semibold text-[clamp(0.875rem,2vw,1rem)] mb-[clamp(0.5rem,1vw,0.5rem)]">Repetir pedido</h3>
       {historial.length === 0 ? (
-        <p className="text-sm text-gray-900">No hay pedidos anteriores</p>
+        <p className="text-[clamp(0.75rem,1.5vw,0.875rem)] text-gray-900">No hay pedidos anteriores</p>
       ) : (
-        <div className="space-y-2">
+        <div className="space-y-[clamp(0.5rem,1vw,0.5rem)]">
           {historial.map((pedido, idx) => (
             <button
               key={idx}
               onClick={() => onRepetir(pedido.items)}
-              className="bg-red-200 text-left p-2 rounded w-full text-sm hover:bg-red-300"
+              className="bg-red-200 text-left p-[clamp(0.5rem,1vw,0.5rem)] rounded w-full text-[clamp(0.75rem,1.5vw,0.875rem)] hover:bg-red-300"
             >
               {pedido.items.map((i: any) => i.nombre).join(', ')}
             </button>

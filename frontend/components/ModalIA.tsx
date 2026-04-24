@@ -104,36 +104,36 @@ export default function ModalIA({
   );
 
   return (
-    <div className="fixed inset-0 z-50 flex items-stretch justify-center bg-black/40 backdrop-blur-sm p-4 md:p-10">
-      <div className="flex w-full max-w-6xl bg-[#F5F5F5] rounded-xl shadow-2xl overflow-hidden border border-white/20">
+    <div className="fixed inset-0 z-50 flex items-stretch justify-center bg-black/40 backdrop-blur-sm p-[clamp(1rem,4vw,2.5rem)]" style={{ minHeight: '100dvh' }}>
+      <div className="flex w-full max-w-6xl bg-[#F5F5F5] rounded-xl shadow-2xl overflow-hidden border border-white/20 max-h-[90vh]">
         {/* Main Interaction Area */}
         <div className="flex-1 flex flex-col h-full overflow-hidden bg-[#F5F5F5] relative">
           {/* Modal Header Controls */}
-          <div className="p-6 flex justify-between items-center">
+          <div className="p-[clamp(1rem,2vw,1.5rem)] flex justify-between items-center">
             <button
               onClick={onCerrar}
-              className="p-2 hover:bg-slate-200 rounded-full transition-colors text-black/70 hover:text-black"
+              className="p-[clamp(0.5rem,1vw,0.5rem)] hover:bg-slate-200 rounded-full transition-colors text-black/70 hover:text-black"
             >
-              <span className="material-symbols-outlined">close</span>
+              <span className="material-symbols-outlined text-[clamp(1rem,2vw,1.25rem)]">close</span>
             </button>
-            <div className="flex items-center gap-2 text-[#e42528]">
-              <span className="material-symbols-outlined">auto_awesome</span>
-              <span className="font-bold text-sm uppercase tracking-widest">Caffen-IA</span>
+            <div className="flex items-center gap-[clamp(0.5rem,1vw,0.5rem)] text-[#e42528]">
+              <span className="material-symbols-outlined text-[clamp(1rem,2vw,1.25rem)]">auto_awesome</span>
+              <span className="font-bold text-[clamp(0.75rem,1.5vw,0.875rem)] uppercase tracking-widest">Caffen-IA</span>
             </div>
-            <div className="w-10"></div>
+            <div className="w-[clamp(2.5rem,5vw,2.5rem)]"></div>
           </div>
 
           {/* AI Content Scroll Area */}
-          <div className="flex-1 overflow-y-auto px-8 pb-32">
+          <div className="flex-1 overflow-y-auto px-[clamp(1rem,4vw,2rem)] pb-[clamp(2rem,8vw,8rem)]">
             <div className="max-w-3xl mx-auto">
-              <h1 className="text-slate-900 text-4xl font-extrabold text-center mb-8 mt-4">
+              <h1 className="text-slate-900 text-[clamp(2rem,12vw,2.25rem)] font-extrabold text-center mb-[clamp(1.5rem,6vw,2rem)] mt-[clamp(0.5rem,2vw,1rem)]">
                 ¿Qué te apetece hoy?
               </h1>
 
               {/* Search Bar & Mic & Recomendar */}
-              <div className="relative flex items-center gap-4 mb-10">
+              <div className="relative flex items-center gap-[clamp(0.5rem,2vw,1rem)] mb-[clamp(1.5rem,6vw,2.5rem)]">
                 <div className="flex-1 relative">
-                  <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-900">
+                  <span className="material-symbols-outlined absolute left-[clamp(0.5rem,2vw,1rem)] top-1/2 -translate-y-1/2 text-slate-900 text-[clamp(1rem,2vw,1.25rem)]">
                     search
                   </span>
                   <input
@@ -142,52 +142,52 @@ export default function ModalIA({
                     onChange={(e) => setConsulta(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && buscarRecomendaciones()}
                     placeholder="Pide tu bebida favorita..."
-                    className="w-full h-16 pl-12 pr-4 bg-white border-none rounded-xl shadow-sm text-lg focus:ring-2 focus:ring-[#e42528]/20 transition-all placeholder:text-slate-400 text-gray-900" 
+                    className="w-full h-[clamp(3rem,8vw,4rem)] pl-[clamp(2rem,5vw,3rem)] pr-[clamp(1rem,2vw,1rem)] bg-white border-none rounded-xl shadow-sm text-[clamp(1rem,2vw,1.125rem)] focus:ring-2 focus:ring-[#e42528]/20 transition-all placeholder:text-slate-400 text-gray-900" 
                   />
                 </div>
 
                 <button
                   onClick={iniciarVoz}
                   disabled={escuchando}
-                  className={`size-16 rounded-xl flex items-center justify-center transition-all active:scale-95 ${
+                  className={`w-[clamp(3rem,8vw,4rem)] h-[clamp(3rem,8vw,4rem)] rounded-xl flex items-center justify-center transition-all active:scale-95 ${
                     escuchando
                       ? 'bg-[#e42528] text-white animate-pulse'
                       : 'bg-[#e42528] text-white shadow-lg shadow-[#e42528]/30 hover:bg-[#e42528]/90'
                   }`}
                   title="Habla para buscar"
                 >
-                  <span className="material-symbols-outlined text-3xl">mic</span>
+                  <span className="material-symbols-outlined text-[clamp(1.5rem,3vw,1.875rem)]">mic</span>
                 </button>
 
                 <button
                   onClick={buscarRecomendaciones}
                   disabled={cargando || !consulta.trim()}
-                  className="h-16 px-6 bg-[#e42528] text-white font-bold rounded-xl shadow-lg shadow-[#e42528]/30 hover:bg-[#e42528]/90 transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                  className="h-[clamp(3rem,8vw,4rem)] px-[clamp(1rem,2vw,1.5rem)] bg-[#e42528] text-white font-bold rounded-xl shadow-lg shadow-[#e42528]/30 hover:bg-[#e42528]/90 transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-[clamp(0.5rem,1vw,0.75rem)]"
                 >
-                  <span className="material-symbols-outlined text-2xl ">send</span>
-                  <span className="hidden sm:inline">Recomendar</span>
+                  <span className="material-symbols-outlined text-[clamp(1rem,2vw,1.25rem)]">send</span>
+                  <span className="hidden sm:inline text-[clamp(0.75rem,1.5vw,1rem)]">Recomendar</span>
                 </button>
               </div>
 
               {/* Thinking State */}
               {cargando && (
-                <div className="flex items-center justify-center gap-3 mb-10 text-[#e42528]/80 animate-pulse">
-                  <span className="material-symbols-outlined text-sm animate-spin">
+                <div className="flex items-center justify-center gap-[clamp(0.75rem,1.5vw,0.75rem)] mb-[clamp(1.5rem,6vw,2.5rem)] text-[#e42528]/80 animate-pulse">
+                  <span className="material-symbols-outlined text-[clamp(0.875rem,2vw,1rem)] animate-spin">
                     progress_activity
                   </span>
-                  <p className="text-sm font-medium">Pensando en las mejores opciones para ti...</p>
+                  <p className="text-[clamp(0.875rem,2vw,1rem)] font-medium">Pensando en las mejores opciones para ti...</p>
                 </div>
               )}
 
               {/* Recommendations Section */}
               {recomendaciones.length > 0 && (
-                <div className="space-y-6">
+                <div className="space-y-[clamp(1rem,3vw,1.5rem)]">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-slate-900 font-bold text-xl">
+                    <h3 className="text-slate-900 font-bold text-[clamp(1rem,2.5vw,1.25rem)]">
                       Recomendaciones para ti ({recomendaciones.length})
                     </h3>
-                    <label className="flex items-center gap-2 cursor-pointer group">
-                      <span className="text-sm font-medium text-slate-600 group-hover:text-[#e42528] transition-colors">
+                    <label className="flex items-center gap-[clamp(0.5rem,1vw,0.75rem)] cursor-pointer group">
+                      <span className="text-[clamp(0.75rem,1.5vw,1rem)] font-medium text-slate-600 group-hover:text-[#e42528] transition-colors">
                         {seleccionados.size === recomendaciones.length
                           ? 'Deseleccionar todos'
                           : 'Seleccionar todos'}
@@ -196,39 +196,39 @@ export default function ModalIA({
                         type="checkbox"
                         checked={seleccionados.size === recomendaciones.length && recomendaciones.length > 0}
                         onChange={seleccionarTodos}
-                        className="rounded border-slate-300 text-[#e42528] focus:ring-[#e42528] size-5"
+                        className="rounded border-slate-300 text-[#e42528] focus:ring-[#e42528] w-[clamp(1.25rem,2vw,1.25rem)] h-[clamp(1.25rem,2vw,1.25rem)]"
                       />
                     </label>
                   </div>
 
                   {/* Product Grid */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[clamp(1rem,2vw,1rem)]">
                     {recomendaciones.map((prod) => (
                       <div
                         key={prod.id}
-                        className="bg-white rounded-xl p-3 border border-slate-100 shadow-sm hover:shadow-md transition-shadow group relative"
+                        className="bg-white rounded-xl p-[clamp(0.75rem,1.5vw,0.75rem)] border border-slate-100 shadow-sm hover:shadow-md transition-shadow group relative"
                       >
-                        <div className="absolute top-4 right-4 z-10">
+                        <div className="absolute top-[clamp(1rem,2vw,1rem)] right-[clamp(1rem,2vw,1rem)] z-10">
                           <input
                             type="checkbox"
                             checked={seleccionados.has(prod.id)}
                             onChange={() => toggleSeleccion(prod.id)}
-                            className="rounded border-slate-300 text-[#e42528] focus:ring-[#e42528] size-6 shadow-sm"
+                            className="rounded border-slate-300 text-[#e42528] focus:ring-[#e42528] w-[clamp(1.5rem,3vw,1.5rem)] h-[clamp(1.5rem,3vw,1.5rem)] shadow-sm"
                           />
                         </div>
-                        <div className="aspect-square rounded-lg bg-slate-100 mb-3 overflow-hidden relative">
+                        <div className="aspect-square rounded-lg bg-slate-100 mb-[clamp(0.75rem,2vw,0.75rem)] overflow-hidden relative">
                           <img
                             src={prod.imagen}
                             alt={prod.nombre}
                             className="w-full h-full object-cover"
                           />
                         </div>
-                        <div className="px-1">
-                          <h4 className="font-bold text-slate-900 text-base mb-1">{prod.nombre}</h4>
+                        <div className="px-[clamp(0.25rem,1vw,0.25rem)]">
+                          <h4 className="font-bold text-slate-900 text-[clamp(1rem,2vw,1rem)] mb-[clamp(0.25rem,1vw,0.25rem)]">{prod.nombre}</h4>
                           {prod.descripcion && (
-                            <p className="text-xs text-slate-500 mb-2 line-clamp-2">{prod.descripcion}</p>
+                            <p className="text-[clamp(0.75rem,1.5vw,0.75rem)] text-slate-500 mb-[clamp(0.5rem,1vw,0.5rem)] line-clamp-2">{prod.descripcion}</p>
                           )}
-                          <p className="text-[#e42528] font-extrabold text-lg">
+                          <p className="text-[#e42528] font-extrabold text-[clamp(1rem,2vw,1.125rem)]">
                             ${prod.precio.toFixed(2)}
                           </p>
                           <button
@@ -236,7 +236,7 @@ export default function ModalIA({
                               onAgregar(prod);
                               // No cerramos el modal para que pueda seguir agregando
                             }}
-                            className="mt-3 w-full py-2 bg-slate-50 border border-slate-100 text-slate-700 text-sm font-bold rounded-lg hover:bg-[#e42528]/10 hover:text-[#e42528] transition-colors"
+                            className="mt-[clamp(0.75rem,2vw,0.75rem)] w-full py-[clamp(0.5rem,1vw,0.5rem)] bg-slate-50 border border-slate-100 text-slate-700 text-[clamp(0.75rem,1.5vw,0.875rem)] font-bold rounded-lg hover:bg-[#e42528]/10 hover:text-[#e42528] transition-colors"
                           >
                             Agregar rápido
                           </button>
@@ -250,9 +250,9 @@ export default function ModalIA({
           </div>
 
           {/* Sticky Footer Action */}
-          <div className="absolute bottom-0 left-0 right-0 p-6 bg-white/80 backdrop-blur-md border-t border-slate-200">
-            <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-              <div className="text-slate-600 text-sm font-medium">
+          <div className="absolute bottom-0 left-0 right-0 p-[clamp(1rem,2vw,1.5rem)] bg-white/80 backdrop-blur-md border-t border-slate-200">
+            <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-between gap-[clamp(1rem,2vw,1rem)]">
+              <div className="text-slate-600 text-[clamp(0.75rem,1.5vw,0.875rem)] font-medium">
                 <span className="text-[#e42528] font-bold">{seleccionados.size}</span> producto
                 {seleccionados.size !== 1 ? 's' : ''} seleccionado
                 {seleccionados.size !== 1 ? 's' : ''}
@@ -260,13 +260,13 @@ export default function ModalIA({
               <button
                 onClick={agregarSeleccionados}
                 disabled={seleccionados.size === 0}
-                className={`w-full md:w-auto px-10 py-4 font-extrabold rounded-xl shadow-lg transition-all flex items-center justify-center gap-3 ${
+                className={`w-full md:w-auto px-[clamp(1.5rem,3vw,2.5rem)] py-[clamp(1rem,2vw,1rem)] font-extrabold rounded-xl shadow-lg transition-all flex items-center justify-center gap-[clamp(0.5rem,1vw,0.75rem)] text-[clamp(0.875rem,2vw,1rem)] ${
                   seleccionados.size === 0
                     ? 'bg-slate-300 text-slate-500 cursor-not-allowed'
                     : 'bg-[#e42528] text-white shadow-[#e42528]/20 hover:bg-[#e42528]/90'
                 }`}
               >
-                <span className="material-symbols-outlined">shopping_cart_checkout</span>
+                <span className="material-symbols-outlined text-[clamp(1rem,2vw,1.25rem)]">shopping_cart_checkout</span>
                 Agregar seleccionados al carrito
               </button>
             </div>
@@ -274,18 +274,18 @@ export default function ModalIA({
         </div>
 
         {/* Contextual Sidebar (carrito actual) */}
-        <div className="hidden lg:flex w-80 bg-white border-l border-slate-200 flex-col">
-          <div className="p-6 border-b border-slate-100">
-            <h2 className="text-slate-900 text-lg font-bold">Tu Pedido Actual</h2>
-            <p className="text-slate-500 text-xs">
+        <div className="hidden lg:flex w-[clamp(15rem,25vw,20rem)] bg-white border-l border-slate-200 flex-col">
+          <div className="p-[clamp(1rem,2vw,1.5rem)] border-b border-slate-100">
+            <h2 className="text-slate-900 text-[clamp(1rem,2vw,1.125rem)] font-bold">Tu Pedido Actual</h2>
+            <p className="text-slate-500 text-[clamp(0.65rem,1.5vw,0.75rem)]">
               {carritoActual.length} producto{carritoActual.length !== 1 ? 's' : ''}
             </p>
           </div>
-          <div className="flex-1 overflow-y-auto p-4 space-y-4">
+          <div className="flex-1 overflow-y-auto p-[clamp(1rem,2vw,1rem)] space-y-[clamp(1rem,2vw,1rem)]">
             {carritoActual.length > 0 ? (
               carritoActual.map((item, idx) => (
-                <div key={idx} className="flex gap-3">
-                  <div className="w-12 h-12 rounded-lg bg-slate-100 overflow-hidden shrink-0">
+                <div key={idx} className="flex gap-[clamp(0.75rem,2vw,0.75rem)]">
+                  <div className="w-[clamp(2.5rem,5vw,3rem)] h-[clamp(2.5rem,5vw,3rem)] rounded-lg bg-slate-100 overflow-hidden shrink-0">
                     <img
                       src={item.imagen || 'https://via.placeholder.com/48'}
                       alt={item.nombre}
@@ -294,8 +294,8 @@ export default function ModalIA({
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex justify-between items-start">
-                      <h4 className="text-sm font-bold text-slate-800 truncate">{item.nombre}</h4>
-                      <span className="text-sm font-bold text-[#e42528]">
+                      <h4 className="text-[clamp(0.75rem,1.5vw,0.875rem)] font-bold text-slate-800 truncate">{item.nombre}</h4>
+                      <span className="text-[clamp(0.75rem,1.5vw,0.875rem)] font-bold text-[#e42528]">
                         ${(item.precio * item.cantidad).toFixed(2)}
                       </span>
                     </div>

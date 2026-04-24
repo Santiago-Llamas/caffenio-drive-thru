@@ -22,79 +22,79 @@ function SidebarIzquierdo({ onOpenIA, onPersonalizar }: { onOpenIA: () => void; 
       {/* Botón hamburguesa para móvil */}
       <button
         onClick={() => setSidebarOpen(!sidebarOpen)}
-        className="md:hidden fixed top-4 left-4 z-40 bg-[#ea2a33] text-white p-2 rounded-lg"
+        className="md:hidden fixed top-[clamp(0.5rem,2vw,1rem)] left-[clamp(0.5rem,2vw,1rem)] z-40 bg-[#ea2a33] text-white p-[clamp(0.25rem,0.75vw,0.5rem)] rounded-lg"
       >
-        <span className="material-symbols-outlined">menu</span>
+        <span className="material-symbols-outlined text-[clamp(1rem,2vw,1.25rem)]">menu</span>
       </button>
 
       <aside className={`${
         sidebarOpen ? 'translate-x-0' : '-translate-x-full'
-      } md:translate-x-0 transition-transform duration-300 fixed md:relative w-70 bg-white border-r border-slate-200 flex flex-col shadow-sm z-30 shrink-0 h-screen md:h-auto`}>
-        <div className="p-4 md:p-6 flex items-center justify-between border-b border-slate-100">
-          <div className="flex items-center gap-4">
-            <div className="w-10 md:w-14 h-10 md:h-14 items-center justify-center">
+      } md:translate-x-0 transition-transform duration-300 fixed md:relative w-[clamp(15rem,50vw,17.5rem)] bg-white border-r border-slate-200 flex flex-col shadow-sm z-30 shrink-0 h-screen md:h-auto`}>
+        <div className="p-[clamp(0.5rem,1.5vw,1.5rem)] flex items-center justify-between border-b border-slate-100">
+          <div className="flex items-center gap-[clamp(0.5rem,1vw,1rem)]">
+            <div className="w-[clamp(2rem,3vw,3.5rem)] h-[clamp(2rem,3vw,3.5rem)] items-center justify-center">
               <img src="/logo.png" alt="Logo" className="w-full h-full object-cover" />
             </div>
             <div>
-              <h2 className="font-extrabold text-sm md:text-base text-slate-900 leading-none">CAFFENIO</h2>
-              <p className="text-[8px] md:text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">Drive-Thru</p>
+              <h2 className="font-extrabold text-[clamp(0.75rem,1.5vw,1rem)] text-slate-900 leading-none">CAFFENIO</h2>
+              <p className="text-[clamp(0.5rem,1vw,0.65rem)] text-slate-400 font-bold uppercase tracking-widest mt-[clamp(0.25rem,0.5vw,0.35rem)]">Drive-Thru</p>
             </div>
           </div>
           <button
             onClick={() => setSidebarOpen(false)}
-            className="md:hidden text-slate-400"
+            className="md:hidden text-slate-400 text-[clamp(1rem,2vw,1.25rem)]"
           >
             <span className="material-symbols-outlined">close</span>
           </button>
         </div>
-        <nav className="flex flex-col gap-2 md:gap-3 w-full px-2 py-2 md:py-3 border-b border-slate-100">
-          <a className="flex flex-col items-center justify-center gap-1 p-2 md:p-3 rounded-2xl transition-all text-slate-400 hover:bg-slate-50 active:scale-95 group" href="#postres">
-            <span className="material-symbols-outlined text-2xl md:text-3xl group-hover:text-[#ea2a33]">cake</span>
-            <span className="text-[8px] md:text-[10px] font-bold uppercase tracking-wider">Postres</span>
+        <nav className="flex flex-col gap-[clamp(0.25rem,0.75vw,0.75rem)] w-full px-[clamp(0.25rem,0.75vw,0.5rem)] py-[clamp(0.25rem,0.75vw,0.75rem)] border-b border-slate-100">
+          <a className="flex flex-col items-center justify-center gap-[clamp(0.15rem,0.5vw,0.35rem)] p-[clamp(0.25rem,0.75vw,0.75rem)] rounded-2xl transition-all text-slate-400 hover:bg-slate-50 active:scale-95 group" href="#postres">
+            <span className="material-symbols-outlined text-[clamp(1.25rem,2.5vw,1.875rem)] group-hover:text-[#ea2a33]">cake</span>
+            <span className="text-[clamp(0.5rem,1vw,0.625rem)] font-bold uppercase tracking-wider">Postres</span>
           </a>
-          <a className="flex flex-col items-center justify-center gap-1 p-2 md:p-3 rounded-2xl transition-all text-slate-400 hover:bg-slate-50 active:scale-95 group" href="#comida">
-            <span className="material-symbols-outlined text-2xl md:text-3xl group-hover:text-[#ea2a33]">fastfood</span>
-            <span className="text-[8px] md:text-[10px] font-bold uppercase tracking-wider">Comida</span>
+          <a className="flex flex-col items-center justify-center gap-[clamp(0.15rem,0.5vw,0.35rem)] p-[clamp(0.25rem,0.75vw,0.75rem)] rounded-2xl transition-all text-slate-400 hover:bg-slate-50 active:scale-95 group" href="#comida">
+            <span className="material-symbols-outlined text-[clamp(1.25rem,2.5vw,1.875rem)] group-hover:text-[#ea2a33]">fastfood</span>
+            <span className="text-[clamp(0.5rem,1vw,0.625rem)] font-bold uppercase tracking-wider">Comida</span>
           </a>
-          <a className="flex flex-col items-center justify-center gap-1 p-2 md:p-3 rounded-2xl transition-all text-slate-400 hover:bg-slate-50 active:scale-95 group" href="#frios">
-            <span className="material-symbols-outlined text-2xl md:text-3xl group-hover:text-[#ea2a33]">ac_unit</span>
-            <span className="text-[8px] md:text-[10px] font-bold uppercase tracking-wider">Fríos</span>
+          <a className="flex flex-col items-center justify-center gap-[clamp(0.15rem,0.5vw,0.35rem)] p-[clamp(0.25rem,0.75vw,0.75rem)] rounded-2xl transition-all text-slate-400 hover:bg-slate-50 active:scale-95 group" href="#frios">
+            <span className="material-symbols-outlined text-[clamp(1.25rem,2.5vw,1.875rem)] group-hover:text-[#ea2a33]">ac_unit</span>
+            <span className="text-[clamp(0.5rem,1vw,0.625rem)] font-bold uppercase tracking-wider">Fríos</span>
           </a>
-          <a className="flex flex-col items-center justify-center gap-1 p-2 md:p-3 rounded-2xl transition-all text-slate-400 hover:bg-slate-50 active:scale-95 group" href="#cafe">
-            <span className="material-symbols-outlined text-2xl md:text-3xl group-hover:text-[#ea2a33]">local_cafe</span>
-            <span className="text-[8px] md:text-[10px] font-bold uppercase tracking-wider">Calientes</span>
+          <a className="flex flex-col items-center justify-center gap-[clamp(0.15rem,0.5vw,0.35rem)] p-[clamp(0.25rem,0.75vw,0.75rem)] rounded-2xl transition-all text-slate-400 hover:bg-slate-50 active:scale-95 group" href="#cafe">
+            <span className="material-symbols-outlined text-[clamp(1.25rem,2.5vw,1.875rem)] group-hover:text-[#ea2a33]">local_cafe</span>
+            <span className="text-[clamp(0.5rem,1vw,0.625rem)] font-bold uppercase tracking-wider">Calientes</span>
           </a>
         </nav>
-        <div className="flex-1 overflow-y-auto custom-scrollbar p-4 md:p-6">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-xs font-black text-slate-900 uppercase tracking-wider">Promociones</h3>
-            <span className="px-2 py-0.5 bg-[#ea2a33]/10 text-[#ea2a33] text-[8px] md:text-[10px] font-bold rounded-md">DE TEMPORADA</span>
+        <div className="flex-1 overflow-y-auto custom-scrollbar p-[clamp(0.5rem,1.5vw,1.5rem)]">
+          <div className="flex items-center justify-between mb-[clamp(0.75rem,1.5vw,1rem)]">
+            <h3 className="text-[clamp(0.5rem,1vw,0.75rem)] font-black text-slate-900 uppercase tracking-wider">Promociones</h3>
+            <span className="px-[clamp(0.25rem,0.5vw,0.5rem)] py-[clamp(0.15rem,0.3vw,0.35rem)] bg-[#ea2a33]/10 text-[#ea2a33] text-[clamp(0.5rem,0.75vw,0.625rem)] font-bold rounded-md">DE TEMPORADA</span>
           </div>
-          <div className="space-y-4">
+          <div className="space-y-[clamp(0.75rem,1.5vw,1rem)]">
             {especiales.map(product => (
-              <div key={product.id} className="bg-slate-50 p-3 rounded-2xl border border-slate-100 flex flex-col gap-3 group hover:shadow-lg transition-all cursor-pointer" onClick={() => onPersonalizar(product)}>
-                <div className="w-full h-20 md:h-24 rounded-xl overflow-hidden bg-slate-200">
+              <div key={product.id} className="bg-slate-50 p-[clamp(0.5rem,1.25vw,0.75rem)] rounded-2xl border border-slate-100 flex flex-col gap-[clamp(0.5rem,1vw,0.75rem)] group hover:shadow-lg transition-all cursor-pointer" onClick={() => onPersonalizar(product)}>
+                <div className="w-full h-[clamp(3rem,8vw,6rem)] rounded-xl overflow-hidden bg-slate-200">
                   <img alt={product.nombre} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={product.imagen} />
                 </div>
                 <div>
-                  <h4 className="text-xs md:text-sm font-bold text-slate-800 leading-tight">{product.nombre}</h4>
+                  <h4 className="text-[clamp(0.65rem,1.25vw,0.875rem)] font-bold text-slate-800 leading-tight">{product.nombre}</h4>
                   {product.descripcion && (
-                    <p className="text-[10px] md:text-[11px] text-slate-400 line-clamp-2 mt-0.5">{product.descripcion}</p>
+                    <p className="text-[clamp(0.55rem,1vw,0.7rem)] text-slate-400 line-clamp-2 mt-[clamp(0.15rem,0.3vw,0.35rem)]">{product.descripcion}</p>
                   )}
-                  <div className="flex items-center justify-between mt-2">
-                    <span className="text-xs md:text-sm font-black text-[#ea2a33]">${product.precio.toFixed(2)}</span>
+                  <div className="flex items-center justify-between mt-[clamp(0.5rem,1vw,0.75rem)]">
+                    <span className="text-[clamp(0.65rem,1.25vw,0.875rem)] font-black text-[#ea2a33]">${product.precio.toFixed(2)}</span>
                   </div>
                 </div>
               </div>
             ))}
           </div>
         </div>
-        <div className="p-3 md:p-4 border-t border-slate-100">
+        <div className="p-[clamp(0.5rem,1.25vw,1rem)] border-t border-slate-100">
           <button
             onClick={onOpenIA}
-            className="w-full flex items-center justify-center gap-2 md:gap-3 bg-[#ea2a33] text-white px-4 md:px-6 py-3 md:py-4 rounded-2xl font-black text-xs md:text-lg hover:bg-[#ea2a33]/90 transition-all active:scale-95 shadow-lg shadow-[#ea2a33]/20"
+            className="w-full flex items-center justify-center gap-[clamp(0.5rem,1vw,0.75rem)] bg-[#ea2a33] text-white px-[clamp(0.75rem,1.5vw,1.5rem)] py-[clamp(0.5rem,1.25vw,1rem)] rounded-2xl font-black text-[clamp(0.65rem,1.5vw,1rem)] hover:bg-[#ea2a33]/90 transition-all active:scale-95 shadow-lg shadow-[#ea2a33]/20"
           >
-            <span className="material-symbols-outlined text-lg md:text-2xl">auto_awesome</span>
+            <span className="material-symbols-outlined text-[clamp(0.875rem,1.75vw,1.25rem)]">auto_awesome</span>
             <span className="tracking-tight">Asistente IA</span>
           </button>
         </div>
@@ -356,7 +356,7 @@ export default function Home() {
             <p className="text-lg md:text-2xl text-slate-600 font-medium">Selecciona cómo quieres continuar</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 flex-1">
+          <div className="grid grid-cols-3 gap-[clamp(1rem,2.5vw,2.5rem)] flex-1">
             {/* ✅ Opción NFC - Usando el componente NFCReader real */}
             <NFCReader
               apiUrl={process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}
@@ -380,33 +380,33 @@ export default function Home() {
             {/* Opción QR - Azul */}
             <button
               onClick={handleClickQR}
-              className="group relative flex flex-col items-center justify-center gap-4 md:gap-8 bg-white rounded-2xl shadow-lg border-2 border-transparent hover:border-blue-500 transition-all p-4 md:p-8 overflow-hidden hover:shadow-xl hover:shadow-blue-500/20 h-full"
+              className="group relative flex flex-col items-center justify-center gap-[clamp(1rem,2.5vw,2rem)] bg-white rounded-2xl shadow-lg border-2 border-transparent hover:border-blue-500 transition-all p-[clamp(1rem,2vw,2rem)] overflow-hidden hover:shadow-xl hover:shadow-blue-500/20 h-full"
             >
               <div className="absolute inset-0 bg-blue-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative w-20 md:w-32 h-20 md:h-32 rounded-full bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center text-blue-500 group-hover:scale-110 group-hover:text-blue-600 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-blue-300 flex-shrink-0">
-                <span className="material-symbols-outlined text-[40px] md:text-[80px]">qr_code_scanner</span>
+              <div className="relative w-[clamp(4rem,12vw,8rem)] h-[clamp(4rem,12vw,8rem)] rounded-full bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center text-blue-500 group-hover:scale-110 group-hover:text-blue-600 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-blue-300 flex-shrink-0">
+                <span className="material-symbols-outlined text-[clamp(2rem,5vw,3.5rem)]">qr_code_scanner</span>
               </div>
               <div className="relative text-center">
-                <span className="block text-lg md:text-3xl font-extrabold text-slate-800 group-hover:text-blue-600 transition-colors">Identifícate</span>
-                <span className="block text-lg md:text-3xl font-extrabold text-slate-800 group-hover:text-blue-600 transition-colors">con QR</span>
+                <span className="block text-[clamp(1rem,2.5vw,1.875rem)] font-extrabold text-slate-800 group-hover:text-blue-600 transition-colors">Identifícate</span>
+                <span className="block text-[clamp(1rem,2.5vw,1.875rem)] font-extrabold text-slate-800 group-hover:text-blue-600 transition-colors">con QR</span>
               </div>
-              <p className="relative text-sm md:text-lg text-slate-400 group-hover:text-slate-500 transition-colors">Escanea desde la App</p>
+              <p className="relative text-[clamp(0.75rem,1.5vw,1rem)] text-slate-400 group-hover:text-slate-500 transition-colors">Escanea desde la App</p>
               <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ boxShadow: '0 0 0 2px #3b82f6, 0 0 20px #3b82f6' }}></div>
             </button>
 
             {/* Opción Invitado - Gris con toque rojo */}
             <button
               onClick={() => setPantalla('menu')}
-              className="group relative flex flex-col items-center justify-center gap-4 md:gap-8 bg-white rounded-2xl shadow-lg border-2 border-transparent hover:border-slate-400 transition-all p-4 md:p-8 overflow-hidden hover:shadow-xl hover:shadow-slate-400/20 h-full"
+              className="group relative flex flex-col items-center justify-center gap-[clamp(1rem,2.5vw,2rem)] bg-white rounded-2xl shadow-lg border-2 border-transparent hover:border-slate-400 transition-all p-[clamp(1rem,2vw,2rem)] overflow-hidden hover:shadow-xl hover:shadow-slate-400/20 h-full"
             >
               <div className="absolute inset-0 bg-slate-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative w-20 md:w-32 h-20 md:h-32 rounded-full bg-gradient-to-br from-slate-100 to-slate-50 flex items-center justify-center text-slate-500 group-hover:scale-110 group-hover:text-red-500 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-red-300 flex-shrink-0">
-                <span className="material-symbols-outlined text-[40px] md:text-[80px]">person_outline</span>
+              <div className="relative w-[clamp(4rem,12vw,8rem)] h-[clamp(4rem,12vw,8rem)] rounded-full bg-gradient-to-br from-slate-100 to-slate-50 flex items-center justify-center text-slate-500 group-hover:scale-110 group-hover:text-red-500 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-red-300 flex-shrink-0">
+                <span className="material-symbols-outlined text-[clamp(2rem,5vw,3.5rem)]">person_outline</span>
               </div>
               <div className="relative text-center">
-                <span className="block text-lg md:text-3xl font-extrabold text-slate-800 group-hover:text-red-600 transition-colors">Invitado</span>
+                <span className="block text-[clamp(1rem,2.5vw,1.875rem)] font-extrabold text-slate-800 group-hover:text-red-600 transition-colors">Invitado</span>
               </div>
-              <p className="relative text-sm md:text-lg text-slate-400 group-hover:text-slate-500 transition-colors">Continuar sin cuenta</p>
+              <p className="relative text-[clamp(0.75rem,1.5vw,1rem)] text-slate-400 group-hover:text-slate-500 transition-colors">Continuar sin cuenta</p>
               <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ boxShadow: '0 0 0 2px #9ca3af, 0 0 20px #9ca3af' }}></div>
             </button>
           </div>
@@ -585,32 +585,32 @@ export default function Home() {
 
       <main className="flex-1 overflow-y-auto custom-scrollbar bg-slate-50 relative pb-20">
         <div className="sticky top-0 z-20 bg-white/80 backdrop-blur-md px-4 md:px-10 py-4 md:py-6 border-b border-slate-200/60 flex items-center justify-between">
-          <div className="flex items-center gap-2 md:gap-4">
+          <div className="flex items-center gap-[clamp(0.75rem,2vw,1.5rem)]">
             <button
               onClick={() => setPantalla('identificacion')}
-              className="group flex items-center gap-2 md:gap-3 text-white hover:text-primary transition-all"
+              className="group flex items-center gap-[clamp(0.75rem,2vw,1rem)] text-white hover:text-primary transition-all active:scale-95"
             >
-              <div className="w-10 md:w-14 h-10 md:h-14 rounded-full bg-red-600 dark:bg-red-600 flex items-center justify-center group-hover:bg-primary/10">
-                <span className="material-symbols-outlined text-2xl md:text-3xl text-white dark:text-white transition-colors duration-200 group-hover:text-red-800">
+              <div className="w-[clamp(2.5rem,6vw,3.5rem)] h-[clamp(2.5rem,6vw,3.5rem)] rounded-full bg-red-600 dark:bg-red-600 flex items-center justify-center group-hover:bg-primary/10 shadow-lg">
+                <span className="material-symbols-outlined text-[clamp(1.25rem,3vw,1.875rem)] text-white dark:text-white transition-colors duration-200 group-hover:text-red-800">
                   arrow_back
                 </span>
               </div>
             </button>
             <div>
-              <h1 className="text-lg md:text-3xl font-extrabold text-slate-900 tracking-tight">Menú Principal</h1>
-              <p className="text-xs md:text-base text-slate-500 font-medium">Disfruta nuestro menú</p>
+              <h1 className="text-[clamp(1.125rem,3.5vw,1.875rem)] font-extrabold text-slate-900 tracking-tight">Menú Principal</h1>
+              <p className="text-[clamp(0.75rem,1.5vw,1rem)] text-slate-500 font-medium">Disfruta nuestro menú</p>
             </div>
           </div>
         </div>
 
-        <div className="p-4 md:p-10 space-y-8 md:space-y-16">
+        <div className="p-[clamp(1rem,2.5vw,2.5rem)] space-y-[clamp(2rem,5vw,4rem)]">
           {postres.length > 0 && (
             <section className="scroll-mt-28" id="postres">
-              <div className="flex items-center gap-4 mb-6 md:mb-8">
-                <div className="w-1 md:w-1.5 h-6 md:h-8 bg-[#ea2a33] rounded-full"></div>
-                <h2 className="text-lg md:text-2xl font-extrabold text-slate-900">Postres</h2>
+              <div className="flex items-center gap-[clamp(1rem,2vw,1.5rem)] mb-[clamp(1.5rem,3vw,2rem)]">
+                <div className="w-[clamp(0.5rem,1vw,0.75rem)] h-[clamp(1.5rem,3vw,2rem)] bg-[#ea2a33] rounded-full"></div>
+                <h2 className="text-[clamp(1rem,3vw,1.5rem)] font-extrabold text-slate-900">Postres</h2>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+              <div className="grid grid-cols-3 gap-[clamp(1rem,2vw,1.5rem)]">
                 {postres.map(product => (
                   <TarjetaProducto key={product.id} producto={product} onPersonalizar={setProductoSeleccionado} />
                 ))}
@@ -620,11 +620,11 @@ export default function Home() {
 
           {comida.length > 0 && (
             <section className="scroll-mt-28" id="comida">
-              <div className="flex items-center gap-4 mb-6 md:mb-8">
-                <div className="w-1 md:w-1.5 h-6 md:h-8 bg-[#ea2a33] rounded-full"></div>
-                <h2 className="text-lg md:text-2xl font-extrabold text-slate-900">Comida</h2>
+              <div className="flex items-center gap-[clamp(1rem,2vw,1.5rem)] mb-[clamp(1.5rem,3vw,2rem)]">
+                <div className="w-[clamp(0.5rem,1vw,0.75rem)] h-[clamp(1.5rem,3vw,2rem)] bg-[#ea2a33] rounded-full"></div>
+                <h2 className="text-[clamp(1rem,3vw,1.5rem)] font-extrabold text-slate-900">Comida</h2>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+              <div className="grid grid-cols-3 gap-[clamp(1rem,2vw,1.5rem)]">
                 {comida.map(product => (
                   <TarjetaProducto key={product.id} producto={product} onPersonalizar={setProductoSeleccionado} />
                 ))}
@@ -634,11 +634,11 @@ export default function Home() {
 
           {bebidasFrias.length > 0 && (
             <section className="scroll-mt-28" id="frios">
-              <div className="flex items-center gap-4 mb-6 md:mb-8">
-                <div className="w-1 md:w-1.5 h-6 md:h-8 bg-[#ea2a33] rounded-full"></div>
-                <h2 className="text-lg md:text-2xl font-extrabold text-slate-900">Bebidas Frías</h2>
+              <div className="flex items-center gap-[clamp(1rem,2vw,1.5rem)] mb-[clamp(1.5rem,3vw,2rem)]">
+                <div className="w-[clamp(0.5rem,1vw,0.75rem)] h-[clamp(1.5rem,3vw,2rem)] bg-[#ea2a33] rounded-full"></div>
+                <h2 className="text-[clamp(1rem,3vw,1.5rem)] font-extrabold text-slate-900">Bebidas Frías</h2>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+              <div className="grid grid-cols-3 gap-[clamp(1rem,2vw,1.5rem)]">
                 {bebidasFrias.map(product => (
                   <TarjetaProducto key={product.id} producto={product} onPersonalizar={setProductoSeleccionado} />
                 ))}
@@ -648,11 +648,11 @@ export default function Home() {
 
           {bebidasCalientes.length > 0 && (
             <section className="scroll-mt-28" id="cafe">
-              <div className="flex items-center gap-4 mb-6 md:mb-8">
-                <div className="w-1 md:w-1.5 h-6 md:h-8 bg-[#ea2a33] rounded-full"></div>
-                <h2 className="text-lg md:text-2xl font-extrabold text-slate-900">Bebidas Calientes</h2>
+              <div className="flex items-center gap-[clamp(1rem,2vw,1.5rem)] mb-[clamp(1.5rem,3vw,2rem)]">
+                <div className="w-[clamp(0.5rem,1vw,0.75rem)] h-[clamp(1.5rem,3vw,2rem)] bg-[#ea2a33] rounded-full"></div>
+                <h2 className="text-[clamp(1rem,3vw,1.5rem)] font-extrabold text-slate-900">Bebidas Calientes</h2>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+              <div className="grid grid-cols-3 gap-[clamp(1rem,2vw,1.5rem)]">
                 {bebidasCalientes.map(product => (
                   <TarjetaProducto key={product.id} producto={product} onPersonalizar={setProductoSeleccionado} />
                 ))}
@@ -661,11 +661,11 @@ export default function Home() {
           )}
         </div>
 
-        <div className="p-4 md:p-10 flex items-center justify-end gap-2 text-slate-300">
-          <svg className="w-4 md:w-6 h-4 md:h-6 fill-current" viewBox="0 0 24 24">
+        <div className="p-[clamp(1rem,2.5vw,2.5rem)] flex items-center justify-end gap-[clamp(0.5rem,1vw,0.75rem)] text-slate-300">
+          <svg className="w-[clamp(1rem,2vw,1.5rem)] h-[clamp(1rem,2vw,1.5rem)] fill-current" viewBox="0 0 24 24">
             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
           </svg>
-          <span className="font-black text-xs md:text-sm tracking-widest uppercase">CAFFENIO</span>
+          <span className="font-black text-[clamp(0.65rem,1.25vw,0.875rem)] tracking-widest uppercase">CAFFENIO</span>
         </div>
       </main>
 
@@ -729,95 +729,95 @@ interface ModalMetodosPagoProps {
 
 function ModalMetodosPago({ onClose, onSeleccionar, total, items }: ModalMetodosPagoProps) {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
-      <div className="flex h-[800px] w-[1280px] bg-white dark:bg-slate-950 shadow-2xl overflow-hidden relative">
-        <div className="absolute top-0 left-0 right-0 h-1.5 flex">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-[clamp(0.5rem,2vw,1rem)]">
+      <div className="flex h-[clamp(30rem,90vh,50rem)] w-[clamp(20rem,95vw,80rem)] bg-white dark:bg-slate-950 shadow-2xl overflow-hidden relative">
+        <div className="absolute top-0 left-0 right-0 h-[clamp(0.2rem,0.4vw,0.6rem)] flex">
           <div className="w-4/5 bg-[#ea2a33]"></div>
           <div className="flex-1 bg-slate-200 dark:bg-slate-800"></div>
         </div>
 
-        <aside className="w-[380px] border-r border-slate-200 dark:border-black flex flex-col h-full bg-white dark:bg-white">
-          <div className="p-8">
-            <button onClick={onClose} className="group flex items-center gap-3 text-white hover:text-primary transition-all mb-6">
-              <div className="w-14 h-14 rounded-full bg-red-600 dark:bg-red-600 flex items-center justify-center group-hover:bg-primary/10">
-                <span className="material-symbols-outlined text-3xl text-white dark:text-white transition-colors duration-200 group-hover:text-red-800">
+        <aside className="w-[clamp(15rem,30vw,20rem)] border-r border-slate-200 dark:border-black flex flex-col h-full bg-white dark:bg-white">
+          <div className="p-[clamp(1rem,2vw,2rem)]">
+            <button onClick={onClose} className="group flex items-center gap-[clamp(0.5rem,1vw,0.75rem)] text-white hover:text-primary transition-all mb-[clamp(1rem,2vw,1.5rem)]">
+              <div className="w-[clamp(2rem,4vw,3.5rem)] h-[clamp(2rem,4vw,3.5rem)] rounded-full bg-red-600 dark:bg-red-600 flex items-center justify-center group-hover:bg-primary/10">
+                <span className="material-symbols-outlined text-[clamp(1.25rem,2.5vw,1.875rem)] text-white dark:text-white transition-colors duration-200 group-hover:text-red-800">
                   arrow_back
                 </span>
               </div>
-              <span className="font-bold text-xl uppercase tracking-wider text-slate-900 dark:text-black group-hover:text-primary transition-colors">
+              <span className="font-bold text-[clamp(0.875rem,1.75vw,1rem)] uppercase tracking-wider text-slate-900 dark:text-black group-hover:text-primary transition-colors">
                 Regresar
               </span>
             </button>
-            <div className="flex items-center gap-3 mb-2 text-b">
-              <span className="material-symbols-outlined text-[#ea2a33] text-3xl">receipt_long</span>
-              <h2 className="text-2xl font-extrabold tracking-tight text-black">Resumen</h2>
+            <div className="flex items-center gap-[clamp(0.5rem,1vw,0.75rem)] mb-[clamp(0.25rem,0.75vw,0.5rem)] text-slate-900">
+              <span className="material-symbols-outlined text-[#ea2a33] text-[clamp(1.5rem,2.5vw,1.875rem)]">receipt_long</span>
+              <h2 className="text-[clamp(1.25rem,2.5vw,1.5rem)] font-extrabold tracking-tight text-slate-900">Resumen</h2>
             </div>
           </div>
-          <div className="flex-1 overflow-y-auto px-8 space-y-2">
+          <div className="flex-1 overflow-y-auto px-[clamp(1rem,2vw,2rem)] space-y-[clamp(0.25rem,0.5vw,0.5rem)]">
             {items.map((item, idx) => (
-              <div key={idx} className="flex justify-between items-center py-2 border-b border-slate-100 dark:border-slate-800">
+              <div key={idx} className="flex justify-between items-center py-[clamp(0.25rem,0.75vw,0.5rem)] border-b border-slate-100 dark:border-slate-800">
                 <div className="flex flex-col">
-                  <span className="font-bold text-slate-800 uppercase text-sm tracking-tight">
+                  <span className="font-bold text-slate-800 uppercase text-[clamp(0.65rem,1.25vw,0.875rem)] tracking-tight">
                     {item.nombre} x{item.cantidad}
                   </span>
-                  {item.tamanoSeleccionado && <span className="text-xs text-slate-900">{item.tamanoSeleccionado}</span>}
-                  {item.lecheSeleccionada && <span className="text-xs text-slate-900">{item.lecheSeleccionada}</span>}
+                  {item.tamanoSeleccionado && <span className="text-[clamp(0.55rem,1vw,0.7rem)] text-slate-900">{item.tamanoSeleccionado}</span>}
+                  {item.lecheSeleccionada && <span className="text-[clamp(0.55rem,1vw,0.7rem)] text-slate-900">{item.lecheSeleccionada}</span>}
                 </div>
-                <span className="font-bold text-black dark:text-red-600 text-lg">${(item.precio * item.cantidad).toFixed(2)}</span>
+                <span className="font-bold text-slate-900 text-[clamp(0.875rem,1.5vw,1.125rem)]">${(item.precio * item.cantidad).toFixed(2)}</span>
               </div>
             ))}
           </div>
-          <div className="p-6">
-            <div className="bg-[#ea2a33] rounded-3xl p-8 text-white shadow-xl shadow-[#ea2a33]/30">
-              <p className="text-white/80 font-bold uppercase tracking-[0.2em] text-sm mb-2">Total a Pagar</p>
-              <div className="flex items-baseline gap-1">
-                <span className="text-3xl font-bold">$</span>
-                <span className="text-6xl font-black tracking-tighter">{total.toFixed(2)}</span>
+          <div className="p-[clamp(1rem,1.5vw,1.5rem)]">
+            <div className="bg-[#ea2a33] rounded-3xl p-[clamp(1rem,2vw,2rem)] text-white shadow-xl shadow-[#ea2a33]/30">
+              <p className="text-white/80 font-bold uppercase tracking-[0.2em] text-[clamp(0.65rem,1.25vw,0.875rem)] mb-[clamp(0.25rem,0.75vw,0.5rem)]">Total a Pagar</p>
+              <div className="flex items-baseline gap-[clamp(0.15rem,0.3vw,0.35rem)]">
+                <span className="text-[clamp(1.5rem,2.5vw,1.875rem)] font-bold">$</span>
+                <span className="text-[clamp(2rem,6vw,3rem)] font-black tracking-tighter">{total.toFixed(2)}</span>
               </div>
             </div>
           </div>
-          <div className="p-8 flex items-center justify-between opacity-40">
-            <div className="flex items-center gap-1">
-              <div className="w-8 h-8 items-center justify-center">
+          <div className="p-[clamp(1rem,2vw,2rem)] flex items-center justify-between opacity-40">
+            <div className="flex items-center gap-[clamp(0.15rem,0.3vw,0.35rem)]">
+              <div className="w-[clamp(1.5rem,3vw,2rem)] h-[clamp(1.5rem,3vw,2rem)] flex items-center justify-center">
                 <img src="/logo.png" alt="Logo" className="w-full h-full object-cover" />
               </div>
-              <span className="font-black text-lg tracking-tighter uppercase italic text-slate-800">Caffenio</span>
+              <span className="font-black text-[clamp(0.75rem,1.5vw,1rem)] tracking-tighter uppercase italic text-slate-800">Caffenio</span>
             </div>
-            <span className="text-xs font-bold">POS-04</span>
+            <span className="text-[clamp(0.55rem,1vw,0.7rem)] font-bold">POS-04</span>
           </div>
         </aside>
 
-        <main className="flex-1 flex flex-col p-12 bg-slate-50">
-          <header className="mb-12">
-            <h1 className="text-5xl font-black tracking-tight mb-4 text-slate-900">Selecciona tu método de pago</h1>
-            <p className="text-2xl text-slate-500 font-medium italic">¿Cómo prefieres finalizar tu orden?</p>
+        <main className="flex-1 flex flex-col p-[clamp(1rem,3vw,3rem)] bg-slate-50">
+          <header className="mb-[clamp(1.5rem,4vw,3rem)]">
+            <h1 className="text-[clamp(2rem,8vw,3.125rem)] font-black tracking-tight mb-[clamp(0.75rem,1.5vw,1rem)] text-slate-900">Selecciona tu método de pago</h1>
+            <p className="text-[clamp(1rem,3vw,1.5rem)] text-slate-500 font-medium italic">¿Cómo prefieres finalizar tu orden?</p>
           </header>
-          <div className="grid grid-cols-3 gap-8 flex-1">
-            <button onClick={onSeleccionar} className="bg-white rounded-3xl p-10 flex flex-col items-center justify-between border-4 border-transparent hover:border-[#ea2a33]/40 hover:shadow-2xl transition-all group">
-              <div className="w-32 h-32 rounded-full bg-slate-100 flex items-center justify-center text-[#ea2a33] group-hover:scale-110 transition-transform">
-                <span className="material-symbols-outlined text-7xl">credit_card</span>
+          <div className="grid grid-cols-3 gap-[clamp(1rem,2vw,2rem)] flex-1">
+            <button onClick={onSeleccionar} className="bg-white rounded-3xl p-[clamp(1rem,2vw,2.5rem)] flex flex-col items-center justify-between border-4 border-transparent hover:border-[#ea2a33]/40 hover:shadow-2xl transition-all group">
+              <div className="w-[clamp(5rem,10vw,8rem)] h-[clamp(5rem,10vw,8rem)] rounded-full bg-slate-100 flex items-center justify-center text-[#ea2a33] group-hover:scale-110 transition-transform">
+                <span className="material-symbols-outlined text-[clamp(2.75rem,6vw,4.375rem)]">credit_card</span>
               </div>
-              <div className="text-center space-y-4">
-                <h3 className="text-3xl font-black leading-tight text-slate-800">Tarjeta de Crédito/Débito</h3>
-                <p className="text-slate-500 font-medium">Pago rápido y seguro</p>
-              </div>
-            </button>
-            <button onClick={onSeleccionar} className="bg-white rounded-3xl p-10 flex flex-col items-center justify-between border-4 border-transparent hover:border-[#ea2a33]/40 hover:shadow-2xl transition-all group">
-              <div className="w-32 h-32 rounded-full bg-slate-100 flex items-center justify-center text-[#ea2a33] group-hover:scale-110 transition-transform">
-                <span className="material-symbols-outlined text-7xl">storefront</span>
-              </div>
-              <div className="text-center space-y-4">
-                <h3 className="text-3xl font-black leading-tight text-slate-800">Pago en Efectivo</h3>
-                <p className="text-slate-500 font-medium">Paga al recoger tu pedido</p>
+              <div className="text-center space-y-[clamp(0.75rem,1.5vw,1rem)]">
+                <h3 className="text-[clamp(1.25rem,2.5vw,1.875rem)] font-black leading-tight text-slate-800">Tarjeta de Crédito/Débito</h3>
+                <p className="text-slate-500 font-medium text-[clamp(0.875rem,1.5vw,1rem)]">Pago rápido y seguro</p>
               </div>
             </button>
-            <button onClick={onSeleccionar} className="bg-white rounded-3xl p-10 flex flex-col items-center justify-between border-4 border-transparent hover:border-[#ea2a33]/40 hover:shadow-2xl transition-all group">
-              <div className="w-32 h-32 rounded-full bg-slate-100 flex items-center justify-center text-[#ea2a33] group-hover:scale-110 transition-transform">
-                <span className="material-symbols-outlined text-7xl" style={{ fontVariationSettings: "'FILL' 1" }}>stars</span>
+            <button onClick={onSeleccionar} className="bg-white rounded-3xl p-[clamp(1rem,2vw,2.5rem)] flex flex-col items-center justify-between border-4 border-transparent hover:border-[#ea2a33]/40 hover:shadow-2xl transition-all group">
+              <div className="w-[clamp(5rem,10vw,8rem)] h-[clamp(5rem,10vw,8rem)] rounded-full bg-slate-100 flex items-center justify-center text-[#ea2a33] group-hover:scale-110 transition-transform">
+                <span className="material-symbols-outlined text-[clamp(2.75rem,6vw,4.375rem)]">storefront</span>
               </div>
-              <div className="text-center space-y-4">
-                <h3 className="text-3xl font-black leading-tight text-slate-800">Puntos App</h3>
-                <p className="text-slate-500 font-medium">Usa tus puntos acumulados</p>
+              <div className="text-center space-y-[clamp(0.75rem,1.5vw,1rem)]">
+                <h3 className="text-[clamp(1.25rem,2.5vw,1.875rem)] font-black leading-tight text-slate-800">Pago en Efectivo</h3>
+                <p className="text-slate-500 font-medium text-[clamp(0.875rem,1.5vw,1rem)]">Paga al recoger tu pedido</p>
+              </div>
+            </button>
+            <button onClick={onSeleccionar} className="bg-white rounded-3xl p-[clamp(1rem,2vw,2.5rem)] flex flex-col items-center justify-between border-4 border-transparent hover:border-[#ea2a33]/40 hover:shadow-2xl transition-all group">
+              <div className="w-[clamp(5rem,10vw,8rem)] h-[clamp(5rem,10vw,8rem)] rounded-full bg-slate-100 flex items-center justify-center text-[#ea2a33] group-hover:scale-110 transition-transform">
+                <span className="material-symbols-outlined text-[clamp(2.75rem,6vw,4.375rem)]" style={{ fontVariationSettings: "'FILL' 1" }}>stars</span>
+              </div>
+              <div className="text-center space-y-[clamp(0.75rem,1.5vw,1rem)]">
+                <h3 className="text-[clamp(1.25rem,2.5vw,1.875rem)] font-black leading-tight text-slate-800">Puntos App</h3>
+                <p className="text-slate-500 font-medium text-[clamp(0.875rem,1.5vw,1rem)]">Usa tus puntos acumulados</p>
               </div>
             </button>
           </div>
@@ -833,27 +833,27 @@ interface ModalExitoProps {
 
 function ModalExito({ onFinalizar }: ModalExitoProps) {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
-      <div className="w-[1280px] h-[800px] bg-white shadow-2xl relative flex flex-col items-center justify-center overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-[clamp(0.5rem,2vw,1rem)]">
+      <div className="w-[clamp(20rem,95vw,80rem)] h-[clamp(30rem,90vh,50rem)] bg-white shadow-2xl relative flex flex-col items-center justify-center overflow-hidden">
         <div className="flex flex-col items-center text-center animate-in fade-in zoom-in duration-700">
-          <div className="w-48 h-48 bg-white rounded-full flex items-center justify-center shadow-xl border-8 border-green-500 mb-10">
-            <span className="material-symbols-outlined text-[120px] text-green-500">check_circle</span>
+          <div className="w-[clamp(6rem,20vw,12rem)] h-[clamp(6rem,20vw,12rem)] bg-white rounded-full flex items-center justify-center shadow-xl border-8 border-green-500 mb-[clamp(1.5rem,4vw,2.5rem)]">
+            <span className="material-symbols-outlined text-[clamp(4rem,15vw,7.5rem)] text-green-500">check_circle</span>
           </div>
-          <h1 className="text-6xl font-black text-slate-900 mb-6 tracking-tight">¡Tu pedido fue exitoso!</h1>
-          <p className="text-3xl text-slate-500 font-medium max-w-2xl leading-relaxed">Gracias por tu preferencia</p>
+          <h1 className="text-[clamp(2rem,8vw,3.75rem)] font-black text-slate-900 mb-[clamp(1rem,3vw,1.5rem)] tracking-tight">¡Tu pedido fue exitoso!</h1>
+          <p className="text-[clamp(1rem,4vw,1.875rem)] text-slate-500 font-medium max-w-2xl leading-relaxed">Gracias por tu preferencia</p>
         </div>
-        <div className="absolute bottom-24 w-full flex justify-center px-12">
-          <button onClick={onFinalizar} className="w-full max-w-xl py-8 bg-green-500 hover:bg-green-600 text-white rounded-2xl shadow-lg shadow-green-500/30 transition-all active:scale-95 flex items-center justify-center gap-4 group">
-            <span className="text-4xl font-extrabold tracking-wide uppercase">Finalizar</span>
-            <span className="material-symbols-outlined text-4xl group-hover:translate-x-2 transition-transform">arrow_forward</span>
+        <div className="absolute bottom-[clamp(3rem,8vw,6rem)] w-full flex justify-center px-[clamp(1rem,4vw,3rem)]\">
+          <button onClick={onFinalizar} className="w-full max-w-xl py-[clamp(1rem,2.5vw,2rem)] bg-green-500 hover:bg-green-600 text-white rounded-2xl shadow-lg shadow-green-500/30 transition-all active:scale-95 flex items-center justify-center gap-[clamp(0.5rem,1vw,1rem)] group">
+            <span className="text-[clamp(1rem,3vw,1.75rem)] font-extrabold tracking-wide uppercase">Finalizar</span>
+            <span className="material-symbols-outlined text-[clamp(1rem,3vw,1.75rem)] group-hover:translate-x-2 transition-transform">arrow_forward</span>
           </button>
         </div>
-        <div className="absolute bottom-8 right-12 flex flex-col items-end opacity-40">
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 items-center justify-center">
+        <div className="absolute bottom-[clamp(0.5rem,1.5vw,2rem)] right-[clamp(0.75rem,2vw,3rem)] flex flex-col items-end opacity-40\">
+          <div className="flex items-center gap-[clamp(0.25rem,0.5vw,0.75rem)]\">
+            <div className="w-[clamp(1.5rem,3vw,2.5rem)] h-[clamp(1.5rem,3vw,2.5rem)] items-center justify-center\">
               <img src="/logo.png" alt="Logo" className="w-full h-full object-cover" />
             </div>
-            <span className="font-black text-2xl tracking-tighter uppercase italic text-slate-800">Caffenio</span>
+            <span className="font-black text-[clamp(0.875rem,2vw,1.25rem)] tracking-tighter uppercase italic text-slate-800\">Caffenio</span>
           </div>
         </div>
       </div>
