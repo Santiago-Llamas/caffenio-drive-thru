@@ -46,29 +46,104 @@ export default function ModalIA({
   };
 
   const iniciarVoz = () => {
+    // Validar soporte
     if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
       alert('Tu navegador no soporta reconocimiento de voz. Prueba con Chrome, Edge o Safari.');
       return;
     }
+
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     const recognition = new SpeechRecognition();
+    
+    // ✅ OPTIMIZACIONES DE CAPTURA DE AUDIO
     recognition.lang = 'es-ES';
-    recognition.continuous = false;
-    recognition.interimResults = false;
-    recognition.maxAlternatives = 1;
+    recognition.continuous = true;  // ✅ Permitir habla continua (no cortar rápido)
+    recognition.interimResults = true;  // ✅ Mostrar resultados intermedios
+    recognition.maxAlternatives = 3;  // ✅ Mejor precisión con múltiples alternativas
+    
+    // ✅ TIMEOUTS EXTENDIDOS
+    (recognition as any).maxDuration = 60000;  // Máximo 60 segundos
+    
+    let textoFinal = '';
+    let intervaloTimeout: NodeJS.Timeout | null = null;
+    let resultadoRecibido = false;
 
     setEscuchando(true);
+
+    // ✅ CAPTURA DE RESULTADOS INTERMEDIOS Y FINALES
     recognition.onresult = (event: any) => {
-      const texto = event.results[0][0].transcript;
-      setConsulta(texto);
-      setEscuchando(false);
+      let textoInterino = '';
+      
+      // Procesar todos los resultados
+      for (let i = event.resultIndex; i < event.results.length; i++) {
+        const transcript = event.results[i][0].transcript;
+        
+        if (event.results[i].isFinal) {
+          // ✅ Resultado final (usuario pausó)
+          textoFinal += transcript + ' ';
+          resultadoRecibido = true;
+        } else {
+          // ✅ Resultado intermedio (usuario sigue hablando)
+          textoInterino += transcript;
+        }
+      }
+
+      // Mostrar texto en tiempo real
+      const textoCombinado = (textoFinal + textoInterino).trim();
+      if (textoCombinado) {
+        setConsulta(textoCombinado);
+      }
     };
-    recognition.onerror = () => {
+
+    // ✅ MANEJO DE ERRORES MEJORADO
+    recognition.onerror = (event: any) => {
+      console.error('Error de reconocimiento:', event.error);
+      
+      const mensajes: { [key: string]: string } = {
+        'no-speech': 'No se detectó audio. Habla más cerca del micrófono.',
+        'audio-capture': 'Error al acceder al micrófono. Verifica los permisos.',
+        'network': 'Error de red. Intenta de nuevo.',
+        'permission-denied': 'Permiso de micrófono denegado.',
+      };
+      
+      const mensaje = mensajes[event.error] || `Error: ${event.error}. Intenta de nuevo.`;
+      
+      if (event.error !== 'no-speech') {
+        alert(mensaje);
+      }
+      
       setEscuchando(false);
-      alert('No se pudo capturar la voz. Permite el micrófono e intenta de nuevo.');
+      if (intervaloTimeout) clearTimeout(intervaloTimeout);
     };
-    recognition.onend = () => setEscuchando(false);
-    recognition.start();
+
+    // ✅ FINALIZACIÓN AUTOMÁTICA CON TIMEOUT
+    recognition.onend = () => {
+      setEscuchando(false);
+      if (intervaloTimeout) clearTimeout(intervaloTimeout);
+      
+      // Si capturó texto, usar ese
+      if (textoFinal.trim()) {
+        setConsulta(textoFinal.trim());
+      }
+    };
+
+    // ✅ TIMEOUT PARA EVITAR ESCUCHA INFINITA (30 segundos)
+    intervaloTimeout = setTimeout(() => {
+      recognition.stop();
+      if (textoFinal.trim()) {
+        setConsulta(textoFinal.trim());
+      }
+      setEscuchando(false);
+    }, 30000);
+
+    // ✅ INICIAR CON ESTABILIDAD
+    try {
+      recognition.start();
+    } catch (error) {
+      console.error('Error al iniciar reconocimiento:', error);
+      setEscuchando(false);
+      alert('No se pudo iniciar el reconocimiento. Intenta de nuevo.');
+    }
   };
 
   const toggleSeleccion = (id: number) => {
