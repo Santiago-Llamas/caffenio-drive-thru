@@ -21,7 +21,10 @@ app.add_middleware(
         "http://localhost:3000",
         "http://127.0.0.1:3000",
         "https://caffenio-drive-thru.vercel.app",
-        "https://caffenio.koyeb.app"
+        "https://www.caffenio-drive-thru.vercel.app",
+        "https://caffenio.koyeb.app",
+        "https://www.caffenio.koyeb.app",
+        "https://caffenio-frontend.koyeb.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
