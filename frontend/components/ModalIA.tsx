@@ -29,7 +29,6 @@ export default function ModalIA({
   const [recomendaciones, setRecomendaciones] = useState<Producto[]>([]);
   const [cargando, setCargando] = useState(false);
   const [escuchando, setEscuchando] = useState(false);
-  const [seleccionados, setSeleccionados] = useState<Set<number>>(new Set());
   const recognitionRef = useRef<any>(null);
   const intervaloTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -181,31 +180,9 @@ export default function ModalIA({
     }
   };
 
-  const toggleSeleccion = (id: number) => {
-    const newSet = new Set(seleccionados);
-    if (newSet.has(id)) newSet.delete(id);
-    else newSet.add(id);
-    setSeleccionados(newSet);
-  };
-
-  const seleccionarTodos = () => {
-    if (seleccionados.size === recomendaciones.length) {
-      setSeleccionados(new Set());
-    } else {
-      setSeleccionados(new Set(recomendaciones.map((p) => p.id)));
-    }
-  };
-
-  const agregarSeleccionados = () => {
-    if (seleccionados.size === 0) return;
-    const productosSeleccionados = recomendaciones.filter((p) => seleccionados.has(p.id));
-    if (onAgregarMultiples) {
-      onAgregarMultiples(productosSeleccionados);
-    } else {
-      productosSeleccionados.forEach((p) => onAgregar(p));
-    }
-    setSeleccionados(new Set()); // Opcional: limpiar selección después de agregar
-  };
+  const toggleSeleccion = () => {};
+  const seleccionarTodos = () => {};
+  const agregarSeleccionados = () => {};
 
   // Calcular subtotal del carrito actual
   const subtotal = carritoActual.reduce(
@@ -293,23 +270,10 @@ export default function ModalIA({
               {/* Recommendations Section */}
               {recomendaciones.length > 0 && (
                 <div className="space-y-[clamp(1rem,3vw,1.5rem)]">
-                  <div className="flex items-center justify-between">
+                  <div>
                     <h3 className="text-slate-900 font-bold text-[clamp(1rem,2.5vw,1.25rem)]">
                       Recomendaciones para ti ({recomendaciones.length})
                     </h3>
-                    <label className="flex items-center gap-[clamp(0.5rem,1vw,0.75rem)] cursor-pointer group">
-                      <span className="text-[clamp(0.75rem,1.5vw,1rem)] font-medium text-slate-600 group-hover:text-[#e42528] transition-colors">
-                        {seleccionados.size === recomendaciones.length
-                          ? 'Deseleccionar todos'
-                          : 'Seleccionar todos'}
-                      </span>
-                      <input
-                        type="checkbox"
-                        checked={seleccionados.size === recomendaciones.length && recomendaciones.length > 0}
-                        onChange={seleccionarTodos}
-                        className="rounded border-slate-300 text-[#e42528] focus:ring-[#e42528] w-[clamp(1.25rem,2vw,1.25rem)] h-[clamp(1.25rem,2vw,1.25rem)]"
-                      />
-                    </label>
                   </div>
 
                   {/* Product Grid */}
@@ -317,16 +281,8 @@ export default function ModalIA({
                     {recomendaciones.map((prod) => (
                       <div
                         key={prod.id}
-                        className="bg-white rounded-xl p-[clamp(0.75rem,1.5vw,0.75rem)] border border-slate-100 shadow-sm hover:shadow-md transition-shadow group relative"
+                        className="bg-white rounded-xl p-[clamp(1rem,2vw,1rem)] border border-slate-100 shadow-sm hover:shadow-md transition-shadow group flex flex-col"
                       >
-                        <div className="absolute top-[clamp(1rem,2vw,1rem)] right-[clamp(1rem,2vw,1rem)] z-10">
-                          <input
-                            type="checkbox"
-                            checked={seleccionados.has(prod.id)}
-                            onChange={() => toggleSeleccion(prod.id)}
-                            className="rounded border-slate-300 text-[#e42528] focus:ring-[#e42528] w-[clamp(1.5rem,3vw,1.5rem)] h-[clamp(1.5rem,3vw,1.5rem)] shadow-sm"
-                          />
-                        </div>
                         <div className="aspect-square rounded-lg bg-slate-100 mb-[clamp(0.75rem,2vw,0.75rem)] overflow-hidden relative">
                           <img
                             src={prod.imagen}
