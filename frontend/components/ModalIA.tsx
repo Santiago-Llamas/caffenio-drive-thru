@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Producto, ItemCarrito } from '../data/productos';
 
 declare global {
@@ -30,6 +30,24 @@ export default function ModalIA({
   const [cargando, setCargando] = useState(false);
   const [escuchando, setEscuchando] = useState(false);
   const [seleccionados, setSeleccionados] = useState<Set<number>>(new Set());
+  const recognitionRef = useRef<any>(null);
+  const intervaloTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // ✅ LIMPIAR RECURSOS AL CERRAR EL MODAL
+  useEffect(() => {
+    return () => {
+      if (recognitionRef.current) {
+        try {
+          recognitionRef.current.abort();
+        } catch (error) {
+          console.error('Error al abortar recognition:', error);
+        }
+      }
+      if (intervaloTimeoutRef.current) {
+        clearTimeout(intervaloTimeoutRef.current);
+      }
+    };
+  }, []);
 
   const buscarRecomendaciones = async () => {
     if (!consulta.trim()) return;
@@ -46,6 +64,17 @@ export default function ModalIA({
   };
 
   const iniciarVoz = () => {
+    // ✅ SI YA ESTÁ ESCUCHANDO, DETENER
+    if (escuchando && recognitionRef.current) {
+      recognitionRef.current.stop();
+      setEscuchando(false);
+      if (intervaloTimeoutRef.current) {
+        clearTimeout(intervaloTimeoutRef.current);
+        intervaloTimeoutRef.current = null;
+      }
+      return;
+    }
+
     // Validar soporte
     if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
       alert('Tu navegador no soporta reconocimiento de voz. Prueba con Chrome, Edge o Safari.');
@@ -54,6 +83,7 @@ export default function ModalIA({
 
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     const recognition = new SpeechRecognition();
+    recognitionRef.current = recognition; // ✅ GUARDAR REFERENCIA
     
     // ✅ OPTIMIZACIONES DE CAPTURA DE AUDIO
     recognition.lang = 'es-ES';
@@ -65,7 +95,6 @@ export default function ModalIA({
     (recognition as any).maxDuration = 60000;  // Máximo 60 segundos
     
     let textoFinal = '';
-    let intervaloTimeout: NodeJS.Timeout | null = null;
     let resultadoRecibido = false;
 
     setEscuchando(true);
@@ -113,13 +142,19 @@ export default function ModalIA({
       }
       
       setEscuchando(false);
-      if (intervaloTimeout) clearTimeout(intervaloTimeout);
+      if (intervaloTimeoutRef.current) {
+        clearTimeout(intervaloTimeoutRef.current);
+        intervaloTimeoutRef.current = null;
+      }
     };
 
     // ✅ FINALIZACIÓN AUTOMÁTICA CON TIMEOUT
     recognition.onend = () => {
       setEscuchando(false);
-      if (intervaloTimeout) clearTimeout(intervaloTimeout);
+      if (intervaloTimeoutRef.current) {
+        clearTimeout(intervaloTimeoutRef.current);
+        intervaloTimeoutRef.current = null;
+      }
       
       // Si capturó texto, usar ese
       if (textoFinal.trim()) {
@@ -128,7 +163,7 @@ export default function ModalIA({
     };
 
     // ✅ TIMEOUT PARA EVITAR ESCUCHA INFINITA (30 segundos)
-    intervaloTimeout = setTimeout(() => {
+    intervaloTimeoutRef.current = setTimeout(() => {
       recognition.stop();
       if (textoFinal.trim()) {
         setConsulta(textoFinal.trim());
@@ -223,15 +258,16 @@ export default function ModalIA({
 
                 <button
                   onClick={iniciarVoz}
-                  disabled={escuchando}
                   className={`w-[clamp(3rem,8vw,4rem)] h-[clamp(3rem,8vw,4rem)] rounded-xl flex items-center justify-center transition-all active:scale-95 ${
                     escuchando
-                      ? 'bg-[#e42528] text-white animate-pulse'
+                      ? 'bg-[#e42528] text-white animate-pulse shadow-lg shadow-[#e42528]/50'
                       : 'bg-[#e42528] text-white shadow-lg shadow-[#e42528]/30 hover:bg-[#e42528]/90'
                   }`}
-                  title="Habla para buscar"
+                  title={escuchando ? 'Click para detener' : 'Habla para buscar'}
                 >
-                  <span className="material-symbols-outlined text-[clamp(1.5rem,3vw,1.875rem)]">mic</span>
+                  <span className="material-symbols-outlined text-[clamp(1.5rem,3vw,1.875rem)]">
+                    {escuchando ? 'mic' : 'mic'}
+                  </span>
                 </button>
 
                 <button
