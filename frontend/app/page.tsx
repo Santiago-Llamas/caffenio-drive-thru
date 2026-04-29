@@ -610,7 +610,7 @@ export default function Home() {
                 <div className="w-[clamp(0.5rem,1vw,0.75rem)] h-[clamp(1.5rem,3vw,2rem)] bg-[#ea2a33] rounded-full"></div>
                 <h2 className="text-[clamp(1rem,3vw,1.5rem)] font-extrabold text-slate-900">Postres</h2>
               </div>
-              <div className="grid grid-cols-3 gap-[clamp(1rem,2vw,1.5rem)]">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[clamp(0.75rem,2vw,1.5rem)]">
                 {postres.map(product => (
                   <TarjetaProducto key={product.id} producto={product} onPersonalizar={setProductoSeleccionado} />
                 ))}
@@ -624,7 +624,7 @@ export default function Home() {
                 <div className="w-[clamp(0.5rem,1vw,0.75rem)] h-[clamp(1.5rem,3vw,2rem)] bg-[#ea2a33] rounded-full"></div>
                 <h2 className="text-[clamp(1rem,3vw,1.5rem)] font-extrabold text-slate-900">Comida</h2>
               </div>
-              <div className="grid grid-cols-3 gap-[clamp(1rem,2vw,1.5rem)]">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[clamp(0.75rem,2vw,1.5rem)]">
                 {comida.map(product => (
                   <TarjetaProducto key={product.id} producto={product} onPersonalizar={setProductoSeleccionado} />
                 ))}
@@ -638,7 +638,7 @@ export default function Home() {
                 <div className="w-[clamp(0.5rem,1vw,0.75rem)] h-[clamp(1.5rem,3vw,2rem)] bg-[#ea2a33] rounded-full"></div>
                 <h2 className="text-[clamp(1rem,3vw,1.5rem)] font-extrabold text-slate-900">Bebidas Frías</h2>
               </div>
-              <div className="grid grid-cols-3 gap-[clamp(1rem,2vw,1.5rem)]">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[clamp(0.75rem,2vw,1.5rem)]">
                 {bebidasFrias.map(product => (
                   <TarjetaProducto key={product.id} producto={product} onPersonalizar={setProductoSeleccionado} />
                 ))}
@@ -652,7 +652,7 @@ export default function Home() {
                 <div className="w-[clamp(0.5rem,1vw,0.75rem)] h-[clamp(1.5rem,3vw,2rem)] bg-[#ea2a33] rounded-full"></div>
                 <h2 className="text-[clamp(1rem,3vw,1.5rem)] font-extrabold text-slate-900">Bebidas Calientes</h2>
               </div>
-              <div className="grid grid-cols-3 gap-[clamp(1rem,2vw,1.5rem)]">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[clamp(0.75rem,2vw,1.5rem)]">
                 {bebidasCalientes.map(product => (
                   <TarjetaProducto key={product.id} producto={product} onPersonalizar={setProductoSeleccionado} />
                 ))}

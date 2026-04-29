@@ -217,12 +217,12 @@ export default function ModalPersonalizar({
     switch (paso) {
       case 'tamano':
         return (
-          <div className="flex-1 flex flex-col p-[clamp(1.5rem,6vw,3rem)] pt-[clamp(2rem,8vw,4rem)] bg-white">
-            <div className="mb-[clamp(1.5rem,4vw,2.5rem)]">
-              <h1 className="text-[clamp(2rem,10vw,3.5rem)] font-black tracking-tight text-slate-900 mb-[clamp(0.5rem,1.5vw,0.75rem)]">¿De qué tamaño lo prefieres?</h1>
-              <p className="text-[clamp(1rem,3vw,1.25rem)] text-slate-500">Elige la medida ideal para tu café</p>
+          <div className="flex-1 flex flex-col p-[clamp(1rem,4vw,3rem)] pt-[clamp(1.5rem,5vw,4rem)] bg-white overflow-y-auto">
+            <div className="mb-[clamp(1rem,3vw,2.5rem)]">
+              <h1 className="text-[clamp(1.5rem,7vw,3.5rem)] font-black tracking-tight text-slate-900 mb-[clamp(0.5rem,1.5vw,0.75rem)]">¿De qué tamaño?</h1>
+              <p className="text-[clamp(0.875rem,2.5vw,1.25rem)] text-slate-500">Elige la medida ideal para ti</p>
             </div>
-            <div className="grid grid-cols-3 gap-[clamp(0.75rem,2vw,1.5rem)] flex-1 max-h-[450px]">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-[clamp(0.75rem,2.5vw,1.5rem)] flex-1">
               {producto.opciones.tamanos?.map((t) => {
                 const selected = tamano === t;
                 const precioConTamano = producto.precio + (preciosTamano[t] || 0);
@@ -230,10 +230,10 @@ export default function ModalPersonalizar({
                   <button
                     key={t}
                     onClick={() => setTamano(t)}
-                    className={`bg-white rounded-3xl p-[clamp(1rem,3vw,2rem)] flex flex-col items-center justify-between shadow-lg transition-all group relative overflow-hidden ${
+                    className={`bg-white rounded-3xl p-[clamp(1rem,3vw,2.5rem)] flex flex-col items-center justify-between shadow-lg transition-all group relative overflow-hidden active:scale-95 ${
                       selected
-                        ? 'border-4 border-[#ea2a33] shadow-xl'
-                        : 'border-2 border-transparent hover:border-[#ea2a33]'
+                        ? 'border-4 border-[#ea2a33] shadow-xl scale-105'
+                        : 'border-2 border-transparent hover:border-[#ea2a33] hover:scale-105'
                     }`}
                   >
                     {selected && (
@@ -242,24 +242,24 @@ export default function ModalPersonalizar({
                       </div>
                     )}
                     {t === 'mediano' && (
-                      <div className="absolute -top-1 left-1/2 -translate-x-1/2 bg-[#ea2a33] text-white text-[clamp(0.65rem,1vw,0.75rem)] font-black uppercase tracking-[0.2em] px-[clamp(0.75rem,1.5vw,1rem)] py-[clamp(0.25rem,0.5vw,0.35rem)] rounded-b-lg">
+                      <div className="absolute -top-1 left-1/2 -translate-x-1/2 bg-[#ea2a33] text-white text-[clamp(0.65rem,1.5vw,0.75rem)] font-black uppercase tracking-[0.2em] px-[clamp(0.75rem,1.5vw,1rem)] py-[clamp(0.25rem,0.5vw,0.35rem)] rounded-b-lg">
                         Recomendado
                       </div>
                     )}
-                    <div className="flex-1 flex items-end mb-[clamp(1rem,3vw,2rem)]">
+                    <div className="flex-1 flex items-end mb-[clamp(1rem,2.5vw,2rem)]">
                       <span
                         className="material-symbols-outlined text-slate-300 group-hover:text-[#ea2a33] transition-colors"
-                        style={{ fontSize: `clamp(4rem, ${t === 'chico' ? '10vw' : t === 'mediano' ? '12vw' : '14vw'}, 8rem)` }}
+                        style={{ fontSize: `clamp(3.5rem, ${t === 'chico' ? '12vw' : t === 'mediano' ? '14vw' : '16vw'}, 8rem)` }}
                       >
                         coffee
                       </span>
                     </div>
-                    <div className="text-center">
-                      <h3 className="text-[clamp(1.5rem,4vw,2.25rem)] font-black mb-[clamp(0.25rem,0.75vw,0.5rem)] capitalize text-slate-900">{t}</h3>
-                      <p className="text-[clamp(0.75rem,1.5vw,0.875rem)] text-slate-500 font-bold uppercase tracking-widest">
+                    <div className="text-center w-full">
+                      <h3 className="text-[clamp(1.25rem,4vw,2.25rem)] font-black mb-[clamp(0.25rem,1vw,0.5rem)] capitalize text-slate-900">{t}</h3>
+                      <p className="text-[clamp(0.65rem,1.5vw,0.875rem)] text-slate-500 font-bold uppercase tracking-widest">
                         {t === 'chico' ? '12 oz / 355 ml' : t === 'mediano' ? '16 oz / 473 ml' : '20 oz / 591 ml'}
                       </p>
-                      <p className="text-[#ea2a33] font-black text-[clamp(1.25rem,3vw,1.75rem)] mt-[clamp(0.75rem,1.5vw,1rem)]">
+                      <p className="text-[#ea2a33] font-black text-[clamp(1rem,2.5vw,1.75rem)] mt-[clamp(0.5rem,1.5vw,1rem)]">
                         ${precioConTamano.toFixed(2)}
                       </p>
                     </div>
@@ -271,20 +271,20 @@ export default function ModalPersonalizar({
         );
       case 'sabor':
         return (
-          <div className="flex-1 flex flex-col p-[clamp(1.5rem,6vw,3rem)] pt-[clamp(2rem,8vw,4rem)] bg-white overflow-y-auto">
-            <header className="mb-[clamp(1.5rem,4vw,2.5rem)]">
-              <h1 className="text-[clamp(2rem,10vw,3.5rem)] font-black tracking-tight text-slate-900 mb-[clamp(0.5rem,1.5vw,0.75rem)]">Elige tu Sabor Favorito</h1>
-              <p className="text-[clamp(1rem,3vw,1.25rem)] text-slate-500">Selecciona el sabor que más te guste</p>
+          <div className="flex-1 flex flex-col p-[clamp(1rem,4vw,3rem)] pt-[clamp(1.5rem,5vw,4rem)] bg-white overflow-y-auto">
+            <header className="mb-[clamp(1rem,3vw,2.5rem)]">
+              <h1 className="text-[clamp(1.5rem,7vw,3.5rem)] font-black tracking-tight text-slate-900 mb-[clamp(0.5rem,1.5vw,0.75rem)]">Elige tu Sabor</h1>
+              <p className="text-[clamp(0.875rem,2.5vw,1.25rem)] text-slate-500">Personaliza tu bebida</p>
             </header>
-            <div className="grid grid-cols-3 gap-[clamp(0.75rem,2vw,1.5rem)]">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-[clamp(0.75rem,2vw,1rem)]">
               {sabores.map(s => (
                 <button
                   key={s.id}
                   onClick={() => setSabor(s.nombre)}
-                  className={`bg-white p-[clamp(0.75rem,1.5vw,1.5rem)] rounded-2xl border-2 flex flex-col items-center text-center transition-all group relative ${
+                  className={`bg-white p-[clamp(0.75rem,2vw,1.5rem)] rounded-2xl border-2 flex flex-col items-center text-center transition-all group relative active:scale-95 ${
                     sabor === s.nombre
-                      ? 'border-[#ea2a33] shadow-md'
-                      : 'border-transparent hover:border-[#ea2a33]'
+                      ? 'border-[#ea2a33] shadow-md scale-105'
+                      : 'border-transparent hover:border-[#ea2a33] hover:scale-105'
                   }`}
                 >
                   {sabor === s.nombre && (
@@ -293,20 +293,20 @@ export default function ModalPersonalizar({
                     </div>
                   )}
                   <div
-                    className={`w-[clamp(2.5rem,5vw,4rem)] h-[clamp(2.5rem,5vw,4rem)] rounded-full flex items-center justify-center mb-[clamp(0.75rem,1.5vw,1rem)] ${
+                    className={`w-[clamp(2.5rem,6vw,4rem)] h-[clamp(2.5rem,6vw,4rem)] rounded-full flex items-center justify-center mb-[clamp(0.75rem,2vw,1rem)] ${
                       sabor === s.nombre ? 'bg-[#ea2a33]' : 'bg-[#ea2a33]/5 group-hover:scale-110 transition-transform'
                     }`}
                   >
                     <span
-                      className={`material-symbols-outlined text-[clamp(1.75rem,3.5vw,2.25rem)] ${
+                      className={`material-symbols-outlined text-[clamp(1.5rem,3.5vw,2.25rem)] ${
                         sabor === s.nombre ? 'text-white' : 'text-[#ea2a33]'
                       }`}
                     >
                       {s.icono}
                     </span>
                   </div>
-                  <span className="text-[clamp(0.875rem,1.75vw,1.125rem)] font-bold text-slate-900">{s.nombre}</span>
-                  <span className="text-[clamp(0.65rem,1.25vw,0.85rem)] text-slate-500 font-medium mt-[clamp(0.25rem,0.5vw,0.5rem)]">{s.descripcion}</span>
+                  <span className="text-[clamp(0.75rem,1.5vw,1.125rem)] font-bold text-slate-900">{s.nombre}</span>
+                  <span className="text-[clamp(0.6rem,1vw,0.85rem)] text-slate-500 font-medium mt-[clamp(0.25rem,0.5vw,0.5rem)]">{s.descripcion}</span>
                 </button>
               ))}
             </div>
@@ -314,39 +314,39 @@ export default function ModalPersonalizar({
         );
       case 'toppings':
         return (
-          <div className="flex-1 flex flex-col p-[clamp(1.5rem,6vw,3rem)] pt-[clamp(2rem,8vw,4rem)] bg-white overflow-y-auto">
-            <header className="mb-[clamp(1.5rem,4vw,2.5rem)]">
-              <h1 className="text-[clamp(2rem,10vw,3.5rem)] font-black tracking-tight text-slate-900 mb-[clamp(0.5rem,1.5vw,0.75rem)]">Personaliza tu bebida</h1>
-              <p className="text-[clamp(1rem,3vw,1.25rem)] text-slate-500">Selecciona tus toppings favoritos</p>
+          <div className="flex-1 flex flex-col p-[clamp(1rem,4vw,3rem)] pt-[clamp(1.5rem,5vw,4rem)] bg-white overflow-y-auto">
+            <header className="mb-[clamp(1rem,3vw,2.5rem)]">
+              <h1 className="text-[clamp(1.5rem,7vw,3.5rem)] font-black tracking-tight text-slate-900 mb-[clamp(0.5rem,1.5vw,0.75rem)]">Personaliza tu Bebida</h1>
+              <p className="text-[clamp(0.875rem,2.5vw,1.25rem)] text-slate-500">Selecciona tus extras favoritos</p>
             </header>
             {toppingsDisponibles.length === 0 ? (
               <p className="text-center text-slate-500 text-[clamp(0.875rem,1.5vw,1rem)]">No hay toppings disponibles para este producto.</p>
             ) : (
-              <div className="space-y-[clamp(0.75rem,1.5vw,1rem)]">
+              <div className="space-y-[clamp(0.75rem,2vw,1.25rem)]">
                 {toppingsDisponibles.map(t => {
                   const cantidad = toppings[t.id] || 0;
                   return (
                     <div
                       key={t.id}
-                      className="bg-white p-[clamp(0.75rem,1.5vw,1.25rem)] rounded-2xl shadow-sm border border-slate-100 flex items-center justify-between"
+                      className="bg-white p-[clamp(0.75rem,2vw,1.25rem)] rounded-2xl shadow-sm border border-slate-100 flex items-center justify-between hover:shadow-md transition-shadow active:scale-95"
                     >
-                      <div className="flex items-center gap-[clamp(0.75rem,1.5vw,1rem)]">
-                        <div className="w-[clamp(2rem,4vw,4rem)] h-[clamp(2rem,4vw,4rem)] rounded-xl bg-slate-100 flex items-center justify-center text-[#ea2a33]">
+                      <div className="flex items-center gap-[clamp(0.75rem,2vw,1rem)] flex-1 min-w-0">
+                        <div className="w-[clamp(2rem,5vw,4rem)] h-[clamp(2rem,5vw,4rem)] rounded-xl bg-slate-100 flex items-center justify-center text-[#ea2a33] shrink-0">
                           <span className="material-symbols-outlined text-[clamp(1.25rem,2.5vw,1.875rem)]">{t.icono}</span>
                         </div>
-                        <div>
+                        <div className="min-w-0">
                           <h4 className="font-bold text-[clamp(0.875rem,1.75vw,1.125rem)] text-slate-900">{t.nombre}</h4>
                           <p className="text-slate-500 font-bold text-[clamp(0.75rem,1.25vw,0.875rem)]">+${t.precio.toFixed(2)}</p>
                         </div>
                       </div>
-                      <div className="flex items-center gap-[clamp(0.75rem,1.5vw,1.5rem)] bg-slate-50 p-[clamp(0.25rem,0.5vw,0.5rem)] rounded-xl border border-slate-200">
+                      <div className="flex items-center gap-[clamp(0.5rem,1.5vw,1rem)] bg-slate-50 p-[clamp(0.25rem,0.75vw,0.5rem)] rounded-xl border border-slate-200 shrink-0 ml-[clamp(0.5rem,1vw,1rem)]">
                         <button
                           onClick={() => handleDecrementTopping(t.id)}
-                          className="w-[clamp(2rem,4vw,3rem)] h-[clamp(2rem,4vw,3rem)] flex items-center justify-center rounded-lg bg-white shadow-sm text-slate-400 hover:text-[#ea2a33] transition-colors"
+                          className="w-[clamp(1.75rem,4vw,2.5rem)] h-[clamp(1.75rem,4vw,2.5rem)] flex items-center justify-center rounded-lg bg-white shadow-sm text-slate-400 hover:text-[#ea2a33] transition-colors active:scale-95"
                         >
-                          <span className="material-symbols-outlined text-[clamp(1.25rem,2.5vw,1.875rem)]">remove</span>
+                          <span className="material-symbols-outlined text-[clamp(1rem,2vw,1.5rem)]">remove</span>
                         </button>
-                        <span className="text-[clamp(1.125rem,2vw,1.5rem)] font-black w-[clamp(1.5rem,3vw,2rem)] text-center text-slate-900">{cantidad}</span>
+                        <span className="text-[clamp(1rem,2vw,1.25rem)] font-black w-[clamp(1.5rem,2.5vw,2rem)] text-center text-slate-900">{cantidad}</span>
                         <button
                           onClick={() => handleIncrementTopping(t.id)}
                           className="w-[clamp(2rem,4vw,3rem)] h-[clamp(2rem,4vw,3rem)] flex items-center justify-center rounded-lg bg-[#ea2a33] shadow-lg shadow-[#ea2a33]/20 text-white"
@@ -402,7 +402,7 @@ export default function ModalPersonalizar({
     const progreso = (pasoActual / pasosTotales) * 100;
 
     return (
-      <div className="absolute bottom-0 right-0 left-[0px] h-[clamp(4rem,10vw,6rem)] border-t border-slate-200 bg-white/80 backdrop-blur-md px-[clamp(0.75rem,2vw,1.5rem)] flex items-center">
+      <div className="absolute bottom-0 right-0 left-0 h-[clamp(4rem,10vw,6rem)] border-t border-slate-200 bg-white/80 backdrop-blur-md px-[clamp(0.75rem,2vw,1.5rem)] flex items-center">
         {/* Bloque izquierdo: Anterior */}
         <div className="flex-1 flex justify-start">
           <button
@@ -454,13 +454,58 @@ export default function ModalPersonalizar({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-[clamp(0.5rem,2vw,1rem)]">
-      <div className="flex h-[clamp(30rem,90vh,50rem)] w-[clamp(20rem,95vw,80rem)] bg-white shadow-2xl overflow-hidden relative">
+      {/* Versión Desktop: Layout horizontal con 3 columnas */}
+      <div className="hidden md:flex h-[clamp(30rem,90vh,50rem)] w-[clamp(20rem,95vw,80rem)] bg-white shadow-2xl overflow-hidden relative">
         <SidebarIzquierdo />
         <div className="flex-1 flex flex-col relative">
           <ContenidoCentral />
           <Navegacion />
         </div>
         {paso !== 'confirmacion' && <SidebarDerecho />}
+      </div>
+
+      {/* Versión Mobile: Layout vertical optimizado */}
+      <div className="md:hidden flex flex-col h-[90vh] w-[95vw] bg-white shadow-2xl overflow-hidden relative rounded-2xl">
+        {/* Header Móvil */}
+        <div className="flex items-center justify-between p-[clamp(1rem,3vw,1.5rem)] border-b border-slate-100 bg-white sticky top-0 z-10">
+          <div className="flex items-center gap-[clamp(0.75rem,2vw,1rem)]">
+            <div className="w-[clamp(2rem,5vw,2.5rem)] h-[clamp(2rem,5vw,2.5rem)] rounded-lg bg-slate-100 overflow-hidden">
+              <img src={producto.imagen} alt={producto.nombre} className="w-full h-full object-cover" />
+            </div>
+            <div>
+              <h3 className="font-bold text-[clamp(0.875rem,2vw,1rem)] text-black">{producto.nombre}</h3>
+              <p className="text-[#ea2a33] font-black text-[clamp(0.75rem,1.5vw,0.875rem)]">${calcularTotal().toFixed(2)}</p>
+            </div>
+          </div>
+          <button
+            onClick={onCerrar}
+            className="text-slate-400 hover:text-slate-900 transition-colors"
+          >
+            <span className="material-symbols-outlined text-[clamp(1.5rem,3vw,1.875rem)]">close</span>
+          </button>
+        </div>
+
+        {/* Contenido Principal Móvil */}
+        <div className="flex-1 overflow-y-auto flex flex-col">
+          <ContenidoCentral />
+        </div>
+
+        {/* Resumen Móvil */}
+        <div className="border-t border-slate-100 bg-slate-50 p-[clamp(0.75rem,2vw,1rem)] space-y-[clamp(0.75rem,2vw,1rem)] sticky bottom-[clamp(4rem,12vw,5.5rem)] z-10">
+          <div className="space-y-[clamp(0.5rem,1.5vw,0.75rem)]">
+            <div className={`flex items-center gap-[clamp(0.5rem,1vw,0.75rem)] text-[clamp(0.75rem,1.5vw,0.875rem)] font-medium ${tamano ? 'text-[#ea2a33]' : 'text-slate-400'}`}>
+              <span className="material-symbols-outlined text-[clamp(1rem,1.5vw,1.125rem)]">{tamano ? 'check_circle' : 'radio_button_checked'}</span>
+              Tamaño: {tamano ? (tamano.charAt(0).toUpperCase() + tamano.slice(1)) : 'Pendiente'}
+            </div>
+            <div className={`flex items-center gap-[clamp(0.5rem,1vw,0.75rem)] text-[clamp(0.75rem,1.5vw,0.875rem)] font-medium ${sabor ? 'text-[#ea2a33]' : 'text-slate-400'}`}>
+              <span className="material-symbols-outlined text-[clamp(1rem,1.5vw,1.125rem)]">{sabor ? 'check_circle' : 'radio_button_checked'}</span>
+              Sabor: {sabor || 'Pendiente'}
+            </div>
+          </div>
+        </div>
+
+        {/* Navegación/Botones Móvil */}
+        <Navegacion />
       </div>
     </div>
   );
