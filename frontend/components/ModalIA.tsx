@@ -54,7 +54,7 @@ export default function ModalIA({
     try {
       const resultados = await onRecomendar(consulta);
       setRecomendaciones(resultados);
-      setSeleccionados(new Set());
+      seleccionarTodos([]);
     } catch (error) {
       console.error(error);
     } finally {
@@ -181,7 +181,7 @@ export default function ModalIA({
   };
 
   const toggleSeleccion = () => {};
-  const seleccionarTodos = () => {};
+  const seleccionarTodos = (p0: never[]) => {};
   const agregarSeleccionados = () => {};
 
   // Calcular subtotal del carrito actual
