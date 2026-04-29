@@ -315,29 +315,6 @@ export default function ModalIA({
               )}
             </div>
           </div>
-
-          {/* Sticky Footer Action */}
-          <div className="absolute bottom-0 left-0 right-0 p-[clamp(1rem,2vw,1.5rem)] bg-white/80 backdrop-blur-md border-t border-slate-200">
-            <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-between gap-[clamp(1rem,2vw,1rem)]">
-              <div className="text-slate-600 text-[clamp(0.75rem,1.5vw,0.875rem)] font-medium">
-                <span className="text-[#e42528] font-bold">{seleccionarTodos.length}</span> producto
-                {seleccionarTodos.length !== 1 ? 's' : ''} seleccionado
-                {seleccionarTodos.length !== 1 ? 's' : ''}
-              </div>
-              <button
-                onClick={agregarSeleccionados}
-                disabled={seleccionarTodos.length === 0}
-                className={`w-full md:w-auto px-[clamp(1.5rem,3vw,2.5rem)] py-[clamp(1rem,2vw,1rem)] font-extrabold rounded-xl shadow-lg transition-all flex items-center justify-center gap-[clamp(0.5rem,1vw,0.75rem)] text-[clamp(0.875rem,2vw,1rem)] ${
-                  seleccionarTodos.length === 0
-                    ? 'bg-slate-300 text-slate-500 cursor-not-allowed'
-                    : 'bg-[#e42528] text-white shadow-[#e42528]/20 hover:bg-[#e42528]/90'
-                }`}
-              >
-                <span className="material-symbols-outlined text-[clamp(1rem,2vw,1.25rem)]">shopping_cart_checkout</span>
-                Agregar seleccionados al carrito
-              </button>
-            </div>
-          </div>
         </div>
 
         {/* Contextual Sidebar (carrito actual) */}
@@ -384,11 +361,18 @@ export default function ModalIA({
             )}
           </div>
           {carritoActual.length > 0 && (
-            <div className="p-4 bg-slate-50 border-t border-slate-100">
+            <div className="p-[clamp(1rem,2vw,1rem)] bg-slate-50 border-t border-slate-100 space-y-[clamp(0.75rem,1.5vw,0.75rem)]">
               <div className="flex justify-between text-sm font-bold text-slate-800">
                 <span>Subtotal</span>
                 <span className="text-[#e42528]">${subtotal.toFixed(2)}</span>
               </div>
+              <button
+                onClick={onCerrar}
+                className="w-full py-[clamp(0.75rem,1.5vw,1rem)] px-[clamp(1rem,2vw,1.5rem)] bg-[#e42528] text-white font-bold rounded-lg shadow-lg shadow-[#e42528]/20 hover:bg-[#e42528]/90 transition-all active:scale-95 flex items-center justify-center gap-[clamp(0.5rem,1vw,0.75rem)] text-[clamp(0.75rem,1.5vw,0.875rem)]"
+              >
+                <span className="material-symbols-outlined text-[clamp(1rem,2vw,1.125rem)]">payment</span>
+                Ir a Pagar
+              </button>
             </div>
           )}
         </div>
