@@ -320,15 +320,15 @@ export default function ModalIA({
           <div className="absolute bottom-0 left-0 right-0 p-[clamp(1rem,2vw,1.5rem)] bg-white/80 backdrop-blur-md border-t border-slate-200">
             <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-between gap-[clamp(1rem,2vw,1rem)]">
               <div className="text-slate-600 text-[clamp(0.75rem,1.5vw,0.875rem)] font-medium">
-                <span className="text-[#e42528] font-bold">{seleccionados.size}</span> producto
-                {seleccionados.size !== 1 ? 's' : ''} seleccionado
-                {seleccionados.size !== 1 ? 's' : ''}
+                <span className="text-[#e42528] font-bold">{seleccionarTodos.length}</span> producto
+                {seleccionarTodos.length !== 1 ? 's' : ''} seleccionado
+                {seleccionarTodos.length !== 1 ? 's' : ''}
               </div>
               <button
                 onClick={agregarSeleccionados}
-                disabled={seleccionados.size === 0}
+                disabled={seleccionarTodos.length === 0}
                 className={`w-full md:w-auto px-[clamp(1.5rem,3vw,2.5rem)] py-[clamp(1rem,2vw,1rem)] font-extrabold rounded-xl shadow-lg transition-all flex items-center justify-center gap-[clamp(0.5rem,1vw,0.75rem)] text-[clamp(0.875rem,2vw,1rem)] ${
-                  seleccionados.size === 0
+                  seleccionarTodos.length === 0
                     ? 'bg-slate-300 text-slate-500 cursor-not-allowed'
                     : 'bg-[#e42528] text-white shadow-[#e42528]/20 hover:bg-[#e42528]/90'
                 }`}
