@@ -22,7 +22,7 @@ function SidebarIzquierdo({ onOpenIA, onPersonalizar }: { onOpenIA: () => void; 
       {/* Botón hamburguesa para móvil */}
       <button
         onClick={() => setSidebarOpen(!sidebarOpen)}
-        className="md:hidden fixed top-[clamp(0.5rem,2vw,1rem)] left-[clamp(0.5rem,2vw,1rem)] z-40 bg-[#ea2a33] text-white p-[clamp(0.25rem,0.75vw,0.5rem)] rounded-lg"
+        className="md:hidden fixed top-[clamp(0.5rem,2vw,1rem)] right-[clamp(0.5rem,2vw,1rem)] z-40 bg-[#ea2a33] text-white p-[clamp(0.25rem,0.75vw,0.5rem)] rounded-lg"
       >
         <span className="material-symbols-outlined text-[clamp(1rem,2vw,1.25rem)]">menu</span>
       </button>
