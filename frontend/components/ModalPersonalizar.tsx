@@ -218,11 +218,11 @@ export default function ModalPersonalizar({
       case 'tamano':
         return (
           <div className="flex-1 flex flex-col p-[clamp(1rem,4vw,3rem)] pt-[clamp(1.5rem,5vw,4rem)] bg-white overflow-y-auto">
-            <div className="mb-[clamp(1rem,3vw,2.5rem)]">
-              <h1 className="text-[clamp(1.5rem,7vw,3.5rem)] font-black tracking-tight text-slate-900 mb-[clamp(0.5rem,1.5vw,0.75rem)]">¿De qué tamaño?</h1>
+            <div className="mb-[clamp(0.75rem,2vw,1.5rem)]">
+              <h1 className="text-[clamp(1.5rem,7vw,3.5rem)] font-black tracking-tight text-slate-900 mb-[clamp(0.25rem,0.75vw,0.5rem)]">¿De qué tamaño?</h1>
               <p className="text-[clamp(0.875rem,2.5vw,1.25rem)] text-slate-500">Elige la medida ideal para ti</p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-[clamp(0.5rem,2vw,1.5rem)] flex-1">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-[clamp(0.5rem,2vw,1.5rem)] max-h-[35vh]">
               {producto.opciones.tamanos?.map((t) => {
                 const selected = tamano === t;
                 const precioConTamano = producto.precio + (preciosTamano[t] || 0);
@@ -230,36 +230,36 @@ export default function ModalPersonalizar({
                   <button
                     key={t}
                     onClick={() => setTamano(t)}
-                    className={`bg-white rounded-2xl p-[clamp(0.5rem,2vw,1.5rem)] flex flex-col items-center justify-between shadow-lg transition-all group relative overflow-hidden active:scale-95 ${
+                    className={`bg-white rounded-xl p-[clamp(0.35rem,1.5vw,0.9rem)] flex flex-col items-center justify-center shadow-lg transition-all group relative overflow-hidden active:scale-95 ${
                       selected
                         ? 'border-4 border-[#ea2a33] shadow-xl scale-105'
                         : 'border-2 border-transparent hover:border-[#ea2a33] hover:scale-105'
                     }`}
                   >
                     {selected && (
-                      <div className="absolute top-0 right-0 p-[clamp(0.5rem,1vw,0.75rem)]">
-                        <span className="material-symbols-outlined text-[clamp(1rem,2vw,1.25rem)] text-[#ea2a33]">check_circle</span>
+                      <div className="absolute top-0 right-0 p-[clamp(0.3rem,0.75vw,0.5rem)]">
+                        <span className="material-symbols-outlined text-[clamp(0.85rem,1.75vw,1rem)] text-[#ea2a33]">check_circle</span>
                       </div>
                     )}
                     {t === 'mediano' && (
-                      <div className="absolute -top-1 left-1/2 -translate-x-1/2 bg-[#ea2a33] text-white text-[clamp(0.55rem,0.8vw,0.65rem)] font-black uppercase tracking-widest px-[clamp(0.5rem,1vw,0.75rem)] py-[clamp(0.15rem,0.3vw,0.25rem)] rounded-b-lg">
+                      <div className="absolute -top-1 left-1/2 -translate-x-1/2 bg-[#ea2a33] text-white text-[clamp(0.5rem,0.7vw,0.6rem)] font-black uppercase tracking-widest px-[clamp(0.35rem,0.75vw,0.5rem)] py-[clamp(0.1rem,0.2vw,0.15rem)] rounded-b-sm">
                         Recomendado
                       </div>
                     )}
-                    <div className="flex-1 flex items-end mb-[clamp(0.5rem,2vw,1.5rem)]">
+                    <div className="flex-1 flex items-center justify-center">
                       <span
                         className="material-symbols-outlined text-slate-300 group-hover:text-[#ea2a33] transition-colors"
-                        style={{ fontSize: `clamp(3rem, ${t === 'chico' ? '8vw' : t === 'mediano' ? '10vw' : '12vw'}, 6rem)` }}
+                        style={{ fontSize: `clamp(2.5rem, ${t === 'chico' ? '7vw' : t === 'mediano' ? '8.5vw' : '10vw'}, 5rem)` }}
                       >
                         coffee
                       </span>
                     </div>
-                    <div className="text-center w-full">
-                      <h3 className="text-[clamp(1rem,3vw,1.75rem)] font-black mb-[clamp(0.15rem,0.5vw,0.35rem)] capitalize text-slate-900">{t}</h3>
-                      <p className="text-[clamp(0.6rem,1.2vw,0.75rem)] text-slate-500 font-bold uppercase tracking-widest">
+                    <div className="text-center w-full shrink-0">
+                      <h3 className="text-[clamp(0.9rem,2.5vw,1.5rem)] font-black mb-[clamp(0.1rem,0.3vw,0.2rem)] capitalize text-slate-900">{t}</h3>
+                      <p className="text-[clamp(0.55rem,1vw,0.65rem)] text-slate-500 font-bold uppercase tracking-widest">
                         {t === 'chico' ? '12 oz' : t === 'mediano' ? '16 oz' : '20 oz'}
                       </p>
-                      <p className="text-[#ea2a33] font-black text-[clamp(0.95rem,2.5vw,1.5rem)] mt-[clamp(0.5rem,1vw,0.75rem)]">
+                      <p className="text-[#ea2a33] font-black text-[clamp(0.85rem,2vw,1.25rem)] mt-[clamp(0.3rem,0.75vw,0.5rem)]">
                         ${precioConTamano.toFixed(2)}
                       </p>
                     </div>
