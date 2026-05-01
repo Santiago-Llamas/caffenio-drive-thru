@@ -249,7 +249,7 @@ export default function ModalPersonalizar({
                     <div className="flex-1 flex items-center justify-center">
                       <span
                         className="material-symbols-outlined text-slate-300 group-hover:text-[#ea2a33] transition-colors"
-                        style={{ fontSize: `clamp(2.5rem, ${t === 'chico' ? '7vw' : t === 'mediano' ? '8.5vw' : '10vw'}, 5rem)` }}
+                        style={{ fontSize: `clamp(2rem, ${t === 'chico' ? '5vw' : t === 'mediano' ? '8vw' : '11vw'}, 6rem)` }}
                       >
                         coffee
                       </span>
