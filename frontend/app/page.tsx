@@ -92,12 +92,14 @@ function SidebarIzquierdo({ onOpenIA, onPersonalizar }: { onOpenIA: () => void; 
         </div>
         <div className="p-[clamp(0.5rem,1.25vw,1rem)] border-t border-slate-100">
           <button
-            onClick={onOpenIA}
-            className="w-full flex items-center justify-center gap-[clamp(0.5rem,1vw,0.75rem)] md:gap-[clamp(0.5rem,1vw,0.75rem)] bg-[#ea2a33] text-white px-[clamp(1rem,1.5vw,1.5rem)] md:px-[clamp(0.75rem,1.5vw,1.5rem)] py-[clamp(0.90rem,2.25vw,1rem)] md:py-[clamp(0.5rem,1.25vw,1rem)] rounded-2xl font-black text-[clamp(0.8rem,4vw,1rem)] md:text-[clamp(0.65rem,1.5vw,1rem)] hover:bg-[#ea2a33]/90 transition-all active:scale-95 shadow-lg shadow-[#ea2a33]/20"
-          >
-            <span className="material-symbols-outlined text-[clamp(1rem,4vw,1.25rem)] md:text-[clamp(0.875rem,1.75vw,1.25rem)]">auto_awesome</span>
-            <span className="tracking-tight">Asistente IA</span>
-          </button>
+  onClick={onOpenIA}
+  className="w-full flex items-center justify-center gap-[clamp(0.75rem,2.5vw,1rem)] md:gap-[clamp(0.5rem,1vw,0.75rem)] bg-[#ea2a33] text-white px-[clamp(1.5rem,4vw,2rem)] md:px-[clamp(0.75rem,1.5vw,1.5rem)] py-[clamp(1rem,2.5vw,1.25rem)] md:py-[clamp(0.5rem,1.25vw,1rem)] rounded-2xl font-black text-[clamp(1rem,5vw,1.25rem)] md:text-[clamp(0.65rem,1.5vw,1rem)] hover:bg-[#ea2a33]/90 transition-all active:scale-95 shadow-lg shadow-[#ea2a33]/20"
+>
+  <span className="material-symbols-outlined text-[clamp(1.25rem,5vw,1.5rem)] md:text-[clamp(0.875rem,1.75vw,1.25rem)]">
+    auto_awesome
+  </span>
+  <span className="tracking-tight">Asistente IA</span>
+</button>
         </div>
       </aside>
 
