@@ -397,9 +397,9 @@ export default function Home() {
             <p className="text-lg md:text-2xl text-slate-600 font-medium">Selecciona cómo quieres continuar</p>
             <div className="mt-4 text-sm md:text-base text-slate-500">
               {isConnected ? (
-                <span className="text-green-600 font-semibold">D</span>
+                <span className="text-green-600 font-semibold"></span>
               ) : (
-                <span className="text-red-600 font-semibold">Bridge RFID no conectado. Ejecuta <code>node bridge.js</code> y recarga la página.</span>
+                <span className="text-red-600 font-semibold"><code></code> </span>
               )}
             </div>
           </div>
