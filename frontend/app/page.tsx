@@ -8,6 +8,7 @@ import NFCReader from '../components/NFCReader';
 import Carrito from '../components/Carrito';
 import { GiCoffeeCup } from 'react-icons/gi';
 import ModalIA from '../components/ModalIA';
+import { useRFIDBridge } from '../hooks/useRFIDBridge';
 
 // Sidebar izquierdo (sin cambios)
 function SidebarIzquierdo({ onOpenIA, onPersonalizar }: { onOpenIA: () => void; onPersonalizar: (producto: Producto) => void }) {
@@ -143,9 +144,49 @@ export default function Home() {
   // Solo mantenemos la animación QR (NFC ahora es real, sin simulación)
   const [mostrarEscaneoQR, setMostrarEscaneoQR] = useState(false);
   const timeoutRefQR = useRef<NodeJS.Timeout | null>(null);
+  
+  // Ref para acceder a la función handleTagRead del componente NFCReader
+  const nfcReaderRef = useRef<{ handleTagRead: (uid: string) => Promise<void> } | null>(null);
 
   // ❌ Eliminamos las variables y handlers de NFC simulados
   // (Ya no se usan mostrarEscaneoNFC, timeoutRefNFC, handleClickNFC, handleCancelarNFC)
+
+  /**
+   * Función centralizada para procesar un UID (desde NFC o RFID).
+   * Esta lógica es reutilizada tanto por el componente NFCReader como por el hook useRFIDBridge.
+   */
+  const handleTagRead = async (uid: string) => {
+    console.log(`[App] Procesando UID: ${uid}`);
+    
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+    
+    try {
+      const res = await fetch(`${apiUrl}/identificar`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ uid })
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        console.log('[App] ✅ Usuario identificado:', data.user);
+        setUsuario(data.user);
+        setPantalla('favoritos');
+      } else {
+        console.warn('[App] ❌ Tag no vinculado:', uid);
+        alert(`Tag no registrado (UID: ${uid}). ¿Deseas vincularlo a tu cuenta?`);
+      }
+    } catch (err) {
+      console.error('[App] Error al procesar el UID:', err);
+      alert('Error de conexión. Intenta de nuevo.');
+    }
+  };
+
+  /**
+   * Hook para conectar el lector RFID USB (solo en localhost).
+   * Cuando el bridge emite un tag, se ejecuta handleTagRead.
+   */
+  const { connect, disconnect, isConnected } = useRFIDBridge(handleTagRead);
 
   const toggleFavorito = (id: number) => {
     setFavoritos(prev => {
@@ -354,12 +395,21 @@ export default function Home() {
               <span className="bg-gradient-to-r from-red-600 to-red-400 bg-clip-text text-transparent">¡Hola!</span>
             </h1>
             <p className="text-lg md:text-2xl text-slate-600 font-medium">Selecciona cómo quieres continuar</p>
+            <div className="mt-4 text-sm md:text-base text-slate-500">
+              {isConnected ? (
+                <span className="text-green-600 font-semibold">D</span>
+              ) : (
+                <span className="text-red-600 font-semibold">Bridge RFID no conectado. Ejecuta <code>node bridge.js</code> y recarga la página.</span>
+              )}
+            </div>
           </div>
 
           <div className="grid grid-cols-3 gap-[clamp(1rem,2.5vw,2.5rem)] flex-1">
             {/* ✅ Opción NFC - Usando el componente NFCReader real */}
             <NFCReader
+              ref={nfcReaderRef}
               apiUrl={process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}
+              onTagRead={handleTagRead}
               onSuccess={(userData) => {
                 setUsuario(userData);
                 setPantalla('favoritos');
@@ -781,7 +831,7 @@ function ModalMetodosPago({ onClose, onSeleccionar, total, items }: ModalMetodos
               <div className="w-[clamp(1.5rem,3vw,2rem)] h-[clamp(1.5rem,3vw,2rem)] flex items-center justify-center">
                 <img src="/logo.png" alt="Logo" className="w-full h-full object-cover" />
               </div>
-              <span className="font-black text-[clamp(0.75rem,1.5vw,1rem)] tracking-tighter uppercase italic text-slate-800">Caffenio</span>
+              <span className="font-black text-[clamp(0.75rem,1.5vw,1rem)] tracking-tighter uppercase italic text-slate-800">Caffe-Touch</span>
             </div>
             <span className="text-[clamp(0.55rem,1vw,0.7rem)] font-bold">POS-04</span>
           </div>

@@ -1,0 +1,123 @@
+/**
+ * 🌉 BRIDGE RFID - Servidor WebSocket para captura de teclado HID
+ *
+ * Este script captura la entrada del lector RFID USB (que funciona como teclado HID)
+ * y emite los UIDs por WebSocket a los clientes (frontend en localhost:3000).
+ *
+ * REQUISITOS:
+ * - Node.js v14+
+ * - npm install iohook (o keyspy)
+ * - npm install ws
+ *
+ * USO:
+ * node bridge.js
+ *
+ * El servidor escuchará en ws://localhost:8081
+ */
+
+const WebSocket = require('ws');
+const iohook = require('iohook');
+
+const PORT = 8081;
+const wss = new WebSocket.Server({ port: PORT });
+
+console.log(`[Bridge] Iniciando servidor WebSocket en ws://localhost:${PORT}`);
+
+// Variables para detectar cuando se presiona una tecla
+let currentBuffer = '';
+const ENTER_KEY_CODES = new Set([13, 28, 96]); // Enter normal y Enter numérico
+const DIGIT_KEYCODE_MAP = {
+  2: '1', 3: '2', 4: '3', 5: '4', 6: '5', 7: '6', 8: '7', 9: '8', 10: '9', 11: '0',
+  82: '0', 79: '1', 80: '2', 81: '3', 75: '4', 76: '5', 77: '6', 71: '7', 72: '8', 73: '9'
+};
+
+/**
+ * Listener de teclado global: captura cuando el lector RFID envía un UID
+ * El lector emula un teclado HID, por lo que cada UID se ve como texto seguido de Enter
+ * Ejemplo: "0013374963" + Enter
+ */
+iohook.on('keydown', (event) => {
+  const keycode = event.keycode;
+  let char = '';
+
+  if (ENTER_KEY_CODES.has(keycode)) {
+    if (currentBuffer.trim().length > 0) {
+      const uid = currentBuffer.trim();
+      console.log(`[Bridge] Tag RFID detectado: ${uid}`);
+      broadcastTag(uid);
+      currentBuffer = '';
+    }
+    return;
+  }
+
+  if (event.keychar && typeof event.keychar === 'string') {
+    char = event.keychar;
+  } else if (DIGIT_KEYCODE_MAP[keycode]) {
+    char = DIGIT_KEYCODE_MAP[keycode];
+  }
+
+  if (char && /[0-9]/.test(char)) {
+    currentBuffer += char;
+  }
+});
+
+/**
+ * Inicia el monitoreo global de teclado
+ */
+iohook.start();
+
+console.log('[Bridge] Monitoreo de teclado iniciado. Acerca un tag RFID...');
+
+/**
+ * Broadcast a todos los clientes WebSocket
+ */
+function broadcastTag(uid) {
+  const message = JSON.stringify({
+    type: 'RFID_TAG',
+    id: uid,
+    timestamp: new Date().toISOString()
+  });
+
+  wss.clients.forEach((client) => {
+    if (client.readyState === WebSocket.OPEN) {
+      client.send(message);
+      console.log(`[Bridge] Mensaje enviado a cliente: ${uid}`);
+    }
+  });
+}
+
+/**
+ * Manejo de conexiones WebSocket
+ */
+wss.on('connection', (ws) => {
+  console.log('[Bridge] ✅ Cliente conectado desde el frontend');
+
+  // Enviar mensaje de bienvenida
+  ws.send(JSON.stringify({
+    type: 'BRIDGE_READY',
+    message: 'Conectado al bridge RFID. Acerca un tag...'
+  }));
+
+  // Manejo de desconexión
+  ws.on('close', () => {
+    console.log('[Bridge] ❌ Cliente desconectado');
+  });
+
+  // Manejo de errores
+  ws.on('error', (error) => {
+    console.error('[Bridge] Error WebSocket:', error);
+  });
+});
+
+/**
+ * Limpieza al cerrar el servidor
+ */
+process.on('SIGINT', () => {
+  console.log('\n[Bridge] Deteniendo servidor...');
+  iohook.stop();
+  wss.close();
+  process.exit(0);
+});
+
+console.log(`[Bridge] 🚀 Servidor WebSocket escuchando en ws://localhost:${PORT}`);
+console.log('[Bridge] Espera a que el frontend se conecte desde http://localhost:3000');

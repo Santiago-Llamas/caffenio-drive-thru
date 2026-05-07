@@ -7,10 +7,52 @@
       "favoritos": [1, 5, 8]
     },
     {
-      "uid": "00:13:38:37:59",
-      "nombre": "Cliente VIP",
-      "email": "vip@caffenio.com",
-      "favoritos": [2, 3, 10]
+      "uid": "0013268362",
+      "nombre": "Miguel Sanchez",
+      "email": "miguel.sanchez@caffenio.com",
+      "favoritos": [1, 2, 5]
+    },
+    {
+      "uid": "0013270029",
+      "nombre": "Santiago Llamas",
+      "email": "santiago@caffenio.com",
+      "favoritos": [2, 6, 10]
+    },
+    {
+      "uid": "0013268738",
+      "nombre": "Carlos Ruiz",
+      "email": "carlos.ruiz@caffenio.com",
+      "favoritos": [4, 8, 15]
+    },
+    {
+      "uid": "0013383759",
+      "nombre": "Marco Miranda",
+      "email": "marco.miranda@caffenio.com",
+      "favoritos": [2, 5, 9]
+    },
+    {
+      "uid": "0013235622",
+      "nombre": "Cesar Duarte",
+      "email": "cesar.duarte@caffenio.com",
+      "favoritos": [2, 5, 9]
+    },
+    {
+      "uid": "0013254633",
+      "nombre": "Emmanuel Lara",
+      "email": "emmanuel.lara@caffenio.com",
+      "favoritos": [2, 5, 9]
+    },
+    {
+      "uid": "0013269515",
+      "nombre": "Emmanuel Perez",
+      "email": "emmanuel.perez@caffenio.com",
+      "favoritos": [2, 5, 9]
+    },
+    {
+      "uid": "0013250762",
+      "nombre": "Rigoberto Godoy",
+      "email": "rigoberto.godoy@caffenio.com",
+      "favoritos": [1, 7, 13]
     }
   ]
 }

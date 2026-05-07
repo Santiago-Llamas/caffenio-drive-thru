@@ -3112,5 +3112,140 @@
     "total": 146.0,
     "estado": "recibido",
     "tiempo_limite": 300000
+  },
+  {
+    "id": 119,
+    "fecha": "2026-05-07T05:49:31.698Z",
+    "items": [
+      {
+        "id": 41,
+        "nombre": "Kfreeze® Caramelo",
+        "precio": 76.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 76.0,
+    "estado": "recibido",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 120,
+    "fecha": "2026-05-07T05:52:49.227Z",
+    "items": [
+      {
+        "id": 41,
+        "nombre": "Kfreeze® Caramelo",
+        "precio": 76.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 76.0,
+    "estado": "recibido",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 121,
+    "fecha": "2026-05-07T05:55:18.316Z",
+    "items": [
+      {
+        "id": 41,
+        "nombre": "Kfreeze® Caramelo",
+        "precio": 76.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 27,
+        "nombre": "Latte Frío",
+        "precio": 62.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 61,
+        "nombre": "Dona",
+        "precio": 35.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      },
+      {
+        "id": 61,
+        "nombre": "Dona",
+        "precio": 35.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 208.0,
+    "estado": "recibido",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 122,
+    "fecha": "2026-05-07T05:56:12.643Z",
+    "items": [
+      {
+        "id": 41,
+        "nombre": "Kfreeze® Caramelo",
+        "precio": 76.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 76.0,
+    "estado": "recibido",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 123,
+    "fecha": "2026-05-07T05:58:47.374Z",
+    "items": [
+      {
+        "id": 41,
+        "nombre": "Kfreeze® Caramelo",
+        "precio": 76.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 76.0,
+    "estado": "recibido",
+    "tiempo_limite": 300000
+  },
+  {
+    "id": 124,
+    "fecha": "2026-05-07T06:04:24.231Z",
+    "items": [
+      {
+        "id": 41,
+        "nombre": "Kfreeze® Caramelo",
+        "precio": 76.0,
+        "cantidad": 1,
+        "tamanoSeleccionado": null,
+        "lecheSeleccionada": null,
+        "toppingsSeleccionados": []
+      }
+    ],
+    "total": 76.0,
+    "estado": "recibido",
+    "tiempo_limite": 300000
   }
 ]

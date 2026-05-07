@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useImperativeHandle, forwardRef } from 'react';
 
 declare global {
   interface Window {
@@ -14,123 +14,168 @@ interface NFCReaderProps {
   onUnregistered: (uid: string) => void;
   onTimeout?: () => void; // Nueva prop para manejar el timeout
   apiUrl: string;
+  onTagRead?: (uid: string) => Promise<void>; // Función externa para procesar el UID
 }
 
 type NFCStatus = 'idle' | 'scanning' | 'success' | 'error';
 
-export default function NFCReader({ onSuccess, onError, onUnregistered, onTimeout, apiUrl }: NFCReaderProps) {
-  const [status, setStatus] = useState<NFCStatus>('idle');
-  const [errorMessage, setErrorMessage] = useState<string>('');
-  const abortControllerRef = useRef<AbortController | null>(null);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+/**
+ * Componente NFCReader refactorizado para soportar tanto NFC nativo como RFID via bridge.
+ * 
+ * La prop `onTagRead` permite inyectar lógica de procesamiento de UID desde fuera,
+ * lo que facilita la reutilización de la misma lógica en ambos flujos (NFC y RFID).
+ */
+export default forwardRef<
+  { handleTagRead: (uid: string) => Promise<void> },
+  NFCReaderProps
+>(
+  (
+    { onSuccess, onError, onUnregistered, onTimeout, apiUrl, onTagRead },
+    ref
+  ) => {
+    const [status, setStatus] = useState<NFCStatus>('idle');
+    const [errorMessage, setErrorMessage] = useState<string>('');
+    const abortControllerRef = useRef<AbortController | null>(null);
+    const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  useEffect(() => {
-    return () => {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-      if (abortControllerRef.current) abortControllerRef.current.abort();
-    };
-  }, []);
-
-  const startScanning = async () => {
-    // Verificar soporte NFC
-    if (!('NDEFReader' in window)) {
-      alert('Tu navegador no soporta NFC. Usa QR o el botón Invitado.');
-      return;
-    }
-
-    setStatus('scanning');
-    setErrorMessage('');
-
-    if (abortControllerRef.current) abortControllerRef.current.abort();
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-
-    abortControllerRef.current = new AbortController();
-
-    // Timeout de 30 segundos
-    timeoutRef.current = setTimeout(() => {
-      console.log('[NFC] Tiempo de espera agotado (30s)');
-      if (abortControllerRef.current) abortControllerRef.current.abort();
-      setStatus('idle');
-      if (onTimeout) onTimeout(); // Llamar a la función de timeout
-    }, 30000);
-
-    try {
-      const reader = new window.NDEFReader();
-
-      reader.addEventListener('reading', async (event: any) => {
-        const serialNumber = event.serialNumber;
-        console.log('[NFC] Tag detectado, UID:', serialNumber);
-
+    useEffect(() => {
+      return () => {
         if (timeoutRef.current) clearTimeout(timeoutRef.current);
         if (abortControllerRef.current) abortControllerRef.current.abort();
+      };
+    }, []);
 
-        if (!serialNumber) {
+    /**
+     * Función central para procesar un UID leído (ya sea de NFC o RFID).
+     * Puede ser llamada desde:
+     * - El evento 'reading' del NFC nativo
+     * - El hook useRFIDBridge vía callback
+     */
+    const handleTagRead = async (uid: string) => {
+      if (!uid) {
+        setStatus('error');
+        setErrorMessage('No se pudo leer el UID del tag. Intenta de nuevo.');
+        return;
+      }
+
+      console.log(`[NFCReader] Procesando UID: ${uid}`);
+      setStatus('idle'); // Cambia a idle mientras se procesa
+
+      // Si se proporciona una función externa, usarla (útil para lógica compartida)
+      if (onTagRead) {
+        try {
+          await onTagRead(uid);
+          return;
+        } catch (err) {
+          console.error('[NFCReader] Error en onTagRead externo:', err);
           setStatus('error');
-          setErrorMessage('No se pudo leer el UID del tag. Intenta de nuevo.');
+          setErrorMessage('Error al procesar el tag. Intenta de nuevo.');
+          onError('Error al procesar el tag');
           return;
         }
+      }
 
-        setStatus('idle'); // Cambia a idle mientras se procesa
+      // Lógica por defecto: enviar al backend
+      try {
+        const res = await fetch(`${apiUrl}/identificar`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ uid })
+        });
+        const data = await res.json();
 
-        try {
-          const res = await fetch(`${apiUrl}/identificar`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ uid: serialNumber })
-          });
-          const data = await res.json();
-
-          if (data.success) {
-            setStatus('success');
-            onSuccess(data.user);
-          } else {
-            setStatus('error');
-            setErrorMessage(data.message || 'Tag no reconocido.');
-            onUnregistered(serialNumber);
-          }
-        } catch (err) {
-          console.error('[NFC] Error en la petición al backend:', err);
+        if (data.success) {
+          setStatus('success');
+          onSuccess(data.user);
+        } else {
           setStatus('error');
-          setErrorMessage('Error de conexión. Intenta de nuevo.');
-          onError('Error de conexión');
+          setErrorMessage(data.message || 'Tag no reconocido.');
+          onUnregistered(uid);
         }
-      });
+      } catch (err) {
+        console.error('[NFCReader] Error en la petición al backend:', err);
+        setStatus('error');
+        setErrorMessage('Error de conexión. Intenta de nuevo.');
+        onError('Error de conexión');
+      }
+    };
 
-      reader.addEventListener('readingerror', (err: any) => {
-        console.error('[NFC] Error de lectura:', err);
+    // Exponer handleTagRead a través de ref para que el hook externo pueda usarlo
+    useImperativeHandle(ref, () => ({
+      handleTagRead
+    }), [handleTagRead, apiUrl, onSuccess, onError, onUnregistered, onTagRead]);
+
+    const startScanning = async () => {
+      // Verificar soporte NFC
+      if (!('NDEFReader' in window)) {
+        alert('Tu navegador no soporta NFC. Usa QR o el botón Invitado.');
+        return;
+      }
+
+      setStatus('scanning');
+      setErrorMessage('');
+
+      if (abortControllerRef.current) abortControllerRef.current.abort();
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+
+      abortControllerRef.current = new AbortController();
+
+      // Timeout de 30 segundos
+      timeoutRef.current = setTimeout(() => {
+        console.log('[NFC] Tiempo de espera agotado (30s)');
+        if (abortControllerRef.current) abortControllerRef.current.abort();
+        setStatus('idle');
+        if (onTimeout) onTimeout(); // Llamar a la función de timeout
+      }, 30000);
+
+      try {
+        const reader = new window.NDEFReader();
+
+        reader.addEventListener('reading', async (event: any) => {
+          const serialNumber = event.serialNumber;
+          console.log('[NFC] Tag detectado, UID:', serialNumber);
+
+          if (timeoutRef.current) clearTimeout(timeoutRef.current);
+          if (abortControllerRef.current) abortControllerRef.current.abort();
+
+          await handleTagRead(serialNumber);
+        });
+
+        reader.addEventListener('readingerror', (err: any) => {
+          console.error('[NFC] Error de lectura:', err);
+          if (timeoutRef.current) clearTimeout(timeoutRef.current);
+          setStatus('error');
+          setErrorMessage('Error al leer el tag. Acércalo bien.');
+          onError('Error de lectura');
+          if (abortControllerRef.current) abortControllerRef.current.abort();
+        });
+
+        await reader.scan({ signal: abortControllerRef.current.signal });
+        console.log('[NFC] Escaneo activo, acerca un tag...');
+
+      } catch (err: any) {
+        console.error('[NFC] Error al iniciar el escaneo:', err);
         if (timeoutRef.current) clearTimeout(timeoutRef.current);
         setStatus('error');
-        setErrorMessage('Error al leer el tag. Acércalo bien.');
-        onError('Error de lectura');
-        if (abortControllerRef.current) abortControllerRef.current.abort();
-      });
-
-      await reader.scan({ signal: abortControllerRef.current.signal });
-      console.log('[NFC] Escaneo activo, acerca un tag...');
-
-    } catch (err: any) {
-      console.error('[NFC] Error al iniciar el escaneo:', err);
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-      setStatus('error');
-      if (err.name === 'NotAllowedError') {
-        setErrorMessage('Permiso denegado. Acepta el permiso para usar NFC.');
-      } else {
-        setErrorMessage('Error al iniciar el sensor NFC. Intenta de nuevo.');
+        if (err.name === 'NotAllowedError') {
+          setErrorMessage('Permiso denegado. Acepta el permiso para usar NFC.');
+        } else {
+          setErrorMessage('Error al iniciar el sensor NFC. Intenta de nuevo.');
+        }
+        onError(err.message);
       }
-      onError(err.message);
-    }
-  };
+    };
 
-  const cancelScanning = () => {
-    console.log('[NFC] Cancelando escaneo por usuario');
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    if (abortControllerRef.current) {
-      abortControllerRef.current.abort();
-      abortControllerRef.current = null;
-    }
-    setStatus('idle');
-    setErrorMessage('');
-  };
+    const cancelScanning = () => {
+      console.log('[NFC] Cancelando escaneo por usuario');
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+        abortControllerRef.current = null;
+      }
+      setStatus('idle');
+      setErrorMessage('');
+    };
 
   return (
     <div className="w-full h-full">
@@ -186,12 +231,12 @@ export default function NFCReader({ onSuccess, onError, onUnregistered, onTimeou
           </div>
           <div className="text-center relative z-10">
             <span className="block text-3xl font-extrabold text-slate-800 group-hover:text-red-700 transition-colors">Identifícate</span>
-            <span className="block text-3xl font-extrabold text-slate-800 group-hover:text-red-700 transition-colors">con NFC</span>
+            <span className="block text-3xl font-extrabold text-slate-800 group-hover:text-red-700 transition-colors">con Caffe-Touch</span>
           </div>
-          <p className="text-lg text-slate-400 group-hover:text-slate-500 transition-colors relative z-10">Acerca tu dispositivo NFC</p>
+          <p className="text-lg text-slate-400 group-hover:text-slate-500 transition-colors relative z-10">Acerca tu llavero</p>
           <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ boxShadow: '0 0 0 2px #ea2a33, 0 0 20px #ea2a33' }}></div>
         </button>
       )}
     </div>
   );
-}
+});
