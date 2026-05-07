@@ -93,9 +93,9 @@ function SidebarIzquierdo({ onOpenIA, onPersonalizar }: { onOpenIA: () => void; 
         <div className="p-[clamp(0.5rem,1.25vw,1rem)] border-t border-slate-100">
           <button
             onClick={onOpenIA}
-            className="w-full flex items-center justify-center gap-[clamp(0.5rem,1vw,0.75rem)] bg-[#ea2a33] text-white px-[clamp(0.75rem,1.5vw,1.5rem)] py-[clamp(0.5rem,1.25vw,1rem)] rounded-2xl font-black text-[clamp(0.65rem,1.5vw,1rem)] hover:bg-[#ea2a33]/90 transition-all active:scale-95 shadow-lg shadow-[#ea2a33]/20"
+            className="w-full flex items-center justify-center gap-[clamp(0.5rem,1vw,0.75rem)] md:gap-[clamp(0.5rem,1vw,0.75rem)] bg-[#ea2a33] text-white px-[clamp(1rem,1.5vw,1.5rem)] md:px-[clamp(0.75rem,1.5vw,1.5rem)] py-[clamp(0.75rem,1.25vw,1rem)] md:py-[clamp(0.5rem,1.25vw,1rem)] rounded-2xl font-black text-[clamp(0.8rem,4vw,1rem)] md:text-[clamp(0.65rem,1.5vw,1rem)] hover:bg-[#ea2a33]/90 transition-all active:scale-95 shadow-lg shadow-[#ea2a33]/20"
           >
-            <span className="material-symbols-outlined text-[clamp(0.875rem,1.75vw,1.25rem)]">auto_awesome</span>
+            <span className="material-symbols-outlined text-[clamp(1rem,4vw,1.25rem)] md:text-[clamp(0.875rem,1.75vw,1.25rem)]">auto_awesome</span>
             <span className="tracking-tight">Asistente IA</span>
           </button>
         </div>
@@ -395,13 +395,6 @@ export default function Home() {
               <span className="bg-gradient-to-r from-red-600 to-red-400 bg-clip-text text-transparent">¡Hola!</span>
             </h1>
             <p className="text-lg md:text-2xl text-slate-600 font-medium">Selecciona cómo quieres continuar</p>
-            <div className="mt-4 text-sm md:text-base text-slate-500">
-              {isConnected ? (
-                <span className="text-green-600 font-semibold"></span>
-              ) : (
-                <span className="text-red-600 font-semibold"><code></code> </span>
-              )}
-            </div>
           </div>
 
           <div className="grid grid-cols-3 gap-[clamp(1rem,2.5vw,2.5rem)] flex-1">
