@@ -91,11 +91,11 @@ function SidebarIzquierdo({ onOpenIA, onPersonalizar }: { onOpenIA: () => void; 
           </div>
         </div>
         <div className="p-[clamp(0.5rem,1.25vw,1rem)] border-t border-slate-100">
-          <button
+         <button
   onClick={onOpenIA}
-  className="w-full flex items-center justify-center gap-[clamp(0.75rem,2.5vw,1rem)] md:gap-[clamp(0.5rem,1vw,0.75rem)] bg-[#ea2a33] text-white px-[clamp(1.5rem,4vw,2rem)] md:px-[clamp(0.75rem,1.5vw,1.5rem)] py-[clamp(1rem,2.5vw,1.25rem)] md:py-[clamp(0.5rem,1.25vw,1rem)] rounded-2xl font-black text-[clamp(1rem,5vw,1.25rem)] md:text-[clamp(0.65rem,1.5vw,1rem)] hover:bg-[#ea2a33]/90 transition-all active:scale-95 shadow-lg shadow-[#ea2a33]/20"
+  className="w-full flex items-center justify-center gap-[clamp(1rem,3vw,1.25rem)] md:gap-[clamp(0.5rem,1vw,0.75rem)] bg-[#ea2a33] text-white px-[clamp(2rem,6vw,2.5rem)] md:px-[clamp(0.75rem,1.5vw,1.5rem)] py-[clamp(1.25rem,3.5vw,1.5rem)] md:py-[clamp(0.5rem,1.25vw,1rem)] rounded-2xl font-black text-[clamp(1.25rem,6vw,1.5rem)] md:text-[clamp(0.65rem,1.5vw,1rem)] hover:bg-[#ea2a33]/90 transition-all active:scale-95 shadow-lg shadow-[#ea2a33]/20"
 >
-  <span className="material-symbols-outlined text-[clamp(1.25rem,5vw,1.5rem)] md:text-[clamp(0.875rem,1.75vw,1.25rem)]">
+  <span className="material-symbols-outlined text-[clamp(1.5rem,6vw,1.75rem)] md:text-[clamp(0.875rem,1.75vw,1.25rem)]">
     auto_awesome
   </span>
   <span className="tracking-tight">Asistente IA</span>
