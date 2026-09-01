@@ -566,7 +566,7 @@ export const productos: Producto[] = [
   },
   {
     id: 44,
-    nombre: 'Kombucha ',
+    nombre: 'Kombucha',
     categoria: 'bebida',
     precio: 61,
     imagen: 'https://images.rappi.com.mx/products/tmpImg73154048-a501-4ba8-b554-ba27245c5926.png?d=300x300&e=webp&q=10',
@@ -575,7 +575,7 @@ export const productos: Producto[] = [
       tamanos: ['chico', 'mediano', 'grande'],
       leches: []
     }
-  }, // <-- ¡COMA AÑADIDA AQUÍ!
+  },
 
   // ==================== ALIMENTOS (IDs 45-57) ====================
   {

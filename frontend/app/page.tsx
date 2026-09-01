@@ -118,13 +118,20 @@ function SidebarIzquierdo({ onOpenIA, onPersonalizar }: { onOpenIA: () => void; 
 function getCategorias(productos: Producto[]) {
   const postres = productos.filter(p => p.categoria === 'postre');
   const comida = productos.filter(p => p.categoria === 'comida');
-  const palabrasFrias = ['frío', 'fría', 'frappé', 'kfreeze', 'lateada', 'helado', 'refrescante'];
-  const bebidasFrias = productos.filter(p => 
-    p.categoria === 'bebida' && palabrasFrias.some(palabra => p.nombre.toLowerCase().includes(palabra))
-  );
-  const bebidasCalientes = productos.filter(p => 
-    p.categoria === 'bebida' && !palabrasFrias.some(palabra => p.nombre.toLowerCase().includes(palabra))
-  );
+  const palabrasFrias = ['frío', 'fría', 'frappé', 'kfreeze', 'lateada', 'helado', 'refrescante', 'kombucha'];
+
+  const bebidasFrias = productos.filter(p => {
+    if (p.categoria !== 'bebida') return false;
+    const nombre = p.nombre.toLowerCase().trim();
+    return palabrasFrias.some(palabra => nombre.includes(palabra));
+  });
+
+  const bebidasCalientes = productos.filter(p => {
+    if (p.categoria !== 'bebida') return false;
+    const nombre = p.nombre.toLowerCase().trim();
+    return !palabrasFrias.some(palabra => nombre.includes(palabra));
+  });
+
   return { postres, comida, bebidasFrias, bebidasCalientes };
 }
 
